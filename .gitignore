@@ -1,0 +1,38 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+## Hugo default output directory
+gh-pages
+resources/_gen/assets/scss/temp
+themes/LoveIt/resources/_gen/assets/scss/temp
+node_modules/
+build/
+resources/_gen/
+package-lock.json
+yarn.lock
+
+# MarkEditor
+*/.markeditor/*
+*/.markeditor/
+.markeditor/
+content/configs/
+content/.auto_links.json
+content/.icon.png
+temp/
+.Archive
+
+## OS Files
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# OSX
+.DS_Store
+
+# Linux
+.directory
