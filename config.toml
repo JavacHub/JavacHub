@@ -442,7 +442,7 @@ enableEmoji = true
         pre = ""
         post = ""
         name = "简历"
-        url = "/resume/index.html"
+        url = "/resume"
         title = "张向阳 | 个人简历 | Java 开发工程师"
         weight = 5
       [[languages.zh-cn.menu.main]]
