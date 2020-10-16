@@ -1,0 +1,1488 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ResultCode - 标签 - JonnyHub Blog - A Java Programmer.</title>
+        <link>https://jonnyhub.gitee.io/tags/resultcode/</link>
+        <description>ResultCode - 标签 - JonnyHub Blog - A Java Programmer.</description>
+        <generator>Hugo -- gohugo.io</generator><managingEditor>jonny0624@gmail.com (Jonny.Chang)</managingEditor>
+            <webMaster>jonny0624@gmail.com (Jonny.Chang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://jonnyhub.gitee.io/tags/resultcode/" rel="self" type="application/rss+xml" /><item>
+    <title>ResultCode 封装</title>
+    <link>https://jonnyhub.gitee.io/2020/08/2020-08-10-resultcode-%E5%B0%81%E8%A3%85/</link>
+    <pubDate>Mon, 10 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/08/2020-08-10-resultcode-%E5%B0%81%E8%A3%85/</guid>
+    <description><![CDATA[<p>Java 中对结果的统一处理，根据阿里巴巴p3c手册进行封装的 Result 工具类。</p>
+<h1 id="java-中对于结果的统一处理">Java 中对于结果的统一处理</h1>
+<h2 id="resultcodeenum-统一处理结果码枚举">ResultCodeEnum 统一处理结果码枚举</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span><span class="lnt">286
+</span><span class="lnt">287
+</span><span class="lnt">288
+</span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span><span class="lnt">299
+</span><span class="lnt">300
+</span><span class="lnt">301
+</span><span class="lnt">302
+</span><span class="lnt">303
+</span><span class="lnt">304
+</span><span class="lnt">305
+</span><span class="lnt">306
+</span><span class="lnt">307
+</span><span class="lnt">308
+</span><span class="lnt">309
+</span><span class="lnt">310
+</span><span class="lnt">311
+</span><span class="lnt">312
+</span><span class="lnt">313
+</span><span class="lnt">314
+</span><span class="lnt">315
+</span><span class="lnt">316
+</span><span class="lnt">317
+</span><span class="lnt">318
+</span><span class="lnt">319
+</span><span class="lnt">320
+</span><span class="lnt">321
+</span><span class="lnt">322
+</span><span class="lnt">323
+</span><span class="lnt">324
+</span><span class="lnt">325
+</span><span class="lnt">326
+</span><span class="lnt">327
+</span><span class="lnt">328
+</span><span class="lnt">329
+</span><span class="lnt">330
+</span><span class="lnt">331
+</span><span class="lnt">332
+</span><span class="lnt">333
+</span><span class="lnt">334
+</span><span class="lnt">335
+</span><span class="lnt">336
+</span><span class="lnt">337
+</span><span class="lnt">338
+</span><span class="lnt">339
+</span><span class="lnt">340
+</span><span class="lnt">341
+</span><span class="lnt">342
+</span><span class="lnt">343
+</span><span class="lnt">344
+</span><span class="lnt">345
+</span><span class="lnt">346
+</span><span class="lnt">347
+</span><span class="lnt">348
+</span><span class="lnt">349
+</span><span class="lnt">350
+</span><span class="lnt">351
+</span><span class="lnt">352
+</span><span class="lnt">353
+</span><span class="lnt">354
+</span><span class="lnt">355
+</span><span class="lnt">356
+</span><span class="lnt">357
+</span><span class="lnt">358
+</span><span class="lnt">359
+</span><span class="lnt">360
+</span><span class="lnt">361
+</span><span class="lnt">362
+</span><span class="lnt">363
+</span><span class="lnt">364
+</span><span class="lnt">365
+</span><span class="lnt">366
+</span><span class="lnt">367
+</span><span class="lnt">368
+</span><span class="lnt">369
+</span><span class="lnt">370
+</span><span class="lnt">371
+</span><span class="lnt">372
+</span><span class="lnt">373
+</span><span class="lnt">374
+</span><span class="lnt">375
+</span><span class="lnt">376
+</span><span class="lnt">377
+</span><span class="lnt">378
+</span><span class="lnt">379
+</span><span class="lnt">380
+</span><span class="lnt">381
+</span><span class="lnt">382
+</span><span class="lnt">383
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 通用结果代码枚举
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jonny.Chang  ( https://jonnyhub.com )  @jonny6015
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">enum</span> <span class="n">CommonResultEnum</span> <span class="kd">implements</span> <span class="n">ResultCode</span> <span class="o">{</span>
+
+    <span class="cm">/** 成功 */</span>
+    <span class="n">SUCCESS</span><span class="o">(</span><span class="s">&#34;00000&#34;</span><span class="o">,</span><span class="s">&#34;success&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户端错误 */</span>
+    <span class="n">CLIENT_ERROR</span><span class="o">(</span><span class="s">&#34;A0001&#34;</span><span class="o">,</span><span class="s">&#34;用户端错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户注册错误 */</span>
+    <span class="n">USER_REGISTRATION_ERROR</span><span class="o">(</span><span class="s">&#34;A0100&#34;</span><span class="o">,</span><span class="s">&#34;用户注册错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户未同意隐私协议 */</span>
+    <span class="n">THE_USER_DID_NOT_AGREE_TO_THE_PRIVACY_AGREEMENT</span><span class="o">(</span><span class="s">&#34;A0101&#34;</span><span class="o">,</span><span class="s">&#34;用户未同意隐私协议&#34;</span><span class="o">),</span>
+    <span class="cm">/** 注册国家或地区受限 */</span>
+    <span class="n">RESTRICTED_COUNTRY_OR_REGION_OF_REGISTRATION</span><span class="o">(</span><span class="s">&#34;A0102&#34;</span><span class="o">,</span><span class="s">&#34;注册国家或地区受限&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户名校验失败 */</span>
+    <span class="n">USERNAME_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0110&#34;</span><span class="o">,</span><span class="s">&#34;用户名校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户名已存在 */</span>
+    <span class="n">USERNAME_ALREADY_EXISTS</span><span class="o">(</span><span class="s">&#34;A0111&#34;</span><span class="o">,</span><span class="s">&#34;用户名已存在&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户名包含敏感词 */</span>
+    <span class="n">USERNAME_CONTAINS_SENSITIVE_WORDS</span><span class="o">(</span><span class="s">&#34;A0112&#34;</span><span class="o">,</span><span class="s">&#34;用户名包含敏感词&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户名包含特殊字符 */</span>
+    <span class="n">USERNAME_CONTAINS_SPECIAL_CHARACTERS</span><span class="o">(</span><span class="s">&#34;A0113&#34;</span><span class="o">,</span><span class="s">&#34;用户名包含特殊字符&#34;</span><span class="o">),</span>
+    <span class="cm">/** 密码校验失败 */</span>
+    <span class="n">PASSWORD_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0120&#34;</span><span class="o">,</span><span class="s">&#34;密码校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 密码长度不够 */</span>
+    <span class="n">PASSWORD_LENGTH_IS_NOT_ENOUGH</span><span class="o">(</span><span class="s">&#34;A0121&#34;</span><span class="o">,</span><span class="s">&#34;密码长度不够&#34;</span><span class="o">),</span>
+    <span class="cm">/** 密码强度不够 */</span>
+    <span class="n">THE_PASSWORD_IS_NOT_STRONG_ENOUGH</span><span class="o">(</span><span class="s">&#34;A0122&#34;</span><span class="o">,</span><span class="s">&#34;密码强度不够&#34;</span><span class="o">),</span>
+    <span class="cm">/** 校验码输入错误 */</span>
+    <span class="n">CHECK_CODE_INPUT_ERROR</span><span class="o">(</span><span class="s">&#34;A0130&#34;</span><span class="o">,</span><span class="s">&#34;校验码输入错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 短信校验码输入错误 */</span>
+    <span class="n">SMS_VERIFICATION_CODE_INPUT_ERROR</span><span class="o">(</span><span class="s">&#34;A0131&#34;</span><span class="o">,</span><span class="s">&#34;短信校验码输入错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 邮件校验码输入错误 */</span>
+    <span class="n">EMAIL_VERIFICATION_CODE_INPUT_ERROR</span><span class="o">(</span><span class="s">&#34;A0132&#34;</span><span class="o">,</span><span class="s">&#34;邮件校验码输入错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 语音校验码输入错误 */</span>
+    <span class="n">VOICE_CHECK_CODE_INPUT_ERROR</span><span class="o">(</span><span class="s">&#34;A0133&#34;</span><span class="o">,</span><span class="s">&#34;语音校验码输入错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户证件异常 */</span>
+    <span class="n">USER_ID_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0140&#34;</span><span class="o">,</span><span class="s">&#34;用户证件异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户证件类型未选择 */</span>
+    <span class="n">USER_ID_TYPE_IS_NOT_SELECTED</span><span class="o">(</span><span class="s">&#34;A0141&#34;</span><span class="o">,</span><span class="s">&#34;用户证件类型未选择&#34;</span><span class="o">),</span>
+    <span class="cm">/** 大陆身份证编号校验非法 */</span>
+    <span class="n">MAINLAND_ID_CARD_NUMBER_VERIFICATION_IS_ILLEGAL</span><span class="o">(</span><span class="s">&#34;A0142&#34;</span><span class="o">,</span><span class="s">&#34;大陆身份证编号校验非法&#34;</span><span class="o">),</span>
+    <span class="cm">/** 护照编号校验非法 */</span>
+    <span class="n">ILLEGAL_PASSPORT_NUMBER_VERIFICATION</span><span class="o">(</span><span class="s">&#34;A0143&#34;</span><span class="o">,</span><span class="s">&#34;护照编号校验非法&#34;</span><span class="o">),</span>
+    <span class="cm">/** 军官证编号校验非法 */</span>
+    <span class="n">MILITARY_OFFICER_ID_NUMBER_VERIFICATION_IS_ILLEGAL</span><span class="o">(</span><span class="s">&#34;A0144&#34;</span><span class="o">,</span><span class="s">&#34;军官证编号校验非法&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户基本信息校验失败 */</span>
+    <span class="n">USER_BASIC_INFORMATION_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0150&#34;</span><span class="o">,</span><span class="s">&#34;用户基本信息校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 手机格式校验失败 */</span>
+    <span class="n">PHONE_FORMAT_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0151&#34;</span><span class="o">,</span><span class="s">&#34;手机格式校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 地址格式校验失败 */</span>
+    <span class="n">ADDRESS_FORMAT_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0152&#34;</span><span class="o">,</span><span class="s">&#34;地址格式校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 邮箱格式校验失败 */</span>
+    <span class="n">EMAIL_FORMAT_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0153&#34;</span><span class="o">,</span><span class="s">&#34;邮箱格式校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户登陆异常 */</span>
+    <span class="n">USER_LOGIN_EXCEPTION</span><span class="o">(</span><span class="s">&#34;A0200&#34;</span><span class="o">,</span><span class="s">&#34;用户登陆异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户账户不存在 */</span>
+    <span class="n">USER_ACCOUNT_DOES_NOT_EXIST</span><span class="o">(</span><span class="s">&#34;A0201&#34;</span><span class="o">,</span><span class="s">&#34;用户账户不存在&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户账户被冻结 */</span>
+    <span class="n">USER_ACCOUNT_IS_FROZEN</span><span class="o">(</span><span class="s">&#34;A0202&#34;</span><span class="o">,</span><span class="s">&#34;用户账户被冻结&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户账户已作废 */</span>
+    <span class="n">USER_ACCOUNT_IS_INVALID</span><span class="o">(</span><span class="s">&#34;A0203&#34;</span><span class="o">,</span><span class="s">&#34;用户账户已作废&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户密码错误 */</span>
+    <span class="n">USER_PASSWORD_ERROR</span><span class="o">(</span><span class="s">&#34;A0210&#34;</span><span class="o">,</span><span class="s">&#34;用户密码错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户输入密码次数超限 */</span>
+    <span class="n">THE_NUMBER_OF_TIMES_THE_USER_ENTERS_THE_PASSWORD_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;A0211&#34;</span><span class="o">,</span><span class="s">&#34;用户输入密码次数超限&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户身份校验失败 */</span>
+    <span class="n">USER_IDENTITY_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0220&#34;</span><span class="o">,</span><span class="s">&#34;用户身份校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户指纹识别失败 */</span>
+    <span class="n">USER_FINGERPRINT_RECOGNITION_FAILED</span><span class="o">(</span><span class="s">&#34;A0221&#34;</span><span class="o">,</span><span class="s">&#34;用户指纹识别失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户面容识别失败 */</span>
+    <span class="n">USER_FACE_RECOGNITION_FAILED</span><span class="o">(</span><span class="s">&#34;A0222&#34;</span><span class="o">,</span><span class="s">&#34;用户面容识别失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户未获得第三方登陆授权 */</span>
+    <span class="n">USER_IS_NOT_AUTHORIZED_TO_LOG_IN_BY_A_THIRD_PARTY</span><span class="o">(</span><span class="s">&#34;A0223&#34;</span><span class="o">,</span><span class="s">&#34;用户未获得第三方登陆授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户登陆已过期 */</span>
+    <span class="n">USER_LOGIN_HAS_EXPIRED</span><span class="o">(</span><span class="s">&#34;A0230&#34;</span><span class="o">,</span><span class="s">&#34;用户登陆已过期&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户验证码错误 */</span>
+    <span class="n">USER_VERIFICATION_CODE_ERROR</span><span class="o">(</span><span class="s">&#34;A0240&#34;</span><span class="o">,</span><span class="s">&#34;用户验证码错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户验证码尝试次数超限 */</span>
+    <span class="n">THE_NUMBER_OF_USER_VERIFICATION_CODE_ATTEMPTS_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;A0241&#34;</span><span class="o">,</span><span class="s">&#34;用户验证码尝试次数超限&#34;</span><span class="o">),</span>
+    <span class="cm">/** 访问权限异常 */</span>
+    <span class="n">ABNORMAL_ACCESS_RIGHTS</span><span class="o">(</span><span class="s">&#34;A0300&#34;</span><span class="o">,</span><span class="s">&#34;访问权限异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 访问未授权 */</span>
+    <span class="n">ACCESS_UNAUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0301&#34;</span><span class="o">,</span><span class="s">&#34;访问未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 正在授权中 */</span>
+    <span class="n">AUTHORIZING</span><span class="o">(</span><span class="s">&#34;A0302&#34;</span><span class="o">,</span><span class="s">&#34;正在授权中&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户授权申请被拒绝 */</span>
+    <span class="n">USER_AUTHORIZATION_REQUEST_REJECTED</span><span class="o">(</span><span class="s">&#34;A0303&#34;</span><span class="o">,</span><span class="s">&#34;用户授权申请被拒绝&#34;</span><span class="o">),</span>
+    <span class="cm">/** 因访问对象隐私设置被拦截 */</span>
+    <span class="n">BLOCKED_DUE_TO_PRIVACY_SETTINGS</span><span class="o">(</span><span class="s">&#34;A0310&#34;</span><span class="o">,</span><span class="s">&#34;因访问对象隐私设置被拦截&#34;</span><span class="o">),</span>
+    <span class="cm">/** 授权已过期 */</span>
+    <span class="n">AUTHORIZATION_HAS_EXPIRED</span><span class="o">(</span><span class="s">&#34;A0311&#34;</span><span class="o">,</span><span class="s">&#34;授权已过期&#34;</span><span class="o">),</span>
+    <span class="cm">/** 无权限使用API */</span>
+    <span class="n">NO_ACCESS_TO_API</span><span class="o">(</span><span class="s">&#34;A0312&#34;</span><span class="o">,</span><span class="s">&#34;无权限使用API&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户访问被拦截 */</span>
+    <span class="n">USER_ACCESS_IS_BLOCKED</span><span class="o">(</span><span class="s">&#34;A0320&#34;</span><span class="o">,</span><span class="s">&#34;用户访问被拦截&#34;</span><span class="o">),</span>
+    <span class="cm">/** 黑名单用户 */</span>
+    <span class="n">BLACKLISTED_USERS</span><span class="o">(</span><span class="s">&#34;A0321&#34;</span><span class="o">,</span><span class="s">&#34;黑名单用户&#34;</span><span class="o">),</span>
+    <span class="cm">/** 账号被冻结 */</span>
+    <span class="n">ACCOUNT_IS_FROZEN</span><span class="o">(</span><span class="s">&#34;A0322&#34;</span><span class="o">,</span><span class="s">&#34;账号被冻结&#34;</span><span class="o">),</span>
+    <span class="cm">/** 非法IP地址 */</span>
+    <span class="n">ILLEGAL_IP_ADDRESS</span><span class="o">(</span><span class="s">&#34;A0323&#34;</span><span class="o">,</span><span class="s">&#34;非法IP地址&#34;</span><span class="o">),</span>
+    <span class="cm">/** 网关访问受限 */</span>
+    <span class="n">GATEWAY_ACCESS_IS_RESTRICTED</span><span class="o">(</span><span class="s">&#34;A0324&#34;</span><span class="o">,</span><span class="s">&#34;网关访问受限&#34;</span><span class="o">),</span>
+    <span class="cm">/** 地域黑名单 */</span>
+    <span class="n">REGIONAL_BLACKLIST</span><span class="o">(</span><span class="s">&#34;A0325&#34;</span><span class="o">,</span><span class="s">&#34;地域黑名单&#34;</span><span class="o">),</span>
+    <span class="cm">/** 服务已欠费 */</span>
+    <span class="n">SERVICE_ARREARS</span><span class="o">(</span><span class="s">&#34;A0330&#34;</span><span class="o">,</span><span class="s">&#34;服务已欠费&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户签名异常 */</span>
+    <span class="n">USER_SIGNATURE_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0340&#34;</span><span class="o">,</span><span class="s">&#34;用户签名异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** RSA签名错误 */</span>
+    <span class="n">RSA_SIGNATURE_ERROR</span><span class="o">(</span><span class="s">&#34;A0341&#34;</span><span class="o">,</span><span class="s">&#34;RSA签名错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户请求参数错误 */</span>
+    <span class="n">USER_REQUEST_PARAMETER_ERROR</span><span class="o">(</span><span class="s">&#34;A0400&#34;</span><span class="o">,</span><span class="s">&#34;用户请求参数错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 包含非法恶意跳转链接 */</span>
+    <span class="n">CONTAINS_ILLEGAL_AND_MALICIOUS_REDIRECT_LINKS</span><span class="o">(</span><span class="s">&#34;A0401&#34;</span><span class="o">,</span><span class="s">&#34;包含非法恶意跳转链接&#34;</span><span class="o">),</span>
+    <span class="cm">/** 无效的用户输入 */</span>
+    <span class="n">INVALID_USER_INPUT</span><span class="o">(</span><span class="s">&#34;A0402&#34;</span><span class="o">,</span><span class="s">&#34;无效的用户输入&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求必填参数为空 */</span>
+    <span class="n">REQUIRED_PARAMETERS_ARE_EMPTY</span><span class="o">(</span><span class="s">&#34;A0410&#34;</span><span class="o">,</span><span class="s">&#34;请求必填参数为空&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户订单号为空 */</span>
+    <span class="n">USER_ORDER_NUMBER_IS_EMPTY</span><span class="o">(</span><span class="s">&#34;A0411&#34;</span><span class="o">,</span><span class="s">&#34;用户订单号为空&#34;</span><span class="o">),</span>
+    <span class="cm">/** 订购数量为空 */</span>
+    <span class="n">THE_ORDER_QUANTITY_IS_EMPTY</span><span class="o">(</span><span class="s">&#34;A0412&#34;</span><span class="o">,</span><span class="s">&#34;订购数量为空&#34;</span><span class="o">),</span>
+    <span class="cm">/** 缺少时间戳参数 */</span>
+    <span class="n">MISSING_TIMESTAMP_PARAMETER</span><span class="o">(</span><span class="s">&#34;A0413&#34;</span><span class="o">,</span><span class="s">&#34;缺少时间戳参数&#34;</span><span class="o">),</span>
+    <span class="cm">/** 非法的时间戳参数 */</span>
+    <span class="n">ILLEGAL_TIMESTAMP_PARAMETER</span><span class="o">(</span><span class="s">&#34;A0414&#34;</span><span class="o">,</span><span class="s">&#34;非法的时间戳参数&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求参数值超出允许的范围 */</span>
+    <span class="n">REQUEST_PARAMETER_VALUE_EXCEEDS_THE_ALLOWED_RANGE</span><span class="o">(</span><span class="s">&#34;A0420&#34;</span><span class="o">,</span><span class="s">&#34;请求参数值超出允许的范围&#34;</span><span class="o">),</span>
+    <span class="cm">/** 参数格式不匹配 */</span>
+    <span class="n">PARAMETER_FORMAT_DOES_NOT_MATCH</span><span class="o">(</span><span class="s">&#34;A0421&#34;</span><span class="o">,</span><span class="s">&#34;参数格式不匹配&#34;</span><span class="o">),</span>
+    <span class="cm">/** 地址不在服务范围 */</span>
+    <span class="n">ADDRESS_NOT_IN_SERVICE</span><span class="o">(</span><span class="s">&#34;A0422&#34;</span><span class="o">,</span><span class="s">&#34;地址不在服务范围&#34;</span><span class="o">),</span>
+    <span class="cm">/** 时间不在服务范围 */</span>
+    <span class="n">TIME_IS_OUT_OF_SERVICE</span><span class="o">(</span><span class="s">&#34;A0423&#34;</span><span class="o">,</span><span class="s">&#34;时间不在服务范围&#34;</span><span class="o">),</span>
+    <span class="cm">/** 金额超出限制 */</span>
+    <span class="n">AMOUNT_EXCEEDS_LIMIT</span><span class="o">(</span><span class="s">&#34;A0424&#34;</span><span class="o">,</span><span class="s">&#34;金额超出限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 数量超出限制 */</span>
+    <span class="n">QUANTITY_EXCEEDS_LIMIT</span><span class="o">(</span><span class="s">&#34;A0425&#34;</span><span class="o">,</span><span class="s">&#34;数量超出限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求批量处理总个数超出限制 */</span>
+    <span class="n">TOTAL_NUMBER_OF_REQUESTS_FOR_BATCH_PROCESSING</span><span class="o">(</span><span class="s">&#34;A0426&#34;</span><span class="o">,</span><span class="s">&#34;请求批量处理总个数超出限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求JSON解析失败 */</span>
+    <span class="n">REQUEST_JSON_PARSING_FAILED</span><span class="o">(</span><span class="s">&#34;A0427&#34;</span><span class="o">,</span><span class="s">&#34;请求JSON解析失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户输入内容非法 */</span>
+    <span class="n">USER_INPUT_IS_ILLEGAL</span><span class="o">(</span><span class="s">&#34;A0430&#34;</span><span class="o">,</span><span class="s">&#34;用户输入内容非法&#34;</span><span class="o">),</span>
+    <span class="cm">/** 包含违禁敏感词 */</span>
+    <span class="n">CONTAINS_PROHIBITED_SENSITIVE_WORDS</span><span class="o">(</span><span class="s">&#34;A0431&#34;</span><span class="o">,</span><span class="s">&#34;包含违禁敏感词&#34;</span><span class="o">),</span>
+    <span class="cm">/** 图片包含违禁信息 */</span>
+    <span class="n">PICTURE_CONTAINS_PROHIBITED_INFORMATION</span><span class="o">(</span><span class="s">&#34;A0432&#34;</span><span class="o">,</span><span class="s">&#34;图片包含违禁信息&#34;</span><span class="o">),</span>
+    <span class="cm">/** 文件侵犯版权 */</span>
+    <span class="n">FILE_INFRINGES_COPYRIGHT</span><span class="o">(</span><span class="s">&#34;A0433&#34;</span><span class="o">,</span><span class="s">&#34;文件侵犯版权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户操作异常 */</span>
+    <span class="n">USER_OPERATION_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0440&#34;</span><span class="o">,</span><span class="s">&#34;用户操作异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户支付超时 */</span>
+    <span class="n">USER_PAYMENT_TIMEOUT</span><span class="o">(</span><span class="s">&#34;A0441&#34;</span><span class="o">,</span><span class="s">&#34;用户支付超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 确认订单超时 */</span>
+    <span class="n">CONFIRM_ORDER_TIMEOUT</span><span class="o">(</span><span class="s">&#34;A0442&#34;</span><span class="o">,</span><span class="s">&#34;确认订单超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 订单已关闭 */</span>
+    <span class="n">ORDER_CLOSED</span><span class="o">(</span><span class="s">&#34;A0443&#34;</span><span class="o">,</span><span class="s">&#34;订单已关闭&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户请求服务异常 */</span>
+    <span class="n">USER_REQUEST_SERVICE_EXCEPTION</span><span class="o">(</span><span class="s">&#34;A0500&#34;</span><span class="o">,</span><span class="s">&#34;用户请求服务异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求次数超出限制 */</span>
+    <span class="n">THE_NUMBER_OF_REQUESTS_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;A0501&#34;</span><span class="o">,</span><span class="s">&#34;请求次数超出限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求并发数超出限制 */</span>
+    <span class="n">THE_NUMBER_OF_CONCURRENT_REQUESTS_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;A0502&#34;</span><span class="o">,</span><span class="s">&#34;请求并发数超出限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户操作请等待 */</span>
+    <span class="n">USER_OPERATION_PLEASE_WAIT</span><span class="o">(</span><span class="s">&#34;A0503&#34;</span><span class="o">,</span><span class="s">&#34;用户操作请等待&#34;</span><span class="o">),</span>
+    <span class="cm">/** WebSocket连接异常 */</span>
+    <span class="n">WEBSOCKET_CONNECTION_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0504&#34;</span><span class="o">,</span><span class="s">&#34;WebSocket连接异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** WebSocket连接断开 */</span>
+    <span class="n">WEBSOCKET_CONNECTION_DISCONNECTED</span><span class="o">(</span><span class="s">&#34;A0505&#34;</span><span class="o">,</span><span class="s">&#34;WebSocket连接断开&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户重复请求 */</span>
+    <span class="n">USER_REPEATED_REQUEST</span><span class="o">(</span><span class="s">&#34;A0506&#34;</span><span class="o">,</span><span class="s">&#34;用户重复请求&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户资源异常 */</span>
+    <span class="n">USER_RESOURCE_EXCEPTION</span><span class="o">(</span><span class="s">&#34;A0600&#34;</span><span class="o">,</span><span class="s">&#34;用户资源异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 账户余额不足 */</span>
+    <span class="n">INSUFFICIENT_ACCOUNT_BALANCE</span><span class="o">(</span><span class="s">&#34;A0601&#34;</span><span class="o">,</span><span class="s">&#34;账户余额不足&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户磁盘空间不足 */</span>
+    <span class="n">INSUFFICIENT_USER_DISK_SPACE</span><span class="o">(</span><span class="s">&#34;A0602&#34;</span><span class="o">,</span><span class="s">&#34;用户磁盘空间不足&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户内存空间不足 */</span>
+    <span class="n">INSUFFICIENT_USER_MEMORY</span><span class="o">(</span><span class="s">&#34;A0603&#34;</span><span class="o">,</span><span class="s">&#34;用户内存空间不足&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户OSS容量不足 */</span>
+    <span class="n">INSUFFICIENT_USER_OSS_CAPACITY</span><span class="o">(</span><span class="s">&#34;A0604&#34;</span><span class="o">,</span><span class="s">&#34;用户OSS容量不足&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传文件异常 */</span>
+    <span class="n">USER_UPLOAD_FILE_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0700&#34;</span><span class="o">,</span><span class="s">&#34;用户上传文件异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传文件类型不匹配 */</span>
+    <span class="n">USER_UPLOAD_FILE_TYPE_DOES_NOT_MATCH</span><span class="o">(</span><span class="s">&#34;A0701&#34;</span><span class="o">,</span><span class="s">&#34;用户上传文件类型不匹配&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传文件太大 */</span>
+    <span class="n">USER_UPLOAD_FILE_IS_TOO_LARGE</span><span class="o">(</span><span class="s">&#34;A0702&#34;</span><span class="o">,</span><span class="s">&#34;用户上传文件太大&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传图片太大 */</span>
+    <span class="n">USER_UPLOAD_IMAGE_IS_TOO_LARGE</span><span class="o">(</span><span class="s">&#34;A0703&#34;</span><span class="o">,</span><span class="s">&#34;用户上传图片太大&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传视频太大 */</span>
+    <span class="n">USER_UPLOADED_VIDEO_IS_TOO_LARGE</span><span class="o">(</span><span class="s">&#34;A0704&#34;</span><span class="o">,</span><span class="s">&#34;用户上传视频太大&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传压缩文件太大 */</span>
+    <span class="n">THE_COMPRESSED_FILE_UPLOADED_BY_THE_USER_IS_TOO_LARGE</span><span class="o">(</span><span class="s">&#34;A0705&#34;</span><span class="o">,</span><span class="s">&#34;用户上传压缩文件太大&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户当前版本异常 */</span>
+    <span class="n">THE_USER_S_CURRENT_VERSION_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0800&#34;</span><span class="o">,</span><span class="s">&#34;用户当前版本异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户安装版本与系统不匹配 */</span>
+    <span class="n">THE_USER_INSTALLED_VERSION_DOES_NOT_MATCH_THE_SYSTEM</span><span class="o">(</span><span class="s">&#34;A0801&#34;</span><span class="o">,</span><span class="s">&#34;用户安装版本与系统不匹配&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户安装版本过低 */</span>
+    <span class="n">USER_INSTALLED_VERSION_IS_TOO_LOW</span><span class="o">(</span><span class="s">&#34;A0802&#34;</span><span class="o">,</span><span class="s">&#34;用户安装版本过低&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户安装版本过高 */</span>
+    <span class="n">USER_INSTALLED_VERSION_IS_TOO_HIGH</span><span class="o">(</span><span class="s">&#34;A0803&#34;</span><span class="o">,</span><span class="s">&#34;用户安装版本过高&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户安装版本已过期 */</span>
+    <span class="n">USER_INSTALLED_VERSION_HAS_EXPIRED</span><span class="o">(</span><span class="s">&#34;A0804&#34;</span><span class="o">,</span><span class="s">&#34;用户安装版本已过期&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户API请求版本不匹配 */</span>
+    <span class="n">USER_API_REQUEST_VERSION_DOES_NOT_MATCH</span><span class="o">(</span><span class="s">&#34;A0805&#34;</span><span class="o">,</span><span class="s">&#34;用户API请求版本不匹配&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户API请求版本过高 */</span>
+    <span class="n">USER_API_REQUEST_VERSION_IS_TOO_HIGH</span><span class="o">(</span><span class="s">&#34;A0806&#34;</span><span class="o">,</span><span class="s">&#34;用户API请求版本过高&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户API请求版本过低 */</span>
+    <span class="n">USER_API_REQUEST_VERSION_IS_TOO_LOW</span><span class="o">(</span><span class="s">&#34;A0807&#34;</span><span class="o">,</span><span class="s">&#34;用户API请求版本过低&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户隐私未授权 */</span>
+    <span class="n">USER_PRIVACY_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0900&#34;</span><span class="o">,</span><span class="s">&#34;用户隐私未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户隐私未签署 */</span>
+    <span class="n">USER_PRIVACY_NOT_SIGNED</span><span class="o">(</span><span class="s">&#34;A0901&#34;</span><span class="o">,</span><span class="s">&#34;用户隐私未签署&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户摄像头未授权 */</span>
+    <span class="n">USER_WEBCAMS_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0902&#34;</span><span class="o">,</span><span class="s">&#34;用户摄像头未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户相机未授权 */</span>
+    <span class="n">USER_CAMERA_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0903&#34;</span><span class="o">,</span><span class="s">&#34;用户相机未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户图片库未授权 */</span>
+    <span class="n">USER_IMAGE_LIBRARY_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0904&#34;</span><span class="o">,</span><span class="s">&#34;用户图片库未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户文件未授权 */</span>
+    <span class="n">USER_FILE_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0905&#34;</span><span class="o">,</span><span class="s">&#34;用户文件未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户位置信息未授权 */</span>
+    <span class="n">USER_LOCATION_INFORMATION_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0906&#34;</span><span class="o">,</span><span class="s">&#34;用户位置信息未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户通讯录未授权 */</span>
+    <span class="n">USER_ADDRESS_BOOK_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0907&#34;</span><span class="o">,</span><span class="s">&#34;用户通讯录未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户设备异常 */</span>
+    <span class="n">ABNORMAL_USER_EQUIPMENT</span><span class="o">(</span><span class="s">&#34;A1000&#34;</span><span class="o">,</span><span class="s">&#34;用户设备异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户相机异常 */</span>
+    <span class="n">USER_CAMERA_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A1001&#34;</span><span class="o">,</span><span class="s">&#34;用户相机异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户麦克风异常 */</span>
+    <span class="n">USER_MICROPHONE_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A1002&#34;</span><span class="o">,</span><span class="s">&#34;用户麦克风异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户听筒异常 */</span>
+    <span class="n">THE_USER_S_EARPIECE_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A1003&#34;</span><span class="o">,</span><span class="s">&#34;用户听筒异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户扬声器异常 */</span>
+    <span class="n">USER_SPEAKER_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A1004&#34;</span><span class="o">,</span><span class="s">&#34;用户扬声器异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户GPS定位异常 */</span>
+    <span class="n">USER_GPS_POSITIONING_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A1005&#34;</span><span class="o">,</span><span class="s">&#34;用户GPS定位异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统执行出错 */</span>
+    <span class="n">SYSTEM_EXECUTION_ERROR</span><span class="o">(</span><span class="s">&#34;B0001&#34;</span><span class="o">,</span><span class="s">&#34;系统执行出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统执行超时 */</span>
+    <span class="n">SYSTEM_EXECUTION_TIMEOUT</span><span class="o">(</span><span class="s">&#34;B0100&#34;</span><span class="o">,</span><span class="s">&#34;系统执行超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统订单处理超时 */</span>
+    <span class="n">SYSTEM_ORDER_PROCESSING_TIMEOUT</span><span class="o">(</span><span class="s">&#34;B0101&#34;</span><span class="o">,</span><span class="s">&#34;系统订单处理超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统容灾功能被触发 */</span>
+    <span class="n">SYSTEM_DISASTER_RECOVERY_FUNCTION_IS_TRIGGERED</span><span class="o">(</span><span class="s">&#34;B0200&#34;</span><span class="o">,</span><span class="s">&#34;系统容灾功能被触发&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统限流 */</span>
+    <span class="n">SYSTEM_CURRENT_LIMIT</span><span class="o">(</span><span class="s">&#34;B0210&#34;</span><span class="o">,</span><span class="s">&#34;系统限流&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统功能降级 */</span>
+    <span class="n">SYSTEM_FUNCTION_DEGRADATION</span><span class="o">(</span><span class="s">&#34;B0220&#34;</span><span class="o">,</span><span class="s">&#34;系统功能降级&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统资源异常 */</span>
+    <span class="n">ABNORMAL_SYSTEM_RESOURCES</span><span class="o">(</span><span class="s">&#34;B0300&#34;</span><span class="o">,</span><span class="s">&#34;系统资源异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统资源耗尽 */</span>
+    <span class="n">SYSTEM_RESOURCES_ARE_EXHAUSTED</span><span class="o">(</span><span class="s">&#34;B0310&#34;</span><span class="o">,</span><span class="s">&#34;系统资源耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统磁盘空间耗尽 */</span>
+    <span class="n">SYSTEM_RUNNING_OUT_OF_DISK_SPACE</span><span class="o">(</span><span class="s">&#34;B0311&#34;</span><span class="o">,</span><span class="s">&#34;系统磁盘空间耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统内存耗尽 */</span>
+    <span class="n">SYSTEM_MEMORY_IS_EXHAUSTED</span><span class="o">(</span><span class="s">&#34;B0312&#34;</span><span class="o">,</span><span class="s">&#34;系统内存耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 文件句柄耗尽 */</span>
+    <span class="n">FILE_HANDLE_EXHAUSTED</span><span class="o">(</span><span class="s">&#34;B0313&#34;</span><span class="o">,</span><span class="s">&#34;文件句柄耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统连接池耗尽 */</span>
+    <span class="n">SYSTEM_CONNECTION_POOL_EXHAUSTED</span><span class="o">(</span><span class="s">&#34;B0314&#34;</span><span class="o">,</span><span class="s">&#34;系统连接池耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统线程池耗尽 */</span>
+    <span class="n">SYSTEM_THREAD_POOL_EXHAUSTED</span><span class="o">(</span><span class="s">&#34;B0315&#34;</span><span class="o">,</span><span class="s">&#34;系统线程池耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统资源访问异常 */</span>
+    <span class="n">ABNORMAL_ACCESS_TO_SYSTEM_RESOURCES</span><span class="o">(</span><span class="s">&#34;B0320&#34;</span><span class="o">,</span><span class="s">&#34;系统资源访问异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统读取磁盘文件失败 */</span>
+    <span class="n">THE_SYSTEM_FAILED_TO_READ_THE_DISK_FILE</span><span class="o">(</span><span class="s">&#34;B0321&#34;</span><span class="o">,</span><span class="s">&#34;系统读取磁盘文件失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 调用第三方服务出错 */</span>
+    <span class="n">ERROR_CALLING_THIRD_PARTY_SERVICE</span><span class="o">(</span><span class="s">&#34;C0001&#34;</span><span class="o">,</span><span class="s">&#34;调用第三方服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 中间件服务出错 */</span>
+    <span class="n">MIDDLEWARE_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0100&#34;</span><span class="o">,</span><span class="s">&#34;中间件服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** RPC服务出错 */</span>
+    <span class="n">RPC_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0110&#34;</span><span class="o">,</span><span class="s">&#34;RPC服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** RPC服务未找到 */</span>
+    <span class="n">RPC_SERVICE_NOT_FOUND</span><span class="o">(</span><span class="s">&#34;C0111&#34;</span><span class="o">,</span><span class="s">&#34;RPC服务未找到&#34;</span><span class="o">),</span>
+    <span class="cm">/** RPC服务未注册 */</span>
+    <span class="n">RPC_SERVICE_IS_NOT_REGISTERED</span><span class="o">(</span><span class="s">&#34;C0112&#34;</span><span class="o">,</span><span class="s">&#34;RPC服务未注册&#34;</span><span class="o">),</span>
+    <span class="cm">/** 接口不存在 */</span>
+    <span class="n">INTERFACE_DOES_NOT_EXIST</span><span class="o">(</span><span class="s">&#34;C0113&#34;</span><span class="o">,</span><span class="s">&#34;接口不存在&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息服务出错 */</span>
+    <span class="n">MESSAGE_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0120&#34;</span><span class="o">,</span><span class="s">&#34;消息服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息投递出错 */</span>
+    <span class="n">MESSAGE_DELIVERY_ERROR</span><span class="o">(</span><span class="s">&#34;C0121&#34;</span><span class="o">,</span><span class="s">&#34;消息投递出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息消费出错 */</span>
+    <span class="n">MESSAGE_CONSUMPTION_ERROR</span><span class="o">(</span><span class="s">&#34;C0122&#34;</span><span class="o">,</span><span class="s">&#34;消息消费出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息订阅出错 */</span>
+    <span class="n">MESSAGE_SUBSCRIPTION_ERROR</span><span class="o">(</span><span class="s">&#34;C0123&#34;</span><span class="o">,</span><span class="s">&#34;消息订阅出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息分组未查到 */</span>
+    <span class="n">MESSAGE_GROUP_NOT_FOUND</span><span class="o">(</span><span class="s">&#34;C0124&#34;</span><span class="o">,</span><span class="s">&#34;消息分组未查到&#34;</span><span class="o">),</span>
+    <span class="cm">/** 缓存服务出错 */</span>
+    <span class="n">CACHE_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0130&#34;</span><span class="o">,</span><span class="s">&#34;缓存服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** key长度超过限制 */</span>
+    <span class="n">THE_KEY_LENGTH_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;C0131&#34;</span><span class="o">,</span><span class="s">&#34;key长度超过限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** value长度超过限制 */</span>
+    <span class="n">THE_VALUE_LENGTH_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;C0132&#34;</span><span class="o">,</span><span class="s">&#34;value长度超过限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 存储容量已满 */</span>
+    <span class="n">STORAGE_CAPACITY_IS_FULL</span><span class="o">(</span><span class="s">&#34;C0133&#34;</span><span class="o">,</span><span class="s">&#34;存储容量已满&#34;</span><span class="o">),</span>
+    <span class="cm">/** 不支持的数据格式 */</span>
+    <span class="n">UNSUPPORTED_DATA_FORMAT</span><span class="o">(</span><span class="s">&#34;C0134&#34;</span><span class="o">,</span><span class="s">&#34;不支持的数据格式&#34;</span><span class="o">),</span>
+    <span class="cm">/** 配置服务出错 */</span>
+    <span class="n">ERROR_CONFIGURING_SERVICE</span><span class="o">(</span><span class="s">&#34;C0140&#34;</span><span class="o">,</span><span class="s">&#34;配置服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 网络资源服务出错 */</span>
+    <span class="n">NETWORK_RESOURCE_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0150&#34;</span><span class="o">,</span><span class="s">&#34;网络资源服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** VPN服务出错 */</span>
+    <span class="n">VPN_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0151&#34;</span><span class="o">,</span><span class="s">&#34;VPN服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** CDN服务出错 */</span>
+    <span class="n">CDN_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0152&#34;</span><span class="o">,</span><span class="s">&#34;CDN服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 域名解析服务出错 */</span>
+    <span class="n">DOMAIN_NAME_RESOLUTION_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0153&#34;</span><span class="o">,</span><span class="s">&#34;域名解析服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 网关服务出错 */</span>
+    <span class="n">GATEWAY_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0154&#34;</span><span class="o">,</span><span class="s">&#34;网关服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 第三方系统执行超时 */</span>
+    <span class="n">THIRD_PARTY_SYSTEM_EXECUTION_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0200&#34;</span><span class="o">,</span><span class="s">&#34;第三方系统执行超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** RPC执行超时 */</span>
+    <span class="n">RPC_EXECUTION_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0210&#34;</span><span class="o">,</span><span class="s">&#34;RPC执行超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息投递超时 */</span>
+    <span class="n">MESSAGE_DELIVERY_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0220&#34;</span><span class="o">,</span><span class="s">&#34;消息投递超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 缓存服务超时 */</span>
+    <span class="n">CACHE_SERVICE_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0230&#34;</span><span class="o">,</span><span class="s">&#34;缓存服务超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 配置服务超时 */</span>
+    <span class="n">CONFIGURE_SERVICE_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0240&#34;</span><span class="o">,</span><span class="s">&#34;配置服务超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 数据库服务超时 */</span>
+    <span class="n">DATABASE_SERVICE_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0250&#34;</span><span class="o">,</span><span class="s">&#34;数据库服务超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 数据库服务出错 */</span>
+    <span class="n">DATABASE_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0300&#34;</span><span class="o">,</span><span class="s">&#34;数据库服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 表不存在 */</span>
+    <span class="n">TABLE_DOES_NOT_EXIST</span><span class="o">(</span><span class="s">&#34;C0311&#34;</span><span class="o">,</span><span class="s">&#34;表不存在&#34;</span><span class="o">),</span>
+    <span class="cm">/** 列不存在 */</span>
+    <span class="n">COLUMN_DOES_NOT_EXIST</span><span class="o">(</span><span class="s">&#34;C0312&#34;</span><span class="o">,</span><span class="s">&#34;列不存在&#34;</span><span class="o">),</span>
+    <span class="cm">/** 多表关联中存在多个相同名称的列 */</span>
+    <span class="n">SAME_NAME_IN_A_MULTI_TABLE_ASSOCIATION</span><span class="o">(</span><span class="s">&#34;C0321&#34;</span><span class="o">,</span><span class="s">&#34;多表关联中存在多个相同名称的列&#34;</span><span class="o">),</span>
+    <span class="cm">/** 数据库死锁 */</span>
+    <span class="n">DATABASE_DEADLOCK</span><span class="o">(</span><span class="s">&#34;C0331&#34;</span><span class="o">,</span><span class="s">&#34;数据库死锁&#34;</span><span class="o">),</span>
+    <span class="cm">/** 主键冲突 */</span>
+    <span class="n">PRIMARY_KEY_CONFLICT</span><span class="o">(</span><span class="s">&#34;C0341&#34;</span><span class="o">,</span><span class="s">&#34;主键冲突&#34;</span><span class="o">),</span>
+    <span class="cm">/** 第三方容灾系统被触发 */</span>
+    <span class="n">THE_THIRD_PARTY_DISASTER_RECOVERY_SYSTEM_IS_TRIGGERED</span><span class="o">(</span><span class="s">&#34;C0400&#34;</span><span class="o">,</span><span class="s">&#34;第三方容灾系统被触发&#34;</span><span class="o">),</span>
+    <span class="cm">/** 第三方系统限流 */</span>
+    <span class="n">THIRD_PARTY_SYSTEM_CURRENT_LIMIT</span><span class="o">(</span><span class="s">&#34;C0401&#34;</span><span class="o">,</span><span class="s">&#34;第三方系统限流&#34;</span><span class="o">),</span>
+    <span class="cm">/** 第三方功能降级 */</span>
+    <span class="n">DEGRADATION_OF_THIRD_PARTY_FUNCTIONS</span><span class="o">(</span><span class="s">&#34;C0402&#34;</span><span class="o">,</span><span class="s">&#34;第三方功能降级&#34;</span><span class="o">),</span>
+    <span class="cm">/** 通知服务出错 */</span>
+    <span class="n">NOTIFICATION_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0500&#34;</span><span class="o">,</span><span class="s">&#34;通知服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 短信提醒服务失败 */</span>
+    <span class="n">SMS_REMINDER_SERVICE_FAILED</span><span class="o">(</span><span class="s">&#34;C0501&#34;</span><span class="o">,</span><span class="s">&#34;短信提醒服务失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 语音提醒服务失败 */</span>
+    <span class="n">VOICE_REMINDER_SERVICE_FAILED</span><span class="o">(</span><span class="s">&#34;C0502&#34;</span><span class="o">,</span><span class="s">&#34;语音提醒服务失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 邮件提醒服务失败 */</span>
+    <span class="n">EMAIL_REMINDER_SERVICE_FAILED</span><span class="o">(</span><span class="s">&#34;C0503&#34;</span><span class="o">,</span><span class="s">&#34;邮件提醒服务失败&#34;</span><span class="o">);</span>
+
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">code</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">msg</span><span class="o">;</span>
+
+    <span class="n">CommonResultEnum</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">,</span> <span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">code</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getMsg</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMsg</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="baseresult-基本结果类">BaseResult 基本结果类</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">
+<span class="cm">/**
+</span><span class="cm"> * 基本结果类
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jonny.Chang  ( https://jonnyhub.com )  @jonny6015
+</span><span class="cm"> */</span>
+<span class="nd">@Getter</span>
+<span class="nd">@Setter</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">501206838199376258L</span><span class="o">;</span>
+
+    <span class="cm">/** 操作结果 默认false */</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">success</span><span class="o">;</span>
+    <span class="cm">/** 操作结果码 */</span>
+    <span class="kd">private</span> <span class="n">String</span>  <span class="n">resultCode</span><span class="o">;</span>
+    <span class="cm">/** 提示信息 */</span>
+    <span class="kd">private</span> <span class="n">String</span>  <span class="n">resultMsg</span><span class="o">;</span>
+    <span class="cm">/** 对象 */</span>
+    <span class="kd">private</span> <span class="n">T</span>       <span class="n">data</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BaseResult</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">success</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param success    成功
+</span><span class="cm">     * @param resultCode 结果代码
+</span><span class="cm">     * @param data       数据
+</span><span class="cm">     * @param resultMsg  结果味精
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BaseResult</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">success</span><span class="o">,</span> <span class="n">String</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">T</span> <span class="n">data</span><span class="o">,</span> <span class="n">String</span> <span class="n">resultMsg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">success</span> <span class="o">=</span> <span class="n">success</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">resultCode</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultMsg</span> <span class="o">=</span> <span class="n">resultMsg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param codeEnum the code enum
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BaseResult</span><span class="o">(</span><span class="n">CommonResultEnum</span> <span class="n">codeEnum</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">success</span> <span class="o">=</span> <span class="n">codeEnum</span> <span class="o">==</span> <span class="n">CommonResultEnum</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">codeEnum</span><span class="o">.</span><span class="na">getCode</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultMsg</span> <span class="o">=</span> <span class="n">codeEnum</span><span class="o">.</span><span class="na">getMsg</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param codeEnum the code enum
+</span><span class="cm">     * @param data     the data
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BaseResult</span><span class="o">(</span><span class="n">CommonResultEnum</span> <span class="n">codeEnum</span><span class="o">,</span> <span class="n">T</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">success</span> <span class="o">=</span> <span class="n">codeEnum</span> <span class="o">==</span> <span class="n">CommonResultEnum</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">codeEnum</span><span class="o">.</span><span class="na">getCode</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultMsg</span> <span class="o">=</span> <span class="n">codeEnum</span><span class="o">.</span><span class="na">getMsg</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="basepageresult-分页结果统一处理类">BasePageResult 分页结果统一处理类</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">
+<span class="cm">/**
+</span><span class="cm"> * 分页结果统一处理类
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jonny.Chang  ( https://jonnyhub.com )  @jonny6015
+</span><span class="cm"> */</span>
+<span class="nd">@Getter</span>
+<span class="nd">@Setter</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BasePageResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">BaseResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 当前页码
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageStart</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 每页条数
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 总条目数
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">totalCount</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BasePageResult</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param success    the success
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     * @param data       the data
+</span><span class="cm">     * @param resultMsg  the msg
+</span><span class="cm">     * @param pageStart  the current page
+</span><span class="cm">     * @param pageSize   the page size
+</span><span class="cm">     * @param totalCount the total
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BasePageResult</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">success</span><span class="o">,</span> <span class="n">String</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">T</span> <span class="n">data</span><span class="o">,</span> <span class="n">String</span> <span class="n">resultMsg</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">,</span> <span class="kt">int</span> <span class="n">totalCount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">success</span><span class="o">,</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">data</span><span class="o">,</span> <span class="n">resultMsg</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageStart</span> <span class="o">=</span> <span class="n">pageStart</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageSize</span> <span class="o">=</span> <span class="n">pageSize</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">totalCount</span> <span class="o">=</span> <span class="n">totalCount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BasePageResult</span><span class="o">(</span><span class="n">CommonResultEnum</span> <span class="n">resultCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">resultCode</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="serviceresult-service结果">ServiceResult Service结果</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 服务结果
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jonny.Chang  ( https://jonnyhub.com )  @jonny6015
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ServiceResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 处理结果
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="n">T</span> <span class="n">data</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 结果码
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="n">ResultCodeEnum</span> <span class="n">resultCode</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 结果码扩展描述
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">resultMsg</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 默认构造函数
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServiceResult</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 构造函数. 默认构建成功数据
+</span><span class="cm">     *
+</span><span class="cm">     * @param data the data
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServiceResult</span><span class="o">(</span><span class="n">T</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">ResultCodeEnum</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 构造函数. 多用于构建失败结果
+</span><span class="cm">     *
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServiceResult</span><span class="o">(</span><span class="n">ResultCodeEnum</span> <span class="n">resultCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">resultCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 构造函数.
+</span><span class="cm">     *
+</span><span class="cm">     * @param data       the data
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServiceResult</span><span class="o">(</span><span class="n">T</span> <span class="n">data</span><span class="o">,</span> <span class="n">ResultCodeEnum</span> <span class="n">resultCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">resultCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isSuccess</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">ResultCodeEnum</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">resultCode</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Gets get data.
+</span><span class="cm">     *
+</span><span class="cm">     * @return the get data
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="n">T</span> <span class="nf">getData</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Sets set data.
+</span><span class="cm">     *
+</span><span class="cm">     * @param data the data
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setData</span><span class="o">(</span><span class="n">T</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Gets get result code.
+</span><span class="cm">     *
+</span><span class="cm">     * @return the get result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="n">ResultCodeEnum</span> <span class="nf">getResultCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">resultCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Sets set result code.
+</span><span class="cm">     *
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setResultCode</span><span class="o">(</span><span class="n">ResultCodeEnum</span> <span class="n">resultCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">resultCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getResultMsg</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">&amp;&amp;</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">resultMsg</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span><span class="o">.</span><span class="na">getMsg</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">resultMsg</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">resultMsg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setResultMsg</span><span class="o">(</span><span class="n">String</span> <span class="n">resultMsg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultMsg</span> <span class="o">=</span> <span class="n">resultMsg</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="servicepageresult-service-分页结果统一处理类">ServicePageResult Service 分页结果统一处理类</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ServicePageResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">ServiceResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 当前页码
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageNo</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 每页条数
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 总条目数
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">totalCount</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServicePageResult</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param data       the data
+</span><span class="cm">     * @param pageNo     the current page
+</span><span class="cm">     * @param pageSize   the page size
+</span><span class="cm">     * @param totalCount the total
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServicePageResult</span><span class="o">(</span><span class="n">T</span> <span class="n">data</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageNo</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">,</span> <span class="kt">int</span> <span class="n">totalCount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageNo</span> <span class="o">=</span> <span class="n">pageNo</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageSize</span> <span class="o">=</span> <span class="n">pageSize</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">totalCount</span> <span class="o">=</span> <span class="n">totalCount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServicePageResult</span><span class="o">(</span><span class="n">ResultCodeEnum</span> <span class="n">resultCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">resultCode</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Gets get page no.
+</span><span class="cm">     *
+</span><span class="cm">     * @return the get page no
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPageNo</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">pageNo</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Sets set page no.
+</span><span class="cm">     *
+</span><span class="cm">     * @param pageNo the page no
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPageNo</span><span class="o">(</span><span class="kt">int</span> <span class="n">pageNo</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageNo</span> <span class="o">=</span> <span class="n">pageNo</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Gets get page size.
+</span><span class="cm">     *
+</span><span class="cm">     * @return the get page size
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPageSize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">pageSize</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Sets set page size.
+</span><span class="cm">     *
+</span><span class="cm">     * @param pageSize the page size
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPageSize</span><span class="o">(</span><span class="kt">int</span> <span class="n">pageSize</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageSize</span> <span class="o">=</span> <span class="n">pageSize</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Gets get total count.
+</span><span class="cm">     *
+</span><span class="cm">     * @return the get total count
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getTotalCount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">totalCount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Sets set total count.
+</span><span class="cm">     *
+</span><span class="cm">     * @param totalCount the total count
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTotalCount</span><span class="o">(</span><span class="kt">int</span> <span class="n">totalCount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">totalCount</span> <span class="o">=</span> <span class="n">totalCount</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,474 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Oh-My-Zsh - 标签 - JonnyHub Blog - A Java Programmer.</title>
+        <link>https://jonnyhub.gitee.io/tags/oh-my-zsh/</link>
+        <description>Oh-My-Zsh - 标签 - JonnyHub Blog - A Java Programmer.</description>
+        <generator>Hugo -- gohugo.io</generator><managingEditor>jonny0624@gmail.com (Jonny.Chang)</managingEditor>
+            <webMaster>jonny0624@gmail.com (Jonny.Chang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 20 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://jonnyhub.gitee.io/tags/oh-my-zsh/" rel="self" type="application/rss+xml" /><item>
+    <title>ZSH 插件介绍</title>
+    <link>https://jonnyhub.gitee.io/2020/08/2020-08-20-zsh-%E6%8F%92%E4%BB%B6%E4%BB%8B%E7%BB%8D%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Thu, 20 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/08/2020-08-20-zsh-%E6%8F%92%E4%BB%B6%E4%BB%8B%E7%BB%8D%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[<p>ZSH 插件的介绍和一些基本配置。</p>
+<h1 id="zsh-插件介绍">ZSH 插件介绍</h1>
+<h2 id="常用插件介绍">常用插件介绍</h2>
+<ul>
+<li>
+<p>alias-finder : 查找某个完整命令的alias。</p>
+<ul>
+<li>alias-finder &ldquo;git pull&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>git : Oh-My-ZSH 默认开启，它支持 Git 别名、标签补全以及所有 Git 命令的描述。</p>
+<ul>
+<li><code>git + tab</code></li>
+</ul>
+</li>
+<li>
+<p>node : 在浏览器打开当前版本的 Node.js API。</p>
+<ul>
+<li><code>node-docs http</code></li>
+</ul>
+</li>
+<li>
+<p>npm : 给 npm 添加自动补全，显示所有的 npm 命令。</p>
+<ul>
+<li><code>npm + tab</code></li>
+</ul>
+</li>
+<li>
+<p>yarn : 给 yarn 添加自动补全，显示所有的 yarn 命令。</p>
+<ul>
+<li><code>yarn + tab</code></li>
+</ul>
+</li>
+<li>
+<p>yum : 给 yum 添加自动补全，显示所有的 yum 命令。</p>
+<ul>
+<li><code>yum + tab</code></li>
+</ul>
+</li>
+<li>
+<p>bower : 给 Bower 命令添加自动补全。</p>
+<ul>
+<li><code>bower + tab</code></li>
+</ul>
+</li>
+<li>
+<p>brew : 给所有 Brew 命令添加自动补全和描述。</p>
+<ul>
+<li><code>brew + tab</code></li>
+</ul>
+</li>
+<li>
+<p>osx : 支持在终端上使用很多 Finder 命令，<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/osx#commands" target="_blank" rel="noopener noreffer">查看详情</a>。</p>
+</li>
+<li>
+<p>z.lua: 命令行目录跳转工具，性能优于z和autojump。<a href="https://github.com/skywind3000/z.lua/blob/master/README.cn.md#install" target="_blank" rel="noopener noreffer">安装方法</a></p>
+</li>
+<li>
+<p>battery : 电池插件-此插件添加了一些函数，可用于在自定义主题中显示电池信息。
+<code>.zshrc: --&gt; RPROMPT='$(battery_pct_prompt) ...'</code></p>
+</li>
+<li>
+<p>bbedit : BBEdit 插件，Mac OS X 的 HTML 和文本编辑器</p>
+</li>
+<li>
+<p>branch : 快速显示当前 Git 或 Mercurial 分支。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">- <span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}&#39;</span>
++ <span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)$(branch_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>colored-man-pages : 高亮显示 man 命令内容。</p>
+</li>
+<li>
+<p>colorize : 有了这个插件，你可以语法突出显示文件内容超过300种支持的语言和其他文本格式。</p>
+</li>
+<li>
+<p>command-not-found : 此插件在找不到命令时提供要安装的建议包。</p>
+</li>
+<li>
+<p>common-aliases : 常用的alias。</p>
+</li>
+<li>
+<p>dash : 为Dash添加命令行功能，一个用于macOS的API文档浏览器。此插件需要安装 Dash 才能工作。</p>
+<ul>
+<li><code>dash golang  /  dash python:tuple</code></li>
+</ul>
+</li>
+<li>
+<p>docker-compose : 给 docker-compose 添加自动补全，显示所有的 docker-compose 命令，提供一些 docker-compose 命令的别名。具体<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose#aliases" target="_blank" rel="noopener noreffer">参考这里</a></p>
+</li>
+<li>
+<p>docker : 给 docker 添加自动补全，显示所有的 docker 命令，提供一些 docker 命令的别名。</p>
+</li>
+<li>
+<p>emoji : 支持在 Zsh 中方便地使用 Unicode 表情符号。</p>
+<ul>
+<li><code>echo $emoji[mouse_face]  /  random_emoji</code></li>
+</ul>
+</li>
+<li>
+<p>extract : 用于提取您传递的存档文件，它支持各种存档文件类型。</p>
+<ul>
+<li><code>extract xxx.tar.gz</code></li>
+</ul>
+</li>
+<li>
+<p>fancy-ctrl-z : 使用 Ctrl-Z 切换回 Vim。</p>
+</li>
+<li>
+<p>forklift : OS X 的 FTP 应用程序。</p>
+<ul>
+<li><code>fl [&lt;file_or_folder&gt;]</code></li>
+</ul>
+</li>
+<li>
+<p>fzf : fzf 是一个通用命令行模糊查找器。（ 需要安装 fzf： brew install fzf ）</p>
+<ul>
+<li>配置： <code>export FZF_BASE=/path/to/fzf/install/dir</code></li>
+</ul>
+</li>
+<li>
+<p>git-auto-fetch : 在 git 初始化目录中工作时，自动从所有远程获取所有更改。</p>
+<ul>
+<li>间隔时间配置： <code>GIT_AUTO_FETCH_INTERVAL=1200</code></li>
+</ul>
+</li>
+<li>
+<p>git-prompt : 显示有关当前 git 存储库的信息的提示。</p>
+</li>
+<li>
+<p>gitfast : 此插件使用 git.git 人员的 zsh 完成，这比 zsh 的官方完成速度要快得多。</p>
+</li>
+<li>
+<p>github : github 插件。</p>
+<ul>
+<li>配置环境变量 : <code>$GITHUB_USER  /  $GITHUB_PASSWORD</code></li>
+<li>Git 配置选项 : <code>github.user</code> - 用于存储库操作的 GitHub 用户名</li>
+<li>用法 : <code>man hub</code></li>
+</ul>
+</li>
+<li>
+<p>gitignore : 此插件使您能够使用命令gitignore.io命令行的一个应用程序。</p>
+<ul>
+<li>查看 : <code>gi list</code></li>
+<li>使用 : <code>gi java</code></li>
+</ul>
+</li>
+<li>
+<p>golang : 此插件添加了 Go 编程语言的完成，以及常见 Golang 命令的一些别名。</p>
+<ul>
+<li>具体别名与使用方法<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/golang#aliases" target="_blank" rel="noopener noreffer">查看这里</a></li>
+</ul>
+</li>
+<li>
+<p>gradle : 增加了自动完成和别名的 gradle 。</p>
+</li>
+<li>
+<p>gulp : 自动完成 gulp 。</p>
+</li>
+<li>
+<p>history : 提供了几个方便的别名，用于使用 命令来检查命令行历史记录。
+用法1： <code>h : history</code> 打印命令历史记录 ；
+用法2： <code>hs : history | grep</code> 使用 grep 搜索命令历史记录 ；
+用法3： <code>hsi : history | grep -i</code> 使用 grep 对命令历史记录进行不区分大小写搜索 。</p>
+</li>
+<li>
+<p>iterm2 : Iterm2 插件。</p>
+</li>
+<li>
+<p>jenv : 类似于 rbenv 和pyenv的Java 版本管理器。</p>
+</li>
+<li>
+<p>jsontools : 用于处理 json 数据的方便的命令行工具。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">pp_json： 漂亮的打印 json 。如： curl https://coderwall.com/bobwilliams.json <span class="p">|</span> pp_json
+is_json： 如果有效 json， 返回 true<span class="p">;</span>假， 否则。
+urlencode_json： 返回给定 json 的 URL 编码字符串。
+urldecode_json： 返回给定 URL 编码字符串的解码 json。
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>rvm : rvm 别名和自动完成插件 - Ruby 版本管理器：<a href="https://rvm.io/">https://rvm.io/</a>。</p>
+</li>
+<li>
+<p>mvn : mvn 别名和自动完成插件。</p>
+</li>
+<li>
+<p>nvm : nvm 别名和自动完成插件。</p>
+</li>
+<li>
+<p>npm : npm 别名和自动完成插件。</p>
+</li>
+<li>
+<p>npx : npx 别名和自动完成插件。</p>
+</li>
+<li>
+<p>pip : pip 别名和自动完成插件。</p>
+</li>
+<li>
+<p>pipenv : 此插件提供了一些功能，以简化使用 Pipenv。</p>
+</li>
+<li>
+<p>pyenv : 这个插件寻找pyenv，一个简单的Python版本管理系统。</p>
+</li>
+<li>
+<p>python : 该插件为有用的 python 命令添加了多个别名。</p>
+</li>
+<li>
+<p>rails : 此插件添加了Ruby On Rails 框架和 Rake命令的完成，以及日志和环境变量的一些别名。</p>
+</li>
+<li>
+<p>rbenv : 这个插件的主要工作是提供可以添加到您的主题，包括Ruby版本和宝石集信息到您的提示。</p>
+</li>
+<li>
+<p>redis-cli : 此插件添加 redis-cli 完成，基于 Homebrew 完成。</p>
+</li>
+<li>
+<p>shell-proxy : 命令行代理工具，具体使用<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/shell-proxy#usage" target="_blank" rel="noopener noreffer">参考这里</a>。</p>
+</li>
+<li>
+<p>spring : Spring Boot oh-my-zsh 插件。</p>
+</li>
+<li>
+<p>systemd : systemctl 插件。<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/systemd#aliases" target="_blank" rel="noopener noreffer">参考</a></p>
+</li>
+<li>
+<p>sudo : 按两次 ESC 自动在命令行前加 sudo 。</p>
+</li>
+<li>
+<p>textastic : Textastic 插件 Mac OS X。</p>
+</li>
+<li>
+<p>themes : 这个插件允许您更改ZSH主题。</p>
+<ul>
+<li>使用1： <code>theme &lt;theme_name&gt;</code> - 将 ZSH 主题更改为指定主题。</li>
+<li>使用2： <code>theme</code> - 将 ZSH 主题更改为一些随机主题。</li>
+<li>使用3： <code>lstheme</code> - 列出已安装的 ZSH 主题。</li>
+</ul>
+</li>
+<li>
+<p>timer : 显示命令的执行时间。</p>
+</li>
+<li>
+<p>ubuntu : Ubuntu 自动完成和alias。</p>
+</li>
+<li>
+<p>ufw : 这个插件增加了用于管理每个人最喜欢的简单防火墙（UFW）的完成，这是一个管理iptable的简单界面。</p>
+</li>
+<li>
+<p>urltools : 此插件提供两个别名到 URL 编码和 URL 解码字符串。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">urlencode <span class="s1">&#39;https://github.com/ohmyzsh/ohmyzsh/search?q=urltools&amp;type=Code&#39;</span>
+<span class="c1"># returns https%3A%2F%2Fgithub.com%2Fohmyzsh%2Fohmyzsh%2Fsearch%3Fq%3Durltools%26type%3DCode</span>
+urldecode <span class="s1">&#39;https%3A%2F%2Fgithub.com%2Fohmyzsh%2Fohmyzsh%2Fsearch%3Fq%3Durltools%26type%3DCode&#39;</span>
+<span class="c1"># returns https://github.com/ohmyzsh/ohmyzsh/search?q=urltools&amp;type=Code</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>vscode : 此插件提供了有用的别名，以简化命令行与 VS 代码或 VSCodium 编辑器之间的交互。</p>
+</li>
+<li>
+<p>web-search : 这个插件增加了搜索谷歌，维基，必应，YouTube和其他流行的服务的别名。</p>
+<ul>
+<li>使用 : <code>google oh-my-zsh</code> <code>bing content</code></li>
+</ul>
+</li>
+<li>
+<p>zsh-navigation-tools : Zsh 导航工具。</p>
+<ul>
+<li>配置： <a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools#configuration">https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools#configuration</a></li>
+<li>使用： <a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools#introduction">https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools#introduction</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="插件的安装">插件的安装</h2>
+<p>在 <code>~/.zshrc</code> 中的 <code>plugins=(...)</code> 中添加对应的插件名即可，上述插件，唯有 z.lua 需要安装。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~
+curl -R -O http://www.lua.org/ftp/lua-5.4.0.tar.gz
+tar zxf lua-5.4.0.tar.gz
+<span class="nb">cd</span> lua-5.4.0
+make
+sudo make install
+lua -v
+rm -rf lua-5.4.0
+git clone https://github.com/skywind3000/z.lua.git ~/.oh-my-zsh/custom/plugins/z.lua
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">plugins</span><span class="o">=(</span>
+    alias-finder
+    battery
+    bbedit
+    bower
+    branch
+    brew
+    colored-man-pages
+    colorize
+    command-not-found
+    common-aliases
+    dash
+    docker
+    docker-compose
+    emoji
+    extract
+    fancy-ctrl-z
+    forklift
+    fzf
+    git
+    git-auto-fetch
+    git-prompt
+    gitfast
+    github
+    gitignore
+    golang
+    gradle
+    gulp
+    <span class="nb">history</span>
+    iterm2
+    jenv
+    jsontools
+    mvn
+    node
+    npm
+    npx
+    nvm
+    osx
+    pip
+    pipenv
+    pyenv
+    python
+    rails
+    rbenv
+    redis-cli
+    rvm
+    shell-proxy
+    spring
+    sudo
+    systemd
+    textastic
+    themes
+    timer
+    ubuntu
+    ufw
+    urltools
+    vscode
+    web-search
+    yarn
+    yum
+    z.lua
+    zsh-navigation-tools
+<span class="o">)</span>
+<span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>lua ~/.oh-my-zsh/custom/plugins/z.lua/z.lua  --init zsh once enhanced<span class="k">)</span><span class="s2">&#34;</span>    <span class="c1"># ZSH 初始化</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item></channel>
+</rss>

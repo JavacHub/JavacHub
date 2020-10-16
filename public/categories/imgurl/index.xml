@@ -1,0 +1,67 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>ImgURL - 分类 - JonnyHub Blog - A Java Programmer.</title>
+        <link>https://jonnyhub.gitee.io/categories/imgurl/</link>
+        <description>ImgURL - 分类 - JonnyHub Blog - A Java Programmer.</description>
+        <generator>Hugo -- gohugo.io</generator><managingEditor>jonny0624@gmail.com (Jonny.Chang)</managingEditor>
+            <webMaster>jonny0624@gmail.com (Jonny.Chang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 09 Sep 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://jonnyhub.gitee.io/categories/imgurl/" rel="self" type="application/rss+xml" /><item>
+    <title>ImgURL 项目简介</title>
+    <link>https://jonnyhub.gitee.io/2020/09/2020-09-09-imgurl-%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/</link>
+    <pubDate>Wed, 09 Sep 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/09/2020-09-09-imgurl-%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/</guid>
+    <description><![CDATA[<p>ImgURL 是一款简单、纯粹、高速稳定的图片上传和外链服务（图床程序），使用 Java + SpringBoot + MySQL + Vue + AntDesign of Vue 组件库开发。</p>
+<!-- more -->
+<h2 id="简介">简介</h2>
+<p>什么是图床？
+引用百度百科的解释：<a href="https://baike.baidu.com/item/%E5%9B%BE%E5%BA%8A" target="_blank" rel="noopener noreffer">图床</a>
+ImgURL是一款简单、纯粹、高速稳定的图片上传和外链服务（图床程序），使用 Java + SpringBoot + MySQL + Vue + AntDesign of Vue 组件库开发。</p>
+<p>为什么要做这个图床？
+图床在这个信息时代，已经显得极为实用，作家、程序员、科技人员、教师，在创造过程中总是会遇到使用图床的场景，如 Markdown 撰写文档时，如果没有图床，将是很难受的，而 GitHub 的 Readme 仅支持 Markdown 格式。各种博客、知乎、论坛等等，写作中都是使用 Markdown 语言。目前比较有名稳定的图床也有，但是要么部署麻烦，要么收费很贵，要么不稳定，所以 ImgHub 应运而生。开发完成后，会创建一键部署命令，一个命令即可完成整套程序的部署。
+ImgHub 虽然很小，但很强大，Pro 版本是可以对接微信，争取做到开源第一图床。</p>
+<h2 id="功能">功能：</h2>
+<h4 id="主要功能">主要功能</h4>
+<pre><code>- 支持拽拖上传、多图上传、Ctrl + V粘贴上传、URL上传
+- 支持图片裁剪，自动生成缩略图
+- 限制访客上传数量
+- 图片压缩/批量压缩
+- 图片鉴黄/批量鉴黄
+- API支持
+- 在线更新
+- 外部存储
+</code></pre>
+<h4 id="1多用户支持">1、多用户支持</h4>
+<pre><code>- 支持多用户注册
+- 支持游客模式
+</code></pre>
+<h4 id="2完善的权限管理">2、完善的权限管理</h4>
+<pre><code>- 管理员
+- 高级用户（由LMSite提供服务，高级用户可以选择付费使用。）
+- 普通用户，免费上传，限时存储（后端根据实际情况，定期删除相关图片，节省内存）
+- 用户权限管理（先开发手动管理，后期可以考虑开发自动管理）
+</code></pre>
+<h2 id="版本分类">版本分类</h2>
+<h4 id="社区版本仅支持单用户仅本地存储没有权限管理但是支持各种高级功能仅支持-mysql-数据源有广告">社区版本（仅支持单用户，仅本地存储，没有权限管理，但是支持各种高级功能，仅支持 MySQL 数据源，有广告）</h4>
+<pre><code>- 免费开源
+- 支持本地存储
+- 选择、多图、拖拽、URL上传
+- 微信登录
+- API支持
+</code></pre>
+<h4 id="高级商业版本">高级商业版本</h4>
+<pre><code>- 收费授权
+- 含有社区版本所有功能
+- 支持自动检测技术, 禁止上传色情/反动/博彩/黑产等违法图片
+- 支持本地存储、腾讯COS、阿里OSS、FTP、又拍云、七牛云、微博空间等存储方式
+- 多数据源支持
+- 支持网络相册（非常酷炫的相册管理系统）
+- 提供技术支持
+- 支持微信小程序版本
+- 支持微信公众号传图
+- 自定义版权
+- 无广告
+</code></pre>
+<hr>
+]]></description>
+</item></channel>
+</rss>

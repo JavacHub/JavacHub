@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on JonnyHub Blog - A Java Programmer.</title>
+    <link>https://jonnyhub.gitee.io/about/</link>
+    <description>Recent content in Abouts on JonnyHub Blog - A Java Programmer.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>jonny0624@gmail.com (Jonny.Chang)</managingEditor>
+    <webMaster>jonny0624@gmail.com (Jonny.Chang)</webMaster>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 02 Aug 2019 11:04:49 +0800</lastBuildDate><atom:link href="https://jonnyhub.gitee.io/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About - 关于伊阳静美</title>
+      <link>https://jonnyhub.gitee.io/about/about/</link>
+      <pubDate>Fri, 02 Aug 2019 11:04:49 +0800</pubDate>
+      <author>jonny0624@gmail.com (Jonny.Chang)</author>
+      <guid>https://jonnyhub.gitee.io/about/about/</guid>
+      <description>关于我和博客 你们好呀，我是张向阳，是一名生活在杭州的程序员，同时梦想成为一名独立全栈开发者。 在我看来，编程不仅仅是我与生俱来的使命，也是我快</description>
+    </item>
+    
+  </channel>
+</rss>

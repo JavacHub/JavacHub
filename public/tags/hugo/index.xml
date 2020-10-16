@@ -1,0 +1,202 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Hugo - 标签 - JonnyHub Blog - A Java Programmer.</title>
+        <link>https://jonnyhub.gitee.io/tags/hugo/</link>
+        <description>Hugo - 标签 - JonnyHub Blog - A Java Programmer.</description>
+        <generator>Hugo -- gohugo.io</generator><managingEditor>jonny0624@gmail.com (Jonny.Chang)</managingEditor>
+            <webMaster>jonny0624@gmail.com (Jonny.Chang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 28 Jun 2018 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://jonnyhub.gitee.io/tags/hugo/" rel="self" type="application/rss+xml" /><item>
+    <title>05、Hugo 内置 Shortcodes</title>
+    <link>https://jonnyhub.gitee.io/manual/2020-05-28-05hugo-%E5%86%85%E7%BD%AE-shortcodes/</link>
+    <pubDate>Thu, 28 Jun 2018 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/manual/2020-05-28-05hugo-%E5%86%85%E7%BD%AE-shortcodes/</guid>
+    <description><![CDATA[<p><strong>Hugo</strong> 提供了多个内置的 Shortcodes, 以方便作者保持 Markdown 内容的整洁.</p>
+<h2 id="标题">标题</h2>
+<p>Hugo 使用 Markdown 为其简单的内容格式. 但是, Markdown 在很多方面都无法很好地支持. 你可以使用纯 HTML 来扩展可能性.</p>
+<p>但这恰好是一个坏主意. 大家使用 Markdown, 正是因为它即使不经过渲染也可以轻松阅读. 应该尽可能避免使用 HTML 以保持内容简洁.</p>
+<p>为了避免这种限制, Hugo 创建了 <a href="https://gohugo.io/extras/shortcodes/" target="_blank" rel="noopener noreffer">shortcodes</a>.
+shortcode 是一个简单代码段, 可以生成合理的 HTML 代码, 并且符合 Markdown 的设计哲学.</p>
+<p>Hugo 附带了一组预定义的 shortcodes, 它们实现了一些非常常见的用法.
+提供这些 shortcodes 是为了方便保持你的 Markdown 内容简洁.</p>
+<h2 id="figure">1 figure</h2>
+<p><a href="https://gohugo.io/content-management/shortcodes#figure" target="_blank" rel="noopener noreffer"><code>figure</code> 的文档</a></p>
+<p>一个 <code>figure</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">figure</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/theme-documentation-built-in-shortcodes/lighthouse.jpg&#34;</span> <span class="na">title</span><span class="o">=</span><span class="s">&#34;Lighthouse (figure)&#34;</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<figure>
+     <figcaption>
+            <h4>Lighthouse (figure)</h4>
+        </figcaption>
+</figure>
+
+<p>输出的 HTML 看起来像这样:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/images/theme-documentation-built-in-shortcodes/lighthouse.jpg&#34;</span><span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h4</span><span class="p">&gt;</span>Lighthouse (figure)<span class="p">&lt;/</span><span class="nt">h4</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2-gist">2 gist</h2>
+<p><a href="https://gohugo.io/content-management/shortcodes#gist" target="_blank" rel="noopener noreffer"><code>gist</code> 的文档</a></p>
+<p>一个 <code>gist</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">gist</span> <span class="na">spf13</span> <span class="na">7896402</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<script type="application/javascript" src="https://gist.github.com/spf13/7896402.js"></script>
+
+<p>输出的 HTML 看起来像这样:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;application/javascript&#34;</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://gist.github.com/spf13/7896402.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3-highlight">3 highlight</h2>
+<p><a href="https://gohugo.io/content-management/shortcodes#instagram" target="_blank" rel="noopener noreffer"><code>highlight</code> 的文档</a></p>
+<p>一个 <code>highlight</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">highlight</span> <span class="na">html</span> <span class="p">&gt;</span>}}
+<span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        {{ range .Pages }}
+            {{ .Render &#34;summary&#34;}}
+        {{ end }}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+{{<span class="p">&lt;</span> <span class="p">/</span><span class="nt">highlight</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;main&#34;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;title&#34;</span><span class="p">&gt;</span>{{ .Title }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+        {{ range .Pages }}
+            {{ .Render &#34;summary&#34;}}
+        {{ end }}
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="4-instagram">4 instagram</h2>
+<p><a href="https://gohugo.io/content-management/shortcodes#instagram" target="_blank" rel="noopener noreffer"><code>instagram</code> 的文档</a></p>
+<p>一个 <code>instagram</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"></code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<h2 id="5-param">5 param</h2>
+<p><a href="https://gohugo.io/content-management/shortcodes#param" target="_blank" rel="noopener noreffer"><code>param</code> 的文档</a></p>
+<p>一个 <code>param</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">param</span> <span class="na">description</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+Hugo 提供了多个内置的 Shortcodes, 以方便作者保持 Markdown 内容的整洁.
+<h2 id="ref-and-relref">6 ref 和 relref</h2>
+<p><a href="https://gohugo.io/content-management/shortcodes#ref-and-relref" target="_blank" rel="noopener noreffer"><code>ref</code> 和 <code>relref</code> 的文档</a></p>
+<h2 id="7-tweet">7 tweet</h2>
+<p><a href="https://gohugo.io/content-management/shortcodes#tweet" target="_blank" rel="noopener noreffer"><code>tweet</code> 的文档</a></p>
+<p>一个 <code>tweet</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown"></code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+<h2 id="8-vimeo">8 vimeo</h2>
+<p><a href="https://gohugo.io/content-management/shortcodes#vimeo" target="_blank" rel="noopener noreffer"><code>vimeo</code> 的文档</a></p>
+<p>一个 <code>vimeo</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">vimeo</span> <span class="na">146022717</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://player.vimeo.com/video/146022717" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+<h2 id="9-youtube">9 youtube</h2>
+<p><a href="https://gohugo.io/content-management/shortcodes#youtube" target="_blank" rel="noopener noreffer"><code>youtube</code> 的文档</a></p>
+<p>一个 <code>youtube</code> 示例:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-markdown" data-lang="markdown">{{<span class="p">&lt;</span> <span class="nt">youtube</span> <span class="na">w7Ft2ymGmfc</span> <span class="p">&gt;</span>}}
+</code></pre></td></tr></table>
+</div>
+</div><p>呈现的输出效果如下:</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube-nocookie.com/embed/w7Ft2ymGmfc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>]]></description>
+</item></channel>
+</rss>

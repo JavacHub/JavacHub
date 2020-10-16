@@ -1,0 +1,351 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>git - 标签 - JonnyHub Blog - A Java Programmer.</title>
+        <link>https://jonnyhub.gitee.io/tags/git/</link>
+        <description>git - 标签 - JonnyHub Blog - A Java Programmer.</description>
+        <generator>Hugo -- gohugo.io</generator><managingEditor>jonny0624@gmail.com (Jonny.Chang)</managingEditor>
+            <webMaster>jonny0624@gmail.com (Jonny.Chang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sun, 02 Jun 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://jonnyhub.gitee.io/tags/git/" rel="self" type="application/rss+xml" /><item>
+    <title>Webhookd 安装与配置</title>
+    <link>https://jonnyhub.gitee.io/2019/06/2019-06-02-webhookd-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Sun, 02 Jun 2019 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2019/06/2019-06-02-webhookd-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[<p>Webhookd 是一个非常简单的 webhook 服务器启动 shell 脚本。目前使用十分方便，使用 go 开发，速度也很快。本文介绍了 Webhookd 安装与配置，采用了脚本自动化的方式来搭建整个自动化流程。</p>
+<h2 id="webhookd-介绍">webhookd 介绍</h2>
+<blockquote>
+<p>webhookd 是一个非常简单的webhook服务器启动shell脚本。目前使用十分方便，使用 go 开发，速度也很快。
+由于 GitHub 请求时间有一个 10 秒的限制，因此在编写脚本的时候，采用了脚本内调用外部脚本的方式，来控制请求时长。
+项目地址: <a href="https://github.com/ncarlier/webhookd" target="_blank" rel="noopener noreffer">https://github.com/ncarlier/webhookd</a>
+配置文件参考: <a href="https://raw.githubusercontent.com/ncarlier/webhookd/master/etc/default/webhookd.env" target="_blank" rel="noopener noreffer">webhookd.env</a>
+部署脚本参考: <a href="https://github.com/ncarlier/webhookd/blob/master/scripts/examples/github.sh" target="_blank" rel="noopener noreffer">github.sh</a></p>
+</blockquote>
+<h2 id="一些约定-">一些约定 :</h2>
+<ol>
+<li>所有的项目源码都放在 <code>/data/src/</code> 目录下;</li>
+<li>所有的脚本都放在 <code>/data/scripts/</code> 目录下，该目录下含有各个项目的脚步，每个项目会包含两个脚本:
+<ul>
+<li>一个是 hook 请求脚步，脚本名称命名方式为 <code>{项目名}.sh</code> ，位于 <code>/data/scripts/</code> 下面;</li>
+<li>一个是 deploy 脚本，里面主要是部署项目的一些逻辑，平时添加 hooks 也只是主要编写这个脚步文件，命名方式为 <code>deploy_{项目名}.sh</code> ，位于 <code>/data/scripts/deploy/</code> 下面;</li>
+</ul>
+</li>
+<li><code>/data/scripts/</code> 下面会创建一个 <code>addhook.sh</code> 脚本，是用来生成另外两个脚步(模板)的，以便减少编写脚本的工作量;</li>
+<li>配置文件设置为 <code>/etc/webhookd.env</code> ;</li>
+<li>请求地址使用 <code>http://hook.xxxx.xxx/{项目名}</code></li>
+</ol>
+<h2 id="安装">安装</h2>
+<h3 id="准备">准备</h3>
+<p>生产 ssh-key :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;jonny6015@qq.com&#34;</span>
+openssl rsa -in ~/.ssh/id_rsa -outform pem &gt; ~/.ssh/id_rsa.pem
+</code></pre></td></tr></table>
+</div>
+</div><p>将 ssh-key 公钥添加到 GitHub: <code>id_rsa.pub</code> 的内容。
+创建一些文件夹:</p>
+<p><code>mkdir -p /data/scripts/deploy/ &amp;&amp; mkdir -p /etc/webhookd/</code></p>
+<h3 id="ubuntu">Ubuntu</h3>
+<ol>
+<li>配置仓库
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;deb http://packages.azlux.fr/debian/ buster main&#34;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/azlux.list
+wget -qO - https://azlux.fr/repo.gpg.key <span class="p">|</span> sudo apt-key add -
+apt-get -y update
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>下载安装
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">apt-get -y install webhookd
+systemctl start webhookd.service
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>修改 <code>/etc/systemd/system/webhookd.service</code> 配置文件
+<ul>
+<li>删除 <code>EnvironmentFile=-/etc/default/webhookd.env</code> 仅保留 <code>EnvironmentFile=-/etc/webhookd.env</code></li>
+<li>保存即可</li>
+</ul>
+</li>
+<li>修改 <code>/etc/webhookd.env</code>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Webhookd配置</span>
+<span class="c1">#是否开启 debug (写入日志)</span>
+<span class="nv">WHD_DEBUG</span><span class="o">=</span><span class="nb">false</span>
+<span class="c1"># 日志目录</span>
+<span class="nv">WHD_LOG_DIR</span><span class="o">=</span><span class="s2">&#34;/tmp&#34;</span>
+<span class="c1"># 最大 hook 执行时间（以秒为单位），默认为10</span>
+<span class="nv">WHD_HOOK_TIMEOUT</span><span class="o">=</span><span class="m">600</span>
+<span class="c1"># HTTP 监听端口和地址, 默认 &#34;:8080&#34; 例如: `localhost:8080` or `:8080`</span>
+<span class="nv">WHD_LISTEN_ADDR</span><span class="o">=</span><span class="s2">&#34;:7008&#34;</span>
+<span class="c1"># Number of workers to start, default is 2</span>
+<span class="c1">#WHD_NB_WORKERS=2</span>
+<span class="c1"># 通知URI，默认情况下处于禁用状态</span>
+<span class="c1"># 例如: `http://requestb.in/v9b229v9` or `mailto://foo@bar.com?smtp=smtp-relay-localnet:25`</span>
+<span class="c1">#WHD_NOTIFICATION_URI=</span>
+<span class="c1"># 脚本位置，默认为 &#34;scripts&#34;</span>
+<span class="nv">WHD_SCRIPTS</span><span class="o">=</span><span class="s2">&#34;/data/scripts&#34;</span>
+<span class="c1"># GitHub 用于克隆存储库的私钥</span>
+<span class="nv">GITHUB_SECRET</span><span class="o">=</span>~/.ssh/id_rsa
+<span class="c1"># 例如: `/etc/webhookd/github_deploy_key.pem`</span>
+<span class="nv">WHD_SCRIPTS_GIT_KEY</span><span class="o">=</span>~/.ssh/id_rsa.pem
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="centos-的安装">CentOS 的安装</h3>
+<ul>
+<li>待补充</li>
+</ul>
+<h2 id="脚本">脚本</h2>
+<h3 id="生成新-hook-脚步的工具--addhooksh-脚本">生成新 hook 脚步的工具:  <em>addhook.sh</em> 脚本</h3>
+<ul>
+<li>addhook.sh</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">clear
+<span class="nb">echo</span> <span class="s2">&#34;################################################################&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;########    欢迎使用自动生成 WebHookd 脚本工具      ############&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;########    输入名字即可,建议对应 GitHub 仓库名      ###########&#34;</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;################################################################\n&#34;</span>
+<span class="nb">echo</span> -n <span class="s2">&#34;Please enter the Repository name: &#34;</span>
+<span class="nb">read</span> REPO_NAME
+<span class="nb">echo</span> -n <span class="s2">&#34;Please enter the Branch name: &#34;</span>
+<span class="nb">read</span> BRANCH_NAME
+
+<span class="nb">echo</span> <span class="s2">&#34;你输入的应用是： </span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">&#34;</span>
+<span class="nv">ROOT_PATH</span><span class="o">=</span><span class="s2">&#34;/data/scripts/webhookd&#34;</span>
+<span class="nv">SRC_PATH</span><span class="o">=</span><span class="s2">&#34;/src/&#34;</span>
+<span class="c1"># echo -n &#34;是否启用日志？ ( ture / false | y/n )&#34;:</span>
+<span class="c1"># read  ENABLE_LOG</span>
+cat&gt;<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh<span class="s">&lt;&lt;EOF
+</span><span class="s">#!/bin/env zsh
+</span><span class="s">REPO_NAME=&#34;${REPO_NAME}&#34;
+</span><span class="s">DEGUG=&#34;true&#34;
+</span><span class="s"># log 文件位置
+</span><span class="s">LOG_FILE=&#34;${ROOT_PATH}/logs/${REPO_NAME}_\$(date &#39;+%Y%m%d_%H%M%S&#39;).log&#34;
+</span><span class="s"># 函数
+</span><span class="s">payloadExit() { echo &#34;错误: \$@&#34; 1&gt;&amp;2 ; exit 1; }
+</span><span class="s">isDebug() {
+</span><span class="s">  [ &#34;\$debug&#34; = &#34;true&#34; ] &amp;&amp; echo -e &#34;Debug:\n \$@&#34;
+</span><span class="s">}
+</span><span class="s"># 验证
+</span><span class="s">payload=\$1
+</span><span class="s">[ -z &#34;\$payload&#34; ] &amp;&amp; payloadExit &#34;payload 请求体不存在， 请检查配置。&#34;
+</span><span class="s"># Debug
+</span><span class="s">isDebug &#34;已收到 payload:\n \$payload&#34;
+</span><span class="s">
+</span><span class="s">#####################################################
+</span><span class="s">############# 这里是真正要执行的脚本 ################
+</span><span class="s">
+</span><span class="s"># 删除原有日志文件
+</span><span class="s">cd /data/scripts/webhookd/logs || return
+</span><span class="s">COUNT_LOGS=$(ls -l |grep &#34;${REPO_NAME}*&#34;|wc -l) &amp;&amp; echo $COUNT_LOGS
+</span><span class="s">if [ $COUNT_LOGS &gt; 0 ] ; then
+</span><span class="s">  echo &#34;存在日志，先删除：&#34;
+</span><span class="s">  rm -rf $REPO_NAME* || return
+</span><span class="s">fi
+</span><span class="s"># 调用部署脚本
+</span><span class="s">cd ${ROOT_PATH}/deploy || return
+</span><span class="s">nohup ${ROOT_PATH}/deploy/deploy_${REPO_NAME}.sh &gt; &#34;\${LOG_FILE}&#34; 2&gt;&amp;1 &amp;
+</span><span class="s">
+</span><span class="s">####################################################
+</span><span class="s">
+</span><span class="s">echo &#34;已成功调用部署脚本，并后台运行部署；请稍后查看结果。&#34;
+</span><span class="s">echo &#34;#########    ${REPO_NAME} hook 已发送完毕!   ########&#34;
+</span><span class="s">exit 0;
+</span><span class="s">EOF</span>
+<span class="nb">echo</span> <span class="s2">&#34;===============================================&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;===============================================&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;========== 已生成 </span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">.sh 文件。=========&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;===============================================&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;===============================================&#34;</span>
+
+cat&gt;./deploy/deploy_<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh<span class="s">&lt;&lt;EOF
+</span><span class="s">#!/bin/env zsh
+</span><span class="s">REPO_NAME=&#34;${REPO_NAME}&#34;
+</span><span class="s">dateTime=&#34;\$(date &#39;+%Y%m%d_%H%M%S&#39;)&#34;
+</span><span class="s">echo &#34;进入项目目录：&#34;
+</span><span class="s">cd &#34;/src/${REPO_NAME}&#34; || return
+</span><span class="s">git pull origin ${BRANCH_NAME}:${BRANCH_NAME}
+</span><span class="s">git reset --hard origin/${BRANCH_NAME}
+</span><span class="s">git stash clear
+</span><span class="s">git clean  -d  -fx .
+</span><span class="s">git submodule update
+</span><span class="s">git submodule foreach git checkout ${BRANCH_NAME}
+</span><span class="s">git submodule foreach git pull origin ${BRANCH_NAME}
+</span><span class="s">echo &#34;已成功拉取最新代码！&#34;
+</span><span class="s">
+</span><span class="s">#***********  这里编写其余逻辑,如编译/部署等操作  **************
+</span><span class="s">echo &#34;***********     开始执行编译/部署操作：    ***************&#34;
+</span><span class="s">
+</span><span class="s">
+</span><span class="s">
+</span><span class="s">
+</span><span class="s">
+</span><span class="s">#********************  部署逻辑结束  ***************************
+</span><span class="s">echo &#34;ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ&#34;
+</span><span class="s">echo &#34;ΩΩΩΩ      已成功部署 ${REPO_NAME}!      ΩΩΩΩ&#34;
+</span><span class="s">echo &#34;ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ&#34;
+</span><span class="s">exit 0;
+</span><span class="s">EOF</span>
+<span class="nb">echo</span> <span class="s2">&#34;已生成 deploy_</span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">.sh&#34;</span>
+chmod +x <span class="si">${</span><span class="nv">ROOT_PATH</span><span class="si">}</span>/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh
+chmod +x <span class="si">${</span><span class="nv">ROOT_PATH</span><span class="si">}</span>/deploy/deploy_<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh
+<span class="nb">echo</span> <span class="s2">&#34;已添加执行权限！&#34;</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;\n###################################################################&#34;</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;###########################    完成！    ##########################\n&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;已生成</span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">的 hook 脚本:&#34;</span>
+<span class="nb">echo</span> <span class="k">$(</span>ls -g <span class="si">${</span><span class="nv">ROOT_PATH</span><span class="si">}</span>/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh<span class="k">)</span>
+<span class="nb">echo</span> <span class="s2">&#34;已生成</span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">的 部署 脚本:&#34;</span>
+<span class="nb">echo</span> <span class="k">$(</span>ls -g <span class="si">${</span><span class="nv">ROOT_PATH</span><span class="si">}</span>/deploy/deploy_<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh<span class="k">)</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;\n请编辑 \&#34;/data/scripts/webhookd/deploy/deploy_</span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">.sh\&#34; 来启用自动化部署。&#34;</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;###################################################################\n&#34;</span>
+<span class="nb">exit</span> 0<span class="p">;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item></channel>
+</rss>

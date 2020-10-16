@@ -1,0 +1,51 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>IT - 标签 - JonnyHub Blog - A Java Programmer.</title>
+        <link>https://jonnyhub.gitee.io/tags/it/</link>
+        <description>IT - 标签 - JonnyHub Blog - A Java Programmer.</description>
+        <generator>Hugo -- gohugo.io</generator><managingEditor>jonny0624@gmail.com (Jonny.Chang)</managingEditor>
+            <webMaster>jonny0624@gmail.com (Jonny.Chang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Thu, 27 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://jonnyhub.gitee.io/tags/it/" rel="self" type="application/rss+xml" /><item>
+    <title>IT 知识技能图谱</title>
+    <link>https://jonnyhub.gitee.io/2020/08/2020-08-27-it-%E7%9F%A5%E8%AF%86%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1/</link>
+    <pubDate>Thu, 27 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/08/2020-08-27-it-%E7%9F%A5%E8%AF%86%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1/</guid>
+    <description><![CDATA[<p>该【技能图谱】展示了多个技能图谱，以便查看。</p>
+<h2 id="it-知识技能图谱">IT 知识技能图谱</h2>
+<h3 id="架构师技能图谱">架构师技能图谱</h3>
+<figure><a class="lightgallery" href="/skill_maps/0d838b00dueccc6387dabfe7bf8baa8c.JPG" title="/skill_maps/0d838b00dueccc6387dabfe7bf8baa8c.JPG" data-thumbnail="/skill_maps/0d838b00dueccc6387dabfe7bf8baa8c.JPG" data-sub-html="<h2>架构师技能图谱 (V1.2)</h2>">
+        
+    </a><figcaption class="image-caption">架构师技能图谱 (<code>V1.2</code>)</figcaption>
+    </figure>
+<hr>
+<h3 id="前端工程师必备技能">前端工程师必备技能</h3>
+<figure><a class="lightgallery" href="/skill_maps/2a44717fbg562fb264e2c88671ffb979.JPG" title="/skill_maps/2a44717fbg562fb264e2c88671ffb979.JPG" data-thumbnail="/skill_maps/2a44717fbg562fb264e2c88671ffb979.JPG" data-sub-html="<h2>前端工程师必备技能 (V0.1.2)</h2>">
+        
+    </a><figcaption class="image-caption">前端工程师必备技能 (<code>V0.1.2</code>)</figcaption>
+    </figure>
+<hr>
+<h3 id="微服务基础技术栈">微服务基础技术栈</h3>
+<figure><a class="lightgallery" href="/skill_maps/252ef5dcanf80043ba6ee1fdd81384af.PNG" title="/skill_maps/252ef5dcanf80043ba6ee1fdd81384af.PNG" data-thumbnail="/skill_maps/252ef5dcanf80043ba6ee1fdd81384af.PNG" data-sub-html="<h2>微服务基础技术栈 (8大核心中间件)</h2>">
+        
+    </a><figcaption class="image-caption">微服务基础技术栈 (<code>8大核心中间件</code>)</figcaption>
+    </figure>
+<hr>
+<h3 id="html5-开发技能图谱">HTML5 开发技能图谱</h3>
+<figure><a class="lightgallery" href="/skill_maps/2697b90dfl698eeec8f254eec371df2e.JPG" title="/skill_maps/2697b90dfl698eeec8f254eec371df2e.JPG" data-thumbnail="/skill_maps/2697b90dfl698eeec8f254eec371df2e.JPG" data-sub-html="<h2>HTML5 开发技能图谱 (V1.0.0)</h2>">
+        
+    </a><figcaption class="image-caption">HTML5 开发技能图谱 (<code>V1.0.0</code>)</figcaption>
+    </figure>
+<hr>
+<h3 id="openresty-技能图谱">OpenResty 技能图谱</h3>
+<figure><a class="lightgallery" href="/skill_maps/eeeb46fe5n6df7d5d7c7b7688aa5ec9f.JPG" title="/skill_maps/eeeb46fe5n6df7d5d7c7b7688aa5ec9f.JPG" data-thumbnail="/skill_maps/eeeb46fe5n6df7d5d7c7b7688aa5ec9f.JPG" data-sub-html="<h2>OpenResty 技能图谱 (V1.0)</h2>">
+        
+    </a><figcaption class="image-caption">OpenResty 技能图谱 (<code>V1.0</code>)</figcaption>
+    </figure>
+<hr>
+<h3 id="go语言核心技术">Go语言核心技术</h3>
+<figure><a class="lightgallery" href="/skill_maps/1f4e1e5c6q97f32a844a471ce6761f23.JPG" title="/skill_maps/1f4e1e5c6q97f32a844a471ce6761f23.JPG" data-thumbnail="/skill_maps/1f4e1e5c6q97f32a844a471ce6761f23.JPG" data-sub-html="<h2>Go语言核心技术</h2>">
+        
+    </a><figcaption class="image-caption">Go语言核心技术</figcaption>
+    </figure>]]></description>
+</item></channel>
+</rss>

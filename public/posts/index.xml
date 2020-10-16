@@ -1,0 +1,3341 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>所有文章 - JonnyHub Blog - A Java Programmer.</title>
+        <link>https://jonnyhub.gitee.io/posts/</link>
+        <description>所有文章 | JonnyHub Blog - A Java Programmer.</description>
+        <generator>Hugo -- gohugo.io</generator><managingEditor>jonny0624@gmail.com (Jonny.Chang)</managingEditor>
+            <webMaster>jonny0624@gmail.com (Jonny.Chang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 09 Sep 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://jonnyhub.gitee.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>ImgURL 项目简介</title>
+    <link>https://jonnyhub.gitee.io/2020/09/2020-09-09-imgurl-%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/</link>
+    <pubDate>Wed, 09 Sep 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/09/2020-09-09-imgurl-%E9%A1%B9%E7%9B%AE%E7%AE%80%E4%BB%8B/</guid>
+    <description><![CDATA[<p>ImgURL 是一款简单、纯粹、高速稳定的图片上传和外链服务（图床程序），使用 Java + SpringBoot + MySQL + Vue + AntDesign of Vue 组件库开发。</p>
+<!-- more -->
+<h2 id="简介">简介</h2>
+<p>什么是图床？
+引用百度百科的解释：<a href="https://baike.baidu.com/item/%E5%9B%BE%E5%BA%8A" target="_blank" rel="noopener noreffer">图床</a>
+ImgURL是一款简单、纯粹、高速稳定的图片上传和外链服务（图床程序），使用 Java + SpringBoot + MySQL + Vue + AntDesign of Vue 组件库开发。</p>
+<p>为什么要做这个图床？
+图床在这个信息时代，已经显得极为实用，作家、程序员、科技人员、教师，在创造过程中总是会遇到使用图床的场景，如 Markdown 撰写文档时，如果没有图床，将是很难受的，而 GitHub 的 Readme 仅支持 Markdown 格式。各种博客、知乎、论坛等等，写作中都是使用 Markdown 语言。目前比较有名稳定的图床也有，但是要么部署麻烦，要么收费很贵，要么不稳定，所以 ImgHub 应运而生。开发完成后，会创建一键部署命令，一个命令即可完成整套程序的部署。
+ImgHub 虽然很小，但很强大，Pro 版本是可以对接微信，争取做到开源第一图床。</p>
+<h2 id="功能">功能：</h2>
+<h4 id="主要功能">主要功能</h4>
+<pre><code>- 支持拽拖上传、多图上传、Ctrl + V粘贴上传、URL上传
+- 支持图片裁剪，自动生成缩略图
+- 限制访客上传数量
+- 图片压缩/批量压缩
+- 图片鉴黄/批量鉴黄
+- API支持
+- 在线更新
+- 外部存储
+</code></pre>
+<h4 id="1多用户支持">1、多用户支持</h4>
+<pre><code>- 支持多用户注册
+- 支持游客模式
+</code></pre>
+<h4 id="2完善的权限管理">2、完善的权限管理</h4>
+<pre><code>- 管理员
+- 高级用户（由LMSite提供服务，高级用户可以选择付费使用。）
+- 普通用户，免费上传，限时存储（后端根据实际情况，定期删除相关图片，节省内存）
+- 用户权限管理（先开发手动管理，后期可以考虑开发自动管理）
+</code></pre>
+<h2 id="版本分类">版本分类</h2>
+<h4 id="社区版本仅支持单用户仅本地存储没有权限管理但是支持各种高级功能仅支持-mysql-数据源有广告">社区版本（仅支持单用户，仅本地存储，没有权限管理，但是支持各种高级功能，仅支持 MySQL 数据源，有广告）</h4>
+<pre><code>- 免费开源
+- 支持本地存储
+- 选择、多图、拖拽、URL上传
+- 微信登录
+- API支持
+</code></pre>
+<h4 id="高级商业版本">高级商业版本</h4>
+<pre><code>- 收费授权
+- 含有社区版本所有功能
+- 支持自动检测技术, 禁止上传色情/反动/博彩/黑产等违法图片
+- 支持本地存储、腾讯COS、阿里OSS、FTP、又拍云、七牛云、微博空间等存储方式
+- 多数据源支持
+- 支持网络相册（非常酷炫的相册管理系统）
+- 提供技术支持
+- 支持微信小程序版本
+- 支持微信公众号传图
+- 自定义版权
+- 无广告
+</code></pre>
+<hr>
+]]></description>
+</item><item>
+    <title>IT 知识技能图谱</title>
+    <link>https://jonnyhub.gitee.io/2020/08/2020-08-27-it-%E7%9F%A5%E8%AF%86%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1/</link>
+    <pubDate>Thu, 27 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/08/2020-08-27-it-%E7%9F%A5%E8%AF%86%E6%8A%80%E8%83%BD%E5%9B%BE%E8%B0%B1/</guid>
+    <description><![CDATA[<p>该【技能图谱】展示了多个技能图谱，以便查看。</p>
+<h2 id="it-知识技能图谱">IT 知识技能图谱</h2>
+<h3 id="架构师技能图谱">架构师技能图谱</h3>
+<figure><a class="lightgallery" href="/skill_maps/0d838b00dueccc6387dabfe7bf8baa8c.JPG" title="/skill_maps/0d838b00dueccc6387dabfe7bf8baa8c.JPG" data-thumbnail="/skill_maps/0d838b00dueccc6387dabfe7bf8baa8c.JPG" data-sub-html="<h2>架构师技能图谱 (V1.2)</h2>">
+        
+    </a><figcaption class="image-caption">架构师技能图谱 (<code>V1.2</code>)</figcaption>
+    </figure>
+<hr>
+<h3 id="前端工程师必备技能">前端工程师必备技能</h3>
+<figure><a class="lightgallery" href="/skill_maps/2a44717fbg562fb264e2c88671ffb979.JPG" title="/skill_maps/2a44717fbg562fb264e2c88671ffb979.JPG" data-thumbnail="/skill_maps/2a44717fbg562fb264e2c88671ffb979.JPG" data-sub-html="<h2>前端工程师必备技能 (V0.1.2)</h2>">
+        
+    </a><figcaption class="image-caption">前端工程师必备技能 (<code>V0.1.2</code>)</figcaption>
+    </figure>
+<hr>
+<h3 id="微服务基础技术栈">微服务基础技术栈</h3>
+<figure><a class="lightgallery" href="/skill_maps/252ef5dcanf80043ba6ee1fdd81384af.PNG" title="/skill_maps/252ef5dcanf80043ba6ee1fdd81384af.PNG" data-thumbnail="/skill_maps/252ef5dcanf80043ba6ee1fdd81384af.PNG" data-sub-html="<h2>微服务基础技术栈 (8大核心中间件)</h2>">
+        
+    </a><figcaption class="image-caption">微服务基础技术栈 (<code>8大核心中间件</code>)</figcaption>
+    </figure>
+<hr>
+<h3 id="html5-开发技能图谱">HTML5 开发技能图谱</h3>
+<figure><a class="lightgallery" href="/skill_maps/2697b90dfl698eeec8f254eec371df2e.JPG" title="/skill_maps/2697b90dfl698eeec8f254eec371df2e.JPG" data-thumbnail="/skill_maps/2697b90dfl698eeec8f254eec371df2e.JPG" data-sub-html="<h2>HTML5 开发技能图谱 (V1.0.0)</h2>">
+        
+    </a><figcaption class="image-caption">HTML5 开发技能图谱 (<code>V1.0.0</code>)</figcaption>
+    </figure>
+<hr>
+<h3 id="openresty-技能图谱">OpenResty 技能图谱</h3>
+<figure><a class="lightgallery" href="/skill_maps/eeeb46fe5n6df7d5d7c7b7688aa5ec9f.JPG" title="/skill_maps/eeeb46fe5n6df7d5d7c7b7688aa5ec9f.JPG" data-thumbnail="/skill_maps/eeeb46fe5n6df7d5d7c7b7688aa5ec9f.JPG" data-sub-html="<h2>OpenResty 技能图谱 (V1.0)</h2>">
+        
+    </a><figcaption class="image-caption">OpenResty 技能图谱 (<code>V1.0</code>)</figcaption>
+    </figure>
+<hr>
+<h3 id="go语言核心技术">Go语言核心技术</h3>
+<figure><a class="lightgallery" href="/skill_maps/1f4e1e5c6q97f32a844a471ce6761f23.JPG" title="/skill_maps/1f4e1e5c6q97f32a844a471ce6761f23.JPG" data-thumbnail="/skill_maps/1f4e1e5c6q97f32a844a471ce6761f23.JPG" data-sub-html="<h2>Go语言核心技术</h2>">
+        
+    </a><figcaption class="image-caption">Go语言核心技术</figcaption>
+    </figure>]]></description>
+</item><item>
+    <title>ZSH 插件介绍</title>
+    <link>https://jonnyhub.gitee.io/2020/08/2020-08-20-zsh-%E6%8F%92%E4%BB%B6%E4%BB%8B%E7%BB%8D%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Thu, 20 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/08/2020-08-20-zsh-%E6%8F%92%E4%BB%B6%E4%BB%8B%E7%BB%8D%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[<p>ZSH 插件的介绍和一些基本配置。</p>
+<h1 id="zsh-插件介绍">ZSH 插件介绍</h1>
+<h2 id="常用插件介绍">常用插件介绍</h2>
+<ul>
+<li>
+<p>alias-finder : 查找某个完整命令的alias。</p>
+<ul>
+<li>alias-finder &ldquo;git pull&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>git : Oh-My-ZSH 默认开启，它支持 Git 别名、标签补全以及所有 Git 命令的描述。</p>
+<ul>
+<li><code>git + tab</code></li>
+</ul>
+</li>
+<li>
+<p>node : 在浏览器打开当前版本的 Node.js API。</p>
+<ul>
+<li><code>node-docs http</code></li>
+</ul>
+</li>
+<li>
+<p>npm : 给 npm 添加自动补全，显示所有的 npm 命令。</p>
+<ul>
+<li><code>npm + tab</code></li>
+</ul>
+</li>
+<li>
+<p>yarn : 给 yarn 添加自动补全，显示所有的 yarn 命令。</p>
+<ul>
+<li><code>yarn + tab</code></li>
+</ul>
+</li>
+<li>
+<p>yum : 给 yum 添加自动补全，显示所有的 yum 命令。</p>
+<ul>
+<li><code>yum + tab</code></li>
+</ul>
+</li>
+<li>
+<p>bower : 给 Bower 命令添加自动补全。</p>
+<ul>
+<li><code>bower + tab</code></li>
+</ul>
+</li>
+<li>
+<p>brew : 给所有 Brew 命令添加自动补全和描述。</p>
+<ul>
+<li><code>brew + tab</code></li>
+</ul>
+</li>
+<li>
+<p>osx : 支持在终端上使用很多 Finder 命令，<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/osx#commands" target="_blank" rel="noopener noreffer">查看详情</a>。</p>
+</li>
+<li>
+<p>z.lua: 命令行目录跳转工具，性能优于z和autojump。<a href="https://github.com/skywind3000/z.lua/blob/master/README.cn.md#install" target="_blank" rel="noopener noreffer">安装方法</a></p>
+</li>
+<li>
+<p>battery : 电池插件-此插件添加了一些函数，可用于在自定义主题中显示电池信息。
+<code>.zshrc: --&gt; RPROMPT='$(battery_pct_prompt) ...'</code></p>
+</li>
+<li>
+<p>bbedit : BBEdit 插件，Mac OS X 的 HTML 和文本编辑器</p>
+</li>
+<li>
+<p>branch : 快速显示当前 Git 或 Mercurial 分支。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">- <span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}&#39;</span>
++ <span class="nv">PROMPT</span><span class="o">=</span><span class="s1">&#39;${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)$(branch_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>colored-man-pages : 高亮显示 man 命令内容。</p>
+</li>
+<li>
+<p>colorize : 有了这个插件，你可以语法突出显示文件内容超过300种支持的语言和其他文本格式。</p>
+</li>
+<li>
+<p>command-not-found : 此插件在找不到命令时提供要安装的建议包。</p>
+</li>
+<li>
+<p>common-aliases : 常用的alias。</p>
+</li>
+<li>
+<p>dash : 为Dash添加命令行功能，一个用于macOS的API文档浏览器。此插件需要安装 Dash 才能工作。</p>
+<ul>
+<li><code>dash golang  /  dash python:tuple</code></li>
+</ul>
+</li>
+<li>
+<p>docker-compose : 给 docker-compose 添加自动补全，显示所有的 docker-compose 命令，提供一些 docker-compose 命令的别名。具体<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose#aliases" target="_blank" rel="noopener noreffer">参考这里</a></p>
+</li>
+<li>
+<p>docker : 给 docker 添加自动补全，显示所有的 docker 命令，提供一些 docker 命令的别名。</p>
+</li>
+<li>
+<p>emoji : 支持在 Zsh 中方便地使用 Unicode 表情符号。</p>
+<ul>
+<li><code>echo $emoji[mouse_face]  /  random_emoji</code></li>
+</ul>
+</li>
+<li>
+<p>extract : 用于提取您传递的存档文件，它支持各种存档文件类型。</p>
+<ul>
+<li><code>extract xxx.tar.gz</code></li>
+</ul>
+</li>
+<li>
+<p>fancy-ctrl-z : 使用 Ctrl-Z 切换回 Vim。</p>
+</li>
+<li>
+<p>forklift : OS X 的 FTP 应用程序。</p>
+<ul>
+<li><code>fl [&lt;file_or_folder&gt;]</code></li>
+</ul>
+</li>
+<li>
+<p>fzf : fzf 是一个通用命令行模糊查找器。（ 需要安装 fzf： brew install fzf ）</p>
+<ul>
+<li>配置： <code>export FZF_BASE=/path/to/fzf/install/dir</code></li>
+</ul>
+</li>
+<li>
+<p>git-auto-fetch : 在 git 初始化目录中工作时，自动从所有远程获取所有更改。</p>
+<ul>
+<li>间隔时间配置： <code>GIT_AUTO_FETCH_INTERVAL=1200</code></li>
+</ul>
+</li>
+<li>
+<p>git-prompt : 显示有关当前 git 存储库的信息的提示。</p>
+</li>
+<li>
+<p>gitfast : 此插件使用 git.git 人员的 zsh 完成，这比 zsh 的官方完成速度要快得多。</p>
+</li>
+<li>
+<p>github : github 插件。</p>
+<ul>
+<li>配置环境变量 : <code>$GITHUB_USER  /  $GITHUB_PASSWORD</code></li>
+<li>Git 配置选项 : <code>github.user</code> - 用于存储库操作的 GitHub 用户名</li>
+<li>用法 : <code>man hub</code></li>
+</ul>
+</li>
+<li>
+<p>gitignore : 此插件使您能够使用命令gitignore.io命令行的一个应用程序。</p>
+<ul>
+<li>查看 : <code>gi list</code></li>
+<li>使用 : <code>gi java</code></li>
+</ul>
+</li>
+<li>
+<p>golang : 此插件添加了 Go 编程语言的完成，以及常见 Golang 命令的一些别名。</p>
+<ul>
+<li>具体别名与使用方法<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/golang#aliases" target="_blank" rel="noopener noreffer">查看这里</a></li>
+</ul>
+</li>
+<li>
+<p>gradle : 增加了自动完成和别名的 gradle 。</p>
+</li>
+<li>
+<p>gulp : 自动完成 gulp 。</p>
+</li>
+<li>
+<p>history : 提供了几个方便的别名，用于使用 命令来检查命令行历史记录。
+用法1： <code>h : history</code> 打印命令历史记录 ；
+用法2： <code>hs : history | grep</code> 使用 grep 搜索命令历史记录 ；
+用法3： <code>hsi : history | grep -i</code> 使用 grep 对命令历史记录进行不区分大小写搜索 。</p>
+</li>
+<li>
+<p>iterm2 : Iterm2 插件。</p>
+</li>
+<li>
+<p>jenv : 类似于 rbenv 和pyenv的Java 版本管理器。</p>
+</li>
+<li>
+<p>jsontools : 用于处理 json 数据的方便的命令行工具。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">pp_json： 漂亮的打印 json 。如： curl https://coderwall.com/bobwilliams.json <span class="p">|</span> pp_json
+is_json： 如果有效 json， 返回 true<span class="p">;</span>假， 否则。
+urlencode_json： 返回给定 json 的 URL 编码字符串。
+urldecode_json： 返回给定 URL 编码字符串的解码 json。
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>rvm : rvm 别名和自动完成插件 - Ruby 版本管理器：<a href="https://rvm.io/">https://rvm.io/</a>。</p>
+</li>
+<li>
+<p>mvn : mvn 别名和自动完成插件。</p>
+</li>
+<li>
+<p>nvm : nvm 别名和自动完成插件。</p>
+</li>
+<li>
+<p>npm : npm 别名和自动完成插件。</p>
+</li>
+<li>
+<p>npx : npx 别名和自动完成插件。</p>
+</li>
+<li>
+<p>pip : pip 别名和自动完成插件。</p>
+</li>
+<li>
+<p>pipenv : 此插件提供了一些功能，以简化使用 Pipenv。</p>
+</li>
+<li>
+<p>pyenv : 这个插件寻找pyenv，一个简单的Python版本管理系统。</p>
+</li>
+<li>
+<p>python : 该插件为有用的 python 命令添加了多个别名。</p>
+</li>
+<li>
+<p>rails : 此插件添加了Ruby On Rails 框架和 Rake命令的完成，以及日志和环境变量的一些别名。</p>
+</li>
+<li>
+<p>rbenv : 这个插件的主要工作是提供可以添加到您的主题，包括Ruby版本和宝石集信息到您的提示。</p>
+</li>
+<li>
+<p>redis-cli : 此插件添加 redis-cli 完成，基于 Homebrew 完成。</p>
+</li>
+<li>
+<p>shell-proxy : 命令行代理工具，具体使用<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/shell-proxy#usage" target="_blank" rel="noopener noreffer">参考这里</a>。</p>
+</li>
+<li>
+<p>spring : Spring Boot oh-my-zsh 插件。</p>
+</li>
+<li>
+<p>systemd : systemctl 插件。<a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/systemd#aliases" target="_blank" rel="noopener noreffer">参考</a></p>
+</li>
+<li>
+<p>sudo : 按两次 ESC 自动在命令行前加 sudo 。</p>
+</li>
+<li>
+<p>textastic : Textastic 插件 Mac OS X。</p>
+</li>
+<li>
+<p>themes : 这个插件允许您更改ZSH主题。</p>
+<ul>
+<li>使用1： <code>theme &lt;theme_name&gt;</code> - 将 ZSH 主题更改为指定主题。</li>
+<li>使用2： <code>theme</code> - 将 ZSH 主题更改为一些随机主题。</li>
+<li>使用3： <code>lstheme</code> - 列出已安装的 ZSH 主题。</li>
+</ul>
+</li>
+<li>
+<p>timer : 显示命令的执行时间。</p>
+</li>
+<li>
+<p>ubuntu : Ubuntu 自动完成和alias。</p>
+</li>
+<li>
+<p>ufw : 这个插件增加了用于管理每个人最喜欢的简单防火墙（UFW）的完成，这是一个管理iptable的简单界面。</p>
+</li>
+<li>
+<p>urltools : 此插件提供两个别名到 URL 编码和 URL 解码字符串。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">urlencode <span class="s1">&#39;https://github.com/ohmyzsh/ohmyzsh/search?q=urltools&amp;type=Code&#39;</span>
+<span class="c1"># returns https%3A%2F%2Fgithub.com%2Fohmyzsh%2Fohmyzsh%2Fsearch%3Fq%3Durltools%26type%3DCode</span>
+urldecode <span class="s1">&#39;https%3A%2F%2Fgithub.com%2Fohmyzsh%2Fohmyzsh%2Fsearch%3Fq%3Durltools%26type%3DCode&#39;</span>
+<span class="c1"># returns https://github.com/ohmyzsh/ohmyzsh/search?q=urltools&amp;type=Code</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>vscode : 此插件提供了有用的别名，以简化命令行与 VS 代码或 VSCodium 编辑器之间的交互。</p>
+</li>
+<li>
+<p>web-search : 这个插件增加了搜索谷歌，维基，必应，YouTube和其他流行的服务的别名。</p>
+<ul>
+<li>使用 : <code>google oh-my-zsh</code> <code>bing content</code></li>
+</ul>
+</li>
+<li>
+<p>zsh-navigation-tools : Zsh 导航工具。</p>
+<ul>
+<li>配置： <a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools#configuration">https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools#configuration</a></li>
+<li>使用： <a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools#introduction">https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools#introduction</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="插件的安装">插件的安装</h2>
+<p>在 <code>~/.zshrc</code> 中的 <code>plugins=(...)</code> 中添加对应的插件名即可，上述插件，唯有 z.lua 需要安装。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~
+curl -R -O http://www.lua.org/ftp/lua-5.4.0.tar.gz
+tar zxf lua-5.4.0.tar.gz
+<span class="nb">cd</span> lua-5.4.0
+make
+sudo make install
+lua -v
+rm -rf lua-5.4.0
+git clone https://github.com/skywind3000/z.lua.git ~/.oh-my-zsh/custom/plugins/z.lua
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">plugins</span><span class="o">=(</span>
+    alias-finder
+    battery
+    bbedit
+    bower
+    branch
+    brew
+    colored-man-pages
+    colorize
+    command-not-found
+    common-aliases
+    dash
+    docker
+    docker-compose
+    emoji
+    extract
+    fancy-ctrl-z
+    forklift
+    fzf
+    git
+    git-auto-fetch
+    git-prompt
+    gitfast
+    github
+    gitignore
+    golang
+    gradle
+    gulp
+    <span class="nb">history</span>
+    iterm2
+    jenv
+    jsontools
+    mvn
+    node
+    npm
+    npx
+    nvm
+    osx
+    pip
+    pipenv
+    pyenv
+    python
+    rails
+    rbenv
+    redis-cli
+    rvm
+    shell-proxy
+    spring
+    sudo
+    systemd
+    textastic
+    themes
+    timer
+    ubuntu
+    ufw
+    urltools
+    vscode
+    web-search
+    yarn
+    yum
+    z.lua
+    zsh-navigation-tools
+<span class="o">)</span>
+<span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>lua ~/.oh-my-zsh/custom/plugins/z.lua/z.lua  --init zsh once enhanced<span class="k">)</span><span class="s2">&#34;</span>    <span class="c1"># ZSH 初始化</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item><item>
+    <title>IDEA 代码模板</title>
+    <link>https://jonnyhub.gitee.io/2020/08/2020-08-10-idea-%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/</link>
+    <pubDate>Mon, 10 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/08/2020-08-10-idea-%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/</guid>
+    <description><![CDATA[<h1 id="idea-代码模板">IDEA 代码模板</h1>
+<hr>
+<h2 id="getter-and-setter">Getter And Setter</h2>
+<hr>
+<h3 id="getter">Getter</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm">* Getter method for property &lt;tt&gt;$field.name&lt;/tt&gt;.
+</span><span class="cm">*
+</span><span class="cm">* @return property value of $field.name
+</span><span class="cm">*/</span>
+<span class="err">#</span><span class="k">if</span><span class="o">(</span><span class="n">$field</span><span class="o">.</span><span class="na">modifierStatic</span><span class="o">)</span>
+<span class="kd">static</span> <span class="err">##</span>
+<span class="err">#</span><span class="n">end</span>
+<span class="n">$field</span><span class="o">.</span><span class="na">type</span> <span class="err">##</span>
+<span class="err">#</span><span class="n">set</span><span class="o">(</span><span class="n">$name</span> <span class="o">=</span> <span class="n">$StringUtil</span><span class="o">.</span><span class="na">capitalizeWithJavaBeanConvention</span><span class="o">(</span><span class="n">$StringUtil</span><span class="o">.</span><span class="na">sanitizeJavaIdentifier</span><span class="o">(</span><span class="n">$helper</span><span class="o">.</span><span class="na">getPropertyName</span><span class="o">(</span><span class="n">$field</span><span class="o">,</span> <span class="n">$project</span><span class="o">))))</span>
+<span class="err">#</span><span class="k">if</span> <span class="o">(</span><span class="n">$field</span><span class="o">.</span><span class="na">boolean</span> <span class="o">&amp;&amp;</span> <span class="n">$field</span><span class="o">.</span><span class="na">primitive</span><span class="o">)</span>
+<span class="n">is</span><span class="err">##</span>
+<span class="err">#</span><span class="k">else</span>
+<span class="n">get</span><span class="err">##</span>
+<span class="err">#</span><span class="n">end</span>
+<span class="n">$</span><span class="o">{</span><span class="n">name</span><span class="o">}()</span> <span class="o">{</span>
+<span class="k">return</span> <span class="n">$field</span><span class="o">.</span><span class="na">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="setter">Setter</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm">* Setter method for property &lt;tt&gt;$field.name&lt;/tt&gt;.
+</span><span class="cm">*
+</span><span class="cm">* @param $field.name  value to be assigned to property $field.name
+</span><span class="cm">*/</span>
+<span class="err">#</span><span class="n">set</span><span class="o">(</span><span class="n">$paramName</span> <span class="o">=</span> <span class="n">$helper</span><span class="o">.</span><span class="na">getParamName</span><span class="o">(</span><span class="n">$field</span><span class="o">,</span> <span class="n">$project</span><span class="o">))</span>
+<span class="err">#</span><span class="k">if</span><span class="o">(</span><span class="n">$field</span><span class="o">.</span><span class="na">modifierStatic</span><span class="o">)</span>
+<span class="kd">static</span> <span class="err">##</span>
+<span class="err">#</span><span class="n">end</span>
+<span class="kt">void</span> <span class="n">set$StringUtil</span><span class="o">.</span><span class="na">capitalizeWithJavaBeanConvention</span><span class="o">(</span><span class="n">$StringUtil</span><span class="o">.</span><span class="na">sanitizeJavaIdentifier</span><span class="o">(</span><span class="n">$helper</span><span class="o">.</span><span class="na">getPropertyName</span><span class="o">(</span><span class="n">$field</span><span class="o">,</span> <span class="n">$project</span><span class="o">)))(</span><span class="n">$field</span><span class="o">.</span><span class="na">type</span> <span class="n">$paramName</span><span class="o">)</span> <span class="o">{</span>
+<span class="err">#</span><span class="k">if</span> <span class="o">(</span><span class="n">$field</span><span class="o">.</span><span class="na">name</span> <span class="o">==</span> <span class="n">$paramName</span><span class="o">)</span>
+    <span class="err">#</span><span class="k">if</span> <span class="o">(!</span><span class="n">$field</span><span class="o">.</span><span class="na">modifierStatic</span><span class="o">)</span>
+    <span class="k">this</span><span class="o">.</span><span class="err">##</span>
+    <span class="err">#</span><span class="k">else</span>
+        <span class="n">$classname</span><span class="o">.</span><span class="err">##</span>
+    <span class="err">#</span><span class="n">end</span>
+<span class="err">#</span><span class="n">end</span>
+<span class="n">$field</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">$paramName</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="code-style">Code Style</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;code_scheme</span> <span class="na">name=</span><span class="s">&#34;JonnyChang-CodeStyle&#34;</span> <span class="na">version=</span><span class="s">&#34;1&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;INSERT_INNER_CLASS_IMPORTS&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND&#34;</span> <span class="na">value=</span><span class="s">&#34;999&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND&#34;</span> <span class="na">value=</span><span class="s">&#34;999&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;IMPORT_LAYOUT_TABLE&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;value&gt;</span>
+      <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;java&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;javax&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;com.jonnyhub&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;RIGHT_MARGIN&#34;</span> <span class="na">value=</span><span class="s">&#34;140&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ENABLE_JAVADOC_FORMATTING&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;JavaCodeStyleSettings&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ANNOTATION_PARAMETER_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;INSERT_INNER_CLASS_IMPORTS&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND&#34;</span> <span class="na">value=</span><span class="s">&#34;999&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND&#34;</span> <span class="na">value=</span><span class="s">&#34;999&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;IMPORT_LAYOUT_TABLE&#34;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;value&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;java&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;javax&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;com.jonnyhub&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;JD_KEEP_INVALID_TAGS&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;JD_DO_NOT_WRAP_ONE_LINE_COMMENTS&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/JavaCodeStyleSettings&gt;</span>
+  <span class="nt">&lt;codeStyleSettings</span> <span class="na">language=</span><span class="s">&#34;JAVA&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;LINE_COMMENT_AT_FIRST_COLUMN&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;BLOCK_COMMENT_AT_FIRST_COLUMN&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_FIRST_COLUMN_COMMENT&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_CONTROL_STATEMENT_IN_ONE_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_BLANK_LINES_IN_DECLARATIONS&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_BLANK_LINES_IN_CODE&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_BLANK_LINES_BEFORE_RBRACE&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ALIGN_MULTILINE_PARAMETERS&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ALIGN_GROUP_FIELD_DECLARATIONS&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;SPACE_BEFORE_ARRAY_INITIALIZER_LBRACE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;CALL_PARAMETERS_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;PREFER_PARAMETERS_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;METHOD_PARAMETERS_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;RESOURCE_LIST_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;EXTENDS_LIST_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;THROWS_LIST_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;EXTENDS_KEYWORD_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;THROWS_KEYWORD_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;METHOD_CALL_CHAIN_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;BINARY_OPERATION_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;BINARY_OPERATION_SIGN_ON_NEXT_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;TERNARY_OPERATION_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;TERNARY_OPERATION_SIGNS_ON_NEXT_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_SIMPLE_BLOCKS_IN_ONE_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_SIMPLE_METHODS_IN_ONE_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_SIMPLE_CLASSES_IN_ONE_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;FOR_STATEMENT_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ARRAY_INITIALIZER_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ASSIGNMENT_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;PLACE_ASSIGNMENT_SIGN_ON_NEXT_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;WRAP_COMMENTS&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ASSERT_STATEMENT_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ASSERT_STATEMENT_COLON_ON_NEXT_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;IF_BRACE_FORCE&#34;</span> <span class="na">value=</span><span class="s">&#34;3&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;DOWHILE_BRACE_FORCE&#34;</span> <span class="na">value=</span><span class="s">&#34;3&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;WHILE_BRACE_FORCE&#34;</span> <span class="na">value=</span><span class="s">&#34;3&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;FOR_BRACE_FORCE&#34;</span> <span class="na">value=</span><span class="s">&#34;3&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;WRAP_LONG_LINES&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;PARAMETER_ANNOTATION_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;VARIABLE_ANNOTATION_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ENUM_CONSTANTS_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/codeStyleSettings&gt;</span>
+<span class="nt">&lt;/code_scheme&gt;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item><item>
+    <title>ResultCode 封装</title>
+    <link>https://jonnyhub.gitee.io/2020/08/2020-08-10-resultcode-%E5%B0%81%E8%A3%85/</link>
+    <pubDate>Mon, 10 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/08/2020-08-10-resultcode-%E5%B0%81%E8%A3%85/</guid>
+    <description><![CDATA[<p>Java 中对结果的统一处理，根据阿里巴巴p3c手册进行封装的 Result 工具类。</p>
+<h1 id="java-中对于结果的统一处理">Java 中对于结果的统一处理</h1>
+<h2 id="resultcodeenum-统一处理结果码枚举">ResultCodeEnum 统一处理结果码枚举</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span><span class="lnt">286
+</span><span class="lnt">287
+</span><span class="lnt">288
+</span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span><span class="lnt">299
+</span><span class="lnt">300
+</span><span class="lnt">301
+</span><span class="lnt">302
+</span><span class="lnt">303
+</span><span class="lnt">304
+</span><span class="lnt">305
+</span><span class="lnt">306
+</span><span class="lnt">307
+</span><span class="lnt">308
+</span><span class="lnt">309
+</span><span class="lnt">310
+</span><span class="lnt">311
+</span><span class="lnt">312
+</span><span class="lnt">313
+</span><span class="lnt">314
+</span><span class="lnt">315
+</span><span class="lnt">316
+</span><span class="lnt">317
+</span><span class="lnt">318
+</span><span class="lnt">319
+</span><span class="lnt">320
+</span><span class="lnt">321
+</span><span class="lnt">322
+</span><span class="lnt">323
+</span><span class="lnt">324
+</span><span class="lnt">325
+</span><span class="lnt">326
+</span><span class="lnt">327
+</span><span class="lnt">328
+</span><span class="lnt">329
+</span><span class="lnt">330
+</span><span class="lnt">331
+</span><span class="lnt">332
+</span><span class="lnt">333
+</span><span class="lnt">334
+</span><span class="lnt">335
+</span><span class="lnt">336
+</span><span class="lnt">337
+</span><span class="lnt">338
+</span><span class="lnt">339
+</span><span class="lnt">340
+</span><span class="lnt">341
+</span><span class="lnt">342
+</span><span class="lnt">343
+</span><span class="lnt">344
+</span><span class="lnt">345
+</span><span class="lnt">346
+</span><span class="lnt">347
+</span><span class="lnt">348
+</span><span class="lnt">349
+</span><span class="lnt">350
+</span><span class="lnt">351
+</span><span class="lnt">352
+</span><span class="lnt">353
+</span><span class="lnt">354
+</span><span class="lnt">355
+</span><span class="lnt">356
+</span><span class="lnt">357
+</span><span class="lnt">358
+</span><span class="lnt">359
+</span><span class="lnt">360
+</span><span class="lnt">361
+</span><span class="lnt">362
+</span><span class="lnt">363
+</span><span class="lnt">364
+</span><span class="lnt">365
+</span><span class="lnt">366
+</span><span class="lnt">367
+</span><span class="lnt">368
+</span><span class="lnt">369
+</span><span class="lnt">370
+</span><span class="lnt">371
+</span><span class="lnt">372
+</span><span class="lnt">373
+</span><span class="lnt">374
+</span><span class="lnt">375
+</span><span class="lnt">376
+</span><span class="lnt">377
+</span><span class="lnt">378
+</span><span class="lnt">379
+</span><span class="lnt">380
+</span><span class="lnt">381
+</span><span class="lnt">382
+</span><span class="lnt">383
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 通用结果代码枚举
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jonny.Chang  ( https://jonnyhub.com )  @jonny6015
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">enum</span> <span class="n">CommonResultEnum</span> <span class="kd">implements</span> <span class="n">ResultCode</span> <span class="o">{</span>
+
+    <span class="cm">/** 成功 */</span>
+    <span class="n">SUCCESS</span><span class="o">(</span><span class="s">&#34;00000&#34;</span><span class="o">,</span><span class="s">&#34;success&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户端错误 */</span>
+    <span class="n">CLIENT_ERROR</span><span class="o">(</span><span class="s">&#34;A0001&#34;</span><span class="o">,</span><span class="s">&#34;用户端错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户注册错误 */</span>
+    <span class="n">USER_REGISTRATION_ERROR</span><span class="o">(</span><span class="s">&#34;A0100&#34;</span><span class="o">,</span><span class="s">&#34;用户注册错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户未同意隐私协议 */</span>
+    <span class="n">THE_USER_DID_NOT_AGREE_TO_THE_PRIVACY_AGREEMENT</span><span class="o">(</span><span class="s">&#34;A0101&#34;</span><span class="o">,</span><span class="s">&#34;用户未同意隐私协议&#34;</span><span class="o">),</span>
+    <span class="cm">/** 注册国家或地区受限 */</span>
+    <span class="n">RESTRICTED_COUNTRY_OR_REGION_OF_REGISTRATION</span><span class="o">(</span><span class="s">&#34;A0102&#34;</span><span class="o">,</span><span class="s">&#34;注册国家或地区受限&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户名校验失败 */</span>
+    <span class="n">USERNAME_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0110&#34;</span><span class="o">,</span><span class="s">&#34;用户名校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户名已存在 */</span>
+    <span class="n">USERNAME_ALREADY_EXISTS</span><span class="o">(</span><span class="s">&#34;A0111&#34;</span><span class="o">,</span><span class="s">&#34;用户名已存在&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户名包含敏感词 */</span>
+    <span class="n">USERNAME_CONTAINS_SENSITIVE_WORDS</span><span class="o">(</span><span class="s">&#34;A0112&#34;</span><span class="o">,</span><span class="s">&#34;用户名包含敏感词&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户名包含特殊字符 */</span>
+    <span class="n">USERNAME_CONTAINS_SPECIAL_CHARACTERS</span><span class="o">(</span><span class="s">&#34;A0113&#34;</span><span class="o">,</span><span class="s">&#34;用户名包含特殊字符&#34;</span><span class="o">),</span>
+    <span class="cm">/** 密码校验失败 */</span>
+    <span class="n">PASSWORD_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0120&#34;</span><span class="o">,</span><span class="s">&#34;密码校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 密码长度不够 */</span>
+    <span class="n">PASSWORD_LENGTH_IS_NOT_ENOUGH</span><span class="o">(</span><span class="s">&#34;A0121&#34;</span><span class="o">,</span><span class="s">&#34;密码长度不够&#34;</span><span class="o">),</span>
+    <span class="cm">/** 密码强度不够 */</span>
+    <span class="n">THE_PASSWORD_IS_NOT_STRONG_ENOUGH</span><span class="o">(</span><span class="s">&#34;A0122&#34;</span><span class="o">,</span><span class="s">&#34;密码强度不够&#34;</span><span class="o">),</span>
+    <span class="cm">/** 校验码输入错误 */</span>
+    <span class="n">CHECK_CODE_INPUT_ERROR</span><span class="o">(</span><span class="s">&#34;A0130&#34;</span><span class="o">,</span><span class="s">&#34;校验码输入错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 短信校验码输入错误 */</span>
+    <span class="n">SMS_VERIFICATION_CODE_INPUT_ERROR</span><span class="o">(</span><span class="s">&#34;A0131&#34;</span><span class="o">,</span><span class="s">&#34;短信校验码输入错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 邮件校验码输入错误 */</span>
+    <span class="n">EMAIL_VERIFICATION_CODE_INPUT_ERROR</span><span class="o">(</span><span class="s">&#34;A0132&#34;</span><span class="o">,</span><span class="s">&#34;邮件校验码输入错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 语音校验码输入错误 */</span>
+    <span class="n">VOICE_CHECK_CODE_INPUT_ERROR</span><span class="o">(</span><span class="s">&#34;A0133&#34;</span><span class="o">,</span><span class="s">&#34;语音校验码输入错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户证件异常 */</span>
+    <span class="n">USER_ID_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0140&#34;</span><span class="o">,</span><span class="s">&#34;用户证件异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户证件类型未选择 */</span>
+    <span class="n">USER_ID_TYPE_IS_NOT_SELECTED</span><span class="o">(</span><span class="s">&#34;A0141&#34;</span><span class="o">,</span><span class="s">&#34;用户证件类型未选择&#34;</span><span class="o">),</span>
+    <span class="cm">/** 大陆身份证编号校验非法 */</span>
+    <span class="n">MAINLAND_ID_CARD_NUMBER_VERIFICATION_IS_ILLEGAL</span><span class="o">(</span><span class="s">&#34;A0142&#34;</span><span class="o">,</span><span class="s">&#34;大陆身份证编号校验非法&#34;</span><span class="o">),</span>
+    <span class="cm">/** 护照编号校验非法 */</span>
+    <span class="n">ILLEGAL_PASSPORT_NUMBER_VERIFICATION</span><span class="o">(</span><span class="s">&#34;A0143&#34;</span><span class="o">,</span><span class="s">&#34;护照编号校验非法&#34;</span><span class="o">),</span>
+    <span class="cm">/** 军官证编号校验非法 */</span>
+    <span class="n">MILITARY_OFFICER_ID_NUMBER_VERIFICATION_IS_ILLEGAL</span><span class="o">(</span><span class="s">&#34;A0144&#34;</span><span class="o">,</span><span class="s">&#34;军官证编号校验非法&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户基本信息校验失败 */</span>
+    <span class="n">USER_BASIC_INFORMATION_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0150&#34;</span><span class="o">,</span><span class="s">&#34;用户基本信息校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 手机格式校验失败 */</span>
+    <span class="n">PHONE_FORMAT_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0151&#34;</span><span class="o">,</span><span class="s">&#34;手机格式校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 地址格式校验失败 */</span>
+    <span class="n">ADDRESS_FORMAT_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0152&#34;</span><span class="o">,</span><span class="s">&#34;地址格式校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 邮箱格式校验失败 */</span>
+    <span class="n">EMAIL_FORMAT_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0153&#34;</span><span class="o">,</span><span class="s">&#34;邮箱格式校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户登陆异常 */</span>
+    <span class="n">USER_LOGIN_EXCEPTION</span><span class="o">(</span><span class="s">&#34;A0200&#34;</span><span class="o">,</span><span class="s">&#34;用户登陆异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户账户不存在 */</span>
+    <span class="n">USER_ACCOUNT_DOES_NOT_EXIST</span><span class="o">(</span><span class="s">&#34;A0201&#34;</span><span class="o">,</span><span class="s">&#34;用户账户不存在&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户账户被冻结 */</span>
+    <span class="n">USER_ACCOUNT_IS_FROZEN</span><span class="o">(</span><span class="s">&#34;A0202&#34;</span><span class="o">,</span><span class="s">&#34;用户账户被冻结&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户账户已作废 */</span>
+    <span class="n">USER_ACCOUNT_IS_INVALID</span><span class="o">(</span><span class="s">&#34;A0203&#34;</span><span class="o">,</span><span class="s">&#34;用户账户已作废&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户密码错误 */</span>
+    <span class="n">USER_PASSWORD_ERROR</span><span class="o">(</span><span class="s">&#34;A0210&#34;</span><span class="o">,</span><span class="s">&#34;用户密码错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户输入密码次数超限 */</span>
+    <span class="n">THE_NUMBER_OF_TIMES_THE_USER_ENTERS_THE_PASSWORD_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;A0211&#34;</span><span class="o">,</span><span class="s">&#34;用户输入密码次数超限&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户身份校验失败 */</span>
+    <span class="n">USER_IDENTITY_VERIFICATION_FAILED</span><span class="o">(</span><span class="s">&#34;A0220&#34;</span><span class="o">,</span><span class="s">&#34;用户身份校验失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户指纹识别失败 */</span>
+    <span class="n">USER_FINGERPRINT_RECOGNITION_FAILED</span><span class="o">(</span><span class="s">&#34;A0221&#34;</span><span class="o">,</span><span class="s">&#34;用户指纹识别失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户面容识别失败 */</span>
+    <span class="n">USER_FACE_RECOGNITION_FAILED</span><span class="o">(</span><span class="s">&#34;A0222&#34;</span><span class="o">,</span><span class="s">&#34;用户面容识别失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户未获得第三方登陆授权 */</span>
+    <span class="n">USER_IS_NOT_AUTHORIZED_TO_LOG_IN_BY_A_THIRD_PARTY</span><span class="o">(</span><span class="s">&#34;A0223&#34;</span><span class="o">,</span><span class="s">&#34;用户未获得第三方登陆授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户登陆已过期 */</span>
+    <span class="n">USER_LOGIN_HAS_EXPIRED</span><span class="o">(</span><span class="s">&#34;A0230&#34;</span><span class="o">,</span><span class="s">&#34;用户登陆已过期&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户验证码错误 */</span>
+    <span class="n">USER_VERIFICATION_CODE_ERROR</span><span class="o">(</span><span class="s">&#34;A0240&#34;</span><span class="o">,</span><span class="s">&#34;用户验证码错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户验证码尝试次数超限 */</span>
+    <span class="n">THE_NUMBER_OF_USER_VERIFICATION_CODE_ATTEMPTS_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;A0241&#34;</span><span class="o">,</span><span class="s">&#34;用户验证码尝试次数超限&#34;</span><span class="o">),</span>
+    <span class="cm">/** 访问权限异常 */</span>
+    <span class="n">ABNORMAL_ACCESS_RIGHTS</span><span class="o">(</span><span class="s">&#34;A0300&#34;</span><span class="o">,</span><span class="s">&#34;访问权限异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 访问未授权 */</span>
+    <span class="n">ACCESS_UNAUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0301&#34;</span><span class="o">,</span><span class="s">&#34;访问未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 正在授权中 */</span>
+    <span class="n">AUTHORIZING</span><span class="o">(</span><span class="s">&#34;A0302&#34;</span><span class="o">,</span><span class="s">&#34;正在授权中&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户授权申请被拒绝 */</span>
+    <span class="n">USER_AUTHORIZATION_REQUEST_REJECTED</span><span class="o">(</span><span class="s">&#34;A0303&#34;</span><span class="o">,</span><span class="s">&#34;用户授权申请被拒绝&#34;</span><span class="o">),</span>
+    <span class="cm">/** 因访问对象隐私设置被拦截 */</span>
+    <span class="n">BLOCKED_DUE_TO_PRIVACY_SETTINGS</span><span class="o">(</span><span class="s">&#34;A0310&#34;</span><span class="o">,</span><span class="s">&#34;因访问对象隐私设置被拦截&#34;</span><span class="o">),</span>
+    <span class="cm">/** 授权已过期 */</span>
+    <span class="n">AUTHORIZATION_HAS_EXPIRED</span><span class="o">(</span><span class="s">&#34;A0311&#34;</span><span class="o">,</span><span class="s">&#34;授权已过期&#34;</span><span class="o">),</span>
+    <span class="cm">/** 无权限使用API */</span>
+    <span class="n">NO_ACCESS_TO_API</span><span class="o">(</span><span class="s">&#34;A0312&#34;</span><span class="o">,</span><span class="s">&#34;无权限使用API&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户访问被拦截 */</span>
+    <span class="n">USER_ACCESS_IS_BLOCKED</span><span class="o">(</span><span class="s">&#34;A0320&#34;</span><span class="o">,</span><span class="s">&#34;用户访问被拦截&#34;</span><span class="o">),</span>
+    <span class="cm">/** 黑名单用户 */</span>
+    <span class="n">BLACKLISTED_USERS</span><span class="o">(</span><span class="s">&#34;A0321&#34;</span><span class="o">,</span><span class="s">&#34;黑名单用户&#34;</span><span class="o">),</span>
+    <span class="cm">/** 账号被冻结 */</span>
+    <span class="n">ACCOUNT_IS_FROZEN</span><span class="o">(</span><span class="s">&#34;A0322&#34;</span><span class="o">,</span><span class="s">&#34;账号被冻结&#34;</span><span class="o">),</span>
+    <span class="cm">/** 非法IP地址 */</span>
+    <span class="n">ILLEGAL_IP_ADDRESS</span><span class="o">(</span><span class="s">&#34;A0323&#34;</span><span class="o">,</span><span class="s">&#34;非法IP地址&#34;</span><span class="o">),</span>
+    <span class="cm">/** 网关访问受限 */</span>
+    <span class="n">GATEWAY_ACCESS_IS_RESTRICTED</span><span class="o">(</span><span class="s">&#34;A0324&#34;</span><span class="o">,</span><span class="s">&#34;网关访问受限&#34;</span><span class="o">),</span>
+    <span class="cm">/** 地域黑名单 */</span>
+    <span class="n">REGIONAL_BLACKLIST</span><span class="o">(</span><span class="s">&#34;A0325&#34;</span><span class="o">,</span><span class="s">&#34;地域黑名单&#34;</span><span class="o">),</span>
+    <span class="cm">/** 服务已欠费 */</span>
+    <span class="n">SERVICE_ARREARS</span><span class="o">(</span><span class="s">&#34;A0330&#34;</span><span class="o">,</span><span class="s">&#34;服务已欠费&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户签名异常 */</span>
+    <span class="n">USER_SIGNATURE_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0340&#34;</span><span class="o">,</span><span class="s">&#34;用户签名异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** RSA签名错误 */</span>
+    <span class="n">RSA_SIGNATURE_ERROR</span><span class="o">(</span><span class="s">&#34;A0341&#34;</span><span class="o">,</span><span class="s">&#34;RSA签名错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户请求参数错误 */</span>
+    <span class="n">USER_REQUEST_PARAMETER_ERROR</span><span class="o">(</span><span class="s">&#34;A0400&#34;</span><span class="o">,</span><span class="s">&#34;用户请求参数错误&#34;</span><span class="o">),</span>
+    <span class="cm">/** 包含非法恶意跳转链接 */</span>
+    <span class="n">CONTAINS_ILLEGAL_AND_MALICIOUS_REDIRECT_LINKS</span><span class="o">(</span><span class="s">&#34;A0401&#34;</span><span class="o">,</span><span class="s">&#34;包含非法恶意跳转链接&#34;</span><span class="o">),</span>
+    <span class="cm">/** 无效的用户输入 */</span>
+    <span class="n">INVALID_USER_INPUT</span><span class="o">(</span><span class="s">&#34;A0402&#34;</span><span class="o">,</span><span class="s">&#34;无效的用户输入&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求必填参数为空 */</span>
+    <span class="n">REQUIRED_PARAMETERS_ARE_EMPTY</span><span class="o">(</span><span class="s">&#34;A0410&#34;</span><span class="o">,</span><span class="s">&#34;请求必填参数为空&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户订单号为空 */</span>
+    <span class="n">USER_ORDER_NUMBER_IS_EMPTY</span><span class="o">(</span><span class="s">&#34;A0411&#34;</span><span class="o">,</span><span class="s">&#34;用户订单号为空&#34;</span><span class="o">),</span>
+    <span class="cm">/** 订购数量为空 */</span>
+    <span class="n">THE_ORDER_QUANTITY_IS_EMPTY</span><span class="o">(</span><span class="s">&#34;A0412&#34;</span><span class="o">,</span><span class="s">&#34;订购数量为空&#34;</span><span class="o">),</span>
+    <span class="cm">/** 缺少时间戳参数 */</span>
+    <span class="n">MISSING_TIMESTAMP_PARAMETER</span><span class="o">(</span><span class="s">&#34;A0413&#34;</span><span class="o">,</span><span class="s">&#34;缺少时间戳参数&#34;</span><span class="o">),</span>
+    <span class="cm">/** 非法的时间戳参数 */</span>
+    <span class="n">ILLEGAL_TIMESTAMP_PARAMETER</span><span class="o">(</span><span class="s">&#34;A0414&#34;</span><span class="o">,</span><span class="s">&#34;非法的时间戳参数&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求参数值超出允许的范围 */</span>
+    <span class="n">REQUEST_PARAMETER_VALUE_EXCEEDS_THE_ALLOWED_RANGE</span><span class="o">(</span><span class="s">&#34;A0420&#34;</span><span class="o">,</span><span class="s">&#34;请求参数值超出允许的范围&#34;</span><span class="o">),</span>
+    <span class="cm">/** 参数格式不匹配 */</span>
+    <span class="n">PARAMETER_FORMAT_DOES_NOT_MATCH</span><span class="o">(</span><span class="s">&#34;A0421&#34;</span><span class="o">,</span><span class="s">&#34;参数格式不匹配&#34;</span><span class="o">),</span>
+    <span class="cm">/** 地址不在服务范围 */</span>
+    <span class="n">ADDRESS_NOT_IN_SERVICE</span><span class="o">(</span><span class="s">&#34;A0422&#34;</span><span class="o">,</span><span class="s">&#34;地址不在服务范围&#34;</span><span class="o">),</span>
+    <span class="cm">/** 时间不在服务范围 */</span>
+    <span class="n">TIME_IS_OUT_OF_SERVICE</span><span class="o">(</span><span class="s">&#34;A0423&#34;</span><span class="o">,</span><span class="s">&#34;时间不在服务范围&#34;</span><span class="o">),</span>
+    <span class="cm">/** 金额超出限制 */</span>
+    <span class="n">AMOUNT_EXCEEDS_LIMIT</span><span class="o">(</span><span class="s">&#34;A0424&#34;</span><span class="o">,</span><span class="s">&#34;金额超出限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 数量超出限制 */</span>
+    <span class="n">QUANTITY_EXCEEDS_LIMIT</span><span class="o">(</span><span class="s">&#34;A0425&#34;</span><span class="o">,</span><span class="s">&#34;数量超出限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求批量处理总个数超出限制 */</span>
+    <span class="n">TOTAL_NUMBER_OF_REQUESTS_FOR_BATCH_PROCESSING</span><span class="o">(</span><span class="s">&#34;A0426&#34;</span><span class="o">,</span><span class="s">&#34;请求批量处理总个数超出限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求JSON解析失败 */</span>
+    <span class="n">REQUEST_JSON_PARSING_FAILED</span><span class="o">(</span><span class="s">&#34;A0427&#34;</span><span class="o">,</span><span class="s">&#34;请求JSON解析失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户输入内容非法 */</span>
+    <span class="n">USER_INPUT_IS_ILLEGAL</span><span class="o">(</span><span class="s">&#34;A0430&#34;</span><span class="o">,</span><span class="s">&#34;用户输入内容非法&#34;</span><span class="o">),</span>
+    <span class="cm">/** 包含违禁敏感词 */</span>
+    <span class="n">CONTAINS_PROHIBITED_SENSITIVE_WORDS</span><span class="o">(</span><span class="s">&#34;A0431&#34;</span><span class="o">,</span><span class="s">&#34;包含违禁敏感词&#34;</span><span class="o">),</span>
+    <span class="cm">/** 图片包含违禁信息 */</span>
+    <span class="n">PICTURE_CONTAINS_PROHIBITED_INFORMATION</span><span class="o">(</span><span class="s">&#34;A0432&#34;</span><span class="o">,</span><span class="s">&#34;图片包含违禁信息&#34;</span><span class="o">),</span>
+    <span class="cm">/** 文件侵犯版权 */</span>
+    <span class="n">FILE_INFRINGES_COPYRIGHT</span><span class="o">(</span><span class="s">&#34;A0433&#34;</span><span class="o">,</span><span class="s">&#34;文件侵犯版权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户操作异常 */</span>
+    <span class="n">USER_OPERATION_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0440&#34;</span><span class="o">,</span><span class="s">&#34;用户操作异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户支付超时 */</span>
+    <span class="n">USER_PAYMENT_TIMEOUT</span><span class="o">(</span><span class="s">&#34;A0441&#34;</span><span class="o">,</span><span class="s">&#34;用户支付超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 确认订单超时 */</span>
+    <span class="n">CONFIRM_ORDER_TIMEOUT</span><span class="o">(</span><span class="s">&#34;A0442&#34;</span><span class="o">,</span><span class="s">&#34;确认订单超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 订单已关闭 */</span>
+    <span class="n">ORDER_CLOSED</span><span class="o">(</span><span class="s">&#34;A0443&#34;</span><span class="o">,</span><span class="s">&#34;订单已关闭&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户请求服务异常 */</span>
+    <span class="n">USER_REQUEST_SERVICE_EXCEPTION</span><span class="o">(</span><span class="s">&#34;A0500&#34;</span><span class="o">,</span><span class="s">&#34;用户请求服务异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求次数超出限制 */</span>
+    <span class="n">THE_NUMBER_OF_REQUESTS_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;A0501&#34;</span><span class="o">,</span><span class="s">&#34;请求次数超出限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 请求并发数超出限制 */</span>
+    <span class="n">THE_NUMBER_OF_CONCURRENT_REQUESTS_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;A0502&#34;</span><span class="o">,</span><span class="s">&#34;请求并发数超出限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户操作请等待 */</span>
+    <span class="n">USER_OPERATION_PLEASE_WAIT</span><span class="o">(</span><span class="s">&#34;A0503&#34;</span><span class="o">,</span><span class="s">&#34;用户操作请等待&#34;</span><span class="o">),</span>
+    <span class="cm">/** WebSocket连接异常 */</span>
+    <span class="n">WEBSOCKET_CONNECTION_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0504&#34;</span><span class="o">,</span><span class="s">&#34;WebSocket连接异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** WebSocket连接断开 */</span>
+    <span class="n">WEBSOCKET_CONNECTION_DISCONNECTED</span><span class="o">(</span><span class="s">&#34;A0505&#34;</span><span class="o">,</span><span class="s">&#34;WebSocket连接断开&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户重复请求 */</span>
+    <span class="n">USER_REPEATED_REQUEST</span><span class="o">(</span><span class="s">&#34;A0506&#34;</span><span class="o">,</span><span class="s">&#34;用户重复请求&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户资源异常 */</span>
+    <span class="n">USER_RESOURCE_EXCEPTION</span><span class="o">(</span><span class="s">&#34;A0600&#34;</span><span class="o">,</span><span class="s">&#34;用户资源异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 账户余额不足 */</span>
+    <span class="n">INSUFFICIENT_ACCOUNT_BALANCE</span><span class="o">(</span><span class="s">&#34;A0601&#34;</span><span class="o">,</span><span class="s">&#34;账户余额不足&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户磁盘空间不足 */</span>
+    <span class="n">INSUFFICIENT_USER_DISK_SPACE</span><span class="o">(</span><span class="s">&#34;A0602&#34;</span><span class="o">,</span><span class="s">&#34;用户磁盘空间不足&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户内存空间不足 */</span>
+    <span class="n">INSUFFICIENT_USER_MEMORY</span><span class="o">(</span><span class="s">&#34;A0603&#34;</span><span class="o">,</span><span class="s">&#34;用户内存空间不足&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户OSS容量不足 */</span>
+    <span class="n">INSUFFICIENT_USER_OSS_CAPACITY</span><span class="o">(</span><span class="s">&#34;A0604&#34;</span><span class="o">,</span><span class="s">&#34;用户OSS容量不足&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传文件异常 */</span>
+    <span class="n">USER_UPLOAD_FILE_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0700&#34;</span><span class="o">,</span><span class="s">&#34;用户上传文件异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传文件类型不匹配 */</span>
+    <span class="n">USER_UPLOAD_FILE_TYPE_DOES_NOT_MATCH</span><span class="o">(</span><span class="s">&#34;A0701&#34;</span><span class="o">,</span><span class="s">&#34;用户上传文件类型不匹配&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传文件太大 */</span>
+    <span class="n">USER_UPLOAD_FILE_IS_TOO_LARGE</span><span class="o">(</span><span class="s">&#34;A0702&#34;</span><span class="o">,</span><span class="s">&#34;用户上传文件太大&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传图片太大 */</span>
+    <span class="n">USER_UPLOAD_IMAGE_IS_TOO_LARGE</span><span class="o">(</span><span class="s">&#34;A0703&#34;</span><span class="o">,</span><span class="s">&#34;用户上传图片太大&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传视频太大 */</span>
+    <span class="n">USER_UPLOADED_VIDEO_IS_TOO_LARGE</span><span class="o">(</span><span class="s">&#34;A0704&#34;</span><span class="o">,</span><span class="s">&#34;用户上传视频太大&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户上传压缩文件太大 */</span>
+    <span class="n">THE_COMPRESSED_FILE_UPLOADED_BY_THE_USER_IS_TOO_LARGE</span><span class="o">(</span><span class="s">&#34;A0705&#34;</span><span class="o">,</span><span class="s">&#34;用户上传压缩文件太大&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户当前版本异常 */</span>
+    <span class="n">THE_USER_S_CURRENT_VERSION_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A0800&#34;</span><span class="o">,</span><span class="s">&#34;用户当前版本异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户安装版本与系统不匹配 */</span>
+    <span class="n">THE_USER_INSTALLED_VERSION_DOES_NOT_MATCH_THE_SYSTEM</span><span class="o">(</span><span class="s">&#34;A0801&#34;</span><span class="o">,</span><span class="s">&#34;用户安装版本与系统不匹配&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户安装版本过低 */</span>
+    <span class="n">USER_INSTALLED_VERSION_IS_TOO_LOW</span><span class="o">(</span><span class="s">&#34;A0802&#34;</span><span class="o">,</span><span class="s">&#34;用户安装版本过低&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户安装版本过高 */</span>
+    <span class="n">USER_INSTALLED_VERSION_IS_TOO_HIGH</span><span class="o">(</span><span class="s">&#34;A0803&#34;</span><span class="o">,</span><span class="s">&#34;用户安装版本过高&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户安装版本已过期 */</span>
+    <span class="n">USER_INSTALLED_VERSION_HAS_EXPIRED</span><span class="o">(</span><span class="s">&#34;A0804&#34;</span><span class="o">,</span><span class="s">&#34;用户安装版本已过期&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户API请求版本不匹配 */</span>
+    <span class="n">USER_API_REQUEST_VERSION_DOES_NOT_MATCH</span><span class="o">(</span><span class="s">&#34;A0805&#34;</span><span class="o">,</span><span class="s">&#34;用户API请求版本不匹配&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户API请求版本过高 */</span>
+    <span class="n">USER_API_REQUEST_VERSION_IS_TOO_HIGH</span><span class="o">(</span><span class="s">&#34;A0806&#34;</span><span class="o">,</span><span class="s">&#34;用户API请求版本过高&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户API请求版本过低 */</span>
+    <span class="n">USER_API_REQUEST_VERSION_IS_TOO_LOW</span><span class="o">(</span><span class="s">&#34;A0807&#34;</span><span class="o">,</span><span class="s">&#34;用户API请求版本过低&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户隐私未授权 */</span>
+    <span class="n">USER_PRIVACY_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0900&#34;</span><span class="o">,</span><span class="s">&#34;用户隐私未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户隐私未签署 */</span>
+    <span class="n">USER_PRIVACY_NOT_SIGNED</span><span class="o">(</span><span class="s">&#34;A0901&#34;</span><span class="o">,</span><span class="s">&#34;用户隐私未签署&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户摄像头未授权 */</span>
+    <span class="n">USER_WEBCAMS_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0902&#34;</span><span class="o">,</span><span class="s">&#34;用户摄像头未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户相机未授权 */</span>
+    <span class="n">USER_CAMERA_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0903&#34;</span><span class="o">,</span><span class="s">&#34;用户相机未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户图片库未授权 */</span>
+    <span class="n">USER_IMAGE_LIBRARY_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0904&#34;</span><span class="o">,</span><span class="s">&#34;用户图片库未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户文件未授权 */</span>
+    <span class="n">USER_FILE_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0905&#34;</span><span class="o">,</span><span class="s">&#34;用户文件未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户位置信息未授权 */</span>
+    <span class="n">USER_LOCATION_INFORMATION_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0906&#34;</span><span class="o">,</span><span class="s">&#34;用户位置信息未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户通讯录未授权 */</span>
+    <span class="n">USER_ADDRESS_BOOK_IS_NOT_AUTHORIZED</span><span class="o">(</span><span class="s">&#34;A0907&#34;</span><span class="o">,</span><span class="s">&#34;用户通讯录未授权&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户设备异常 */</span>
+    <span class="n">ABNORMAL_USER_EQUIPMENT</span><span class="o">(</span><span class="s">&#34;A1000&#34;</span><span class="o">,</span><span class="s">&#34;用户设备异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户相机异常 */</span>
+    <span class="n">USER_CAMERA_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A1001&#34;</span><span class="o">,</span><span class="s">&#34;用户相机异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户麦克风异常 */</span>
+    <span class="n">USER_MICROPHONE_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A1002&#34;</span><span class="o">,</span><span class="s">&#34;用户麦克风异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户听筒异常 */</span>
+    <span class="n">THE_USER_S_EARPIECE_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A1003&#34;</span><span class="o">,</span><span class="s">&#34;用户听筒异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户扬声器异常 */</span>
+    <span class="n">USER_SPEAKER_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A1004&#34;</span><span class="o">,</span><span class="s">&#34;用户扬声器异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 用户GPS定位异常 */</span>
+    <span class="n">USER_GPS_POSITIONING_IS_ABNORMAL</span><span class="o">(</span><span class="s">&#34;A1005&#34;</span><span class="o">,</span><span class="s">&#34;用户GPS定位异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统执行出错 */</span>
+    <span class="n">SYSTEM_EXECUTION_ERROR</span><span class="o">(</span><span class="s">&#34;B0001&#34;</span><span class="o">,</span><span class="s">&#34;系统执行出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统执行超时 */</span>
+    <span class="n">SYSTEM_EXECUTION_TIMEOUT</span><span class="o">(</span><span class="s">&#34;B0100&#34;</span><span class="o">,</span><span class="s">&#34;系统执行超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统订单处理超时 */</span>
+    <span class="n">SYSTEM_ORDER_PROCESSING_TIMEOUT</span><span class="o">(</span><span class="s">&#34;B0101&#34;</span><span class="o">,</span><span class="s">&#34;系统订单处理超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统容灾功能被触发 */</span>
+    <span class="n">SYSTEM_DISASTER_RECOVERY_FUNCTION_IS_TRIGGERED</span><span class="o">(</span><span class="s">&#34;B0200&#34;</span><span class="o">,</span><span class="s">&#34;系统容灾功能被触发&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统限流 */</span>
+    <span class="n">SYSTEM_CURRENT_LIMIT</span><span class="o">(</span><span class="s">&#34;B0210&#34;</span><span class="o">,</span><span class="s">&#34;系统限流&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统功能降级 */</span>
+    <span class="n">SYSTEM_FUNCTION_DEGRADATION</span><span class="o">(</span><span class="s">&#34;B0220&#34;</span><span class="o">,</span><span class="s">&#34;系统功能降级&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统资源异常 */</span>
+    <span class="n">ABNORMAL_SYSTEM_RESOURCES</span><span class="o">(</span><span class="s">&#34;B0300&#34;</span><span class="o">,</span><span class="s">&#34;系统资源异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统资源耗尽 */</span>
+    <span class="n">SYSTEM_RESOURCES_ARE_EXHAUSTED</span><span class="o">(</span><span class="s">&#34;B0310&#34;</span><span class="o">,</span><span class="s">&#34;系统资源耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统磁盘空间耗尽 */</span>
+    <span class="n">SYSTEM_RUNNING_OUT_OF_DISK_SPACE</span><span class="o">(</span><span class="s">&#34;B0311&#34;</span><span class="o">,</span><span class="s">&#34;系统磁盘空间耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统内存耗尽 */</span>
+    <span class="n">SYSTEM_MEMORY_IS_EXHAUSTED</span><span class="o">(</span><span class="s">&#34;B0312&#34;</span><span class="o">,</span><span class="s">&#34;系统内存耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 文件句柄耗尽 */</span>
+    <span class="n">FILE_HANDLE_EXHAUSTED</span><span class="o">(</span><span class="s">&#34;B0313&#34;</span><span class="o">,</span><span class="s">&#34;文件句柄耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统连接池耗尽 */</span>
+    <span class="n">SYSTEM_CONNECTION_POOL_EXHAUSTED</span><span class="o">(</span><span class="s">&#34;B0314&#34;</span><span class="o">,</span><span class="s">&#34;系统连接池耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统线程池耗尽 */</span>
+    <span class="n">SYSTEM_THREAD_POOL_EXHAUSTED</span><span class="o">(</span><span class="s">&#34;B0315&#34;</span><span class="o">,</span><span class="s">&#34;系统线程池耗尽&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统资源访问异常 */</span>
+    <span class="n">ABNORMAL_ACCESS_TO_SYSTEM_RESOURCES</span><span class="o">(</span><span class="s">&#34;B0320&#34;</span><span class="o">,</span><span class="s">&#34;系统资源访问异常&#34;</span><span class="o">),</span>
+    <span class="cm">/** 系统读取磁盘文件失败 */</span>
+    <span class="n">THE_SYSTEM_FAILED_TO_READ_THE_DISK_FILE</span><span class="o">(</span><span class="s">&#34;B0321&#34;</span><span class="o">,</span><span class="s">&#34;系统读取磁盘文件失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 调用第三方服务出错 */</span>
+    <span class="n">ERROR_CALLING_THIRD_PARTY_SERVICE</span><span class="o">(</span><span class="s">&#34;C0001&#34;</span><span class="o">,</span><span class="s">&#34;调用第三方服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 中间件服务出错 */</span>
+    <span class="n">MIDDLEWARE_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0100&#34;</span><span class="o">,</span><span class="s">&#34;中间件服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** RPC服务出错 */</span>
+    <span class="n">RPC_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0110&#34;</span><span class="o">,</span><span class="s">&#34;RPC服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** RPC服务未找到 */</span>
+    <span class="n">RPC_SERVICE_NOT_FOUND</span><span class="o">(</span><span class="s">&#34;C0111&#34;</span><span class="o">,</span><span class="s">&#34;RPC服务未找到&#34;</span><span class="o">),</span>
+    <span class="cm">/** RPC服务未注册 */</span>
+    <span class="n">RPC_SERVICE_IS_NOT_REGISTERED</span><span class="o">(</span><span class="s">&#34;C0112&#34;</span><span class="o">,</span><span class="s">&#34;RPC服务未注册&#34;</span><span class="o">),</span>
+    <span class="cm">/** 接口不存在 */</span>
+    <span class="n">INTERFACE_DOES_NOT_EXIST</span><span class="o">(</span><span class="s">&#34;C0113&#34;</span><span class="o">,</span><span class="s">&#34;接口不存在&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息服务出错 */</span>
+    <span class="n">MESSAGE_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0120&#34;</span><span class="o">,</span><span class="s">&#34;消息服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息投递出错 */</span>
+    <span class="n">MESSAGE_DELIVERY_ERROR</span><span class="o">(</span><span class="s">&#34;C0121&#34;</span><span class="o">,</span><span class="s">&#34;消息投递出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息消费出错 */</span>
+    <span class="n">MESSAGE_CONSUMPTION_ERROR</span><span class="o">(</span><span class="s">&#34;C0122&#34;</span><span class="o">,</span><span class="s">&#34;消息消费出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息订阅出错 */</span>
+    <span class="n">MESSAGE_SUBSCRIPTION_ERROR</span><span class="o">(</span><span class="s">&#34;C0123&#34;</span><span class="o">,</span><span class="s">&#34;消息订阅出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息分组未查到 */</span>
+    <span class="n">MESSAGE_GROUP_NOT_FOUND</span><span class="o">(</span><span class="s">&#34;C0124&#34;</span><span class="o">,</span><span class="s">&#34;消息分组未查到&#34;</span><span class="o">),</span>
+    <span class="cm">/** 缓存服务出错 */</span>
+    <span class="n">CACHE_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0130&#34;</span><span class="o">,</span><span class="s">&#34;缓存服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** key长度超过限制 */</span>
+    <span class="n">THE_KEY_LENGTH_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;C0131&#34;</span><span class="o">,</span><span class="s">&#34;key长度超过限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** value长度超过限制 */</span>
+    <span class="n">THE_VALUE_LENGTH_EXCEEDS_THE_LIMIT</span><span class="o">(</span><span class="s">&#34;C0132&#34;</span><span class="o">,</span><span class="s">&#34;value长度超过限制&#34;</span><span class="o">),</span>
+    <span class="cm">/** 存储容量已满 */</span>
+    <span class="n">STORAGE_CAPACITY_IS_FULL</span><span class="o">(</span><span class="s">&#34;C0133&#34;</span><span class="o">,</span><span class="s">&#34;存储容量已满&#34;</span><span class="o">),</span>
+    <span class="cm">/** 不支持的数据格式 */</span>
+    <span class="n">UNSUPPORTED_DATA_FORMAT</span><span class="o">(</span><span class="s">&#34;C0134&#34;</span><span class="o">,</span><span class="s">&#34;不支持的数据格式&#34;</span><span class="o">),</span>
+    <span class="cm">/** 配置服务出错 */</span>
+    <span class="n">ERROR_CONFIGURING_SERVICE</span><span class="o">(</span><span class="s">&#34;C0140&#34;</span><span class="o">,</span><span class="s">&#34;配置服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 网络资源服务出错 */</span>
+    <span class="n">NETWORK_RESOURCE_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0150&#34;</span><span class="o">,</span><span class="s">&#34;网络资源服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** VPN服务出错 */</span>
+    <span class="n">VPN_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0151&#34;</span><span class="o">,</span><span class="s">&#34;VPN服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** CDN服务出错 */</span>
+    <span class="n">CDN_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0152&#34;</span><span class="o">,</span><span class="s">&#34;CDN服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 域名解析服务出错 */</span>
+    <span class="n">DOMAIN_NAME_RESOLUTION_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0153&#34;</span><span class="o">,</span><span class="s">&#34;域名解析服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 网关服务出错 */</span>
+    <span class="n">GATEWAY_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0154&#34;</span><span class="o">,</span><span class="s">&#34;网关服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 第三方系统执行超时 */</span>
+    <span class="n">THIRD_PARTY_SYSTEM_EXECUTION_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0200&#34;</span><span class="o">,</span><span class="s">&#34;第三方系统执行超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** RPC执行超时 */</span>
+    <span class="n">RPC_EXECUTION_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0210&#34;</span><span class="o">,</span><span class="s">&#34;RPC执行超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 消息投递超时 */</span>
+    <span class="n">MESSAGE_DELIVERY_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0220&#34;</span><span class="o">,</span><span class="s">&#34;消息投递超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 缓存服务超时 */</span>
+    <span class="n">CACHE_SERVICE_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0230&#34;</span><span class="o">,</span><span class="s">&#34;缓存服务超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 配置服务超时 */</span>
+    <span class="n">CONFIGURE_SERVICE_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0240&#34;</span><span class="o">,</span><span class="s">&#34;配置服务超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 数据库服务超时 */</span>
+    <span class="n">DATABASE_SERVICE_TIMEOUT</span><span class="o">(</span><span class="s">&#34;C0250&#34;</span><span class="o">,</span><span class="s">&#34;数据库服务超时&#34;</span><span class="o">),</span>
+    <span class="cm">/** 数据库服务出错 */</span>
+    <span class="n">DATABASE_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0300&#34;</span><span class="o">,</span><span class="s">&#34;数据库服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 表不存在 */</span>
+    <span class="n">TABLE_DOES_NOT_EXIST</span><span class="o">(</span><span class="s">&#34;C0311&#34;</span><span class="o">,</span><span class="s">&#34;表不存在&#34;</span><span class="o">),</span>
+    <span class="cm">/** 列不存在 */</span>
+    <span class="n">COLUMN_DOES_NOT_EXIST</span><span class="o">(</span><span class="s">&#34;C0312&#34;</span><span class="o">,</span><span class="s">&#34;列不存在&#34;</span><span class="o">),</span>
+    <span class="cm">/** 多表关联中存在多个相同名称的列 */</span>
+    <span class="n">SAME_NAME_IN_A_MULTI_TABLE_ASSOCIATION</span><span class="o">(</span><span class="s">&#34;C0321&#34;</span><span class="o">,</span><span class="s">&#34;多表关联中存在多个相同名称的列&#34;</span><span class="o">),</span>
+    <span class="cm">/** 数据库死锁 */</span>
+    <span class="n">DATABASE_DEADLOCK</span><span class="o">(</span><span class="s">&#34;C0331&#34;</span><span class="o">,</span><span class="s">&#34;数据库死锁&#34;</span><span class="o">),</span>
+    <span class="cm">/** 主键冲突 */</span>
+    <span class="n">PRIMARY_KEY_CONFLICT</span><span class="o">(</span><span class="s">&#34;C0341&#34;</span><span class="o">,</span><span class="s">&#34;主键冲突&#34;</span><span class="o">),</span>
+    <span class="cm">/** 第三方容灾系统被触发 */</span>
+    <span class="n">THE_THIRD_PARTY_DISASTER_RECOVERY_SYSTEM_IS_TRIGGERED</span><span class="o">(</span><span class="s">&#34;C0400&#34;</span><span class="o">,</span><span class="s">&#34;第三方容灾系统被触发&#34;</span><span class="o">),</span>
+    <span class="cm">/** 第三方系统限流 */</span>
+    <span class="n">THIRD_PARTY_SYSTEM_CURRENT_LIMIT</span><span class="o">(</span><span class="s">&#34;C0401&#34;</span><span class="o">,</span><span class="s">&#34;第三方系统限流&#34;</span><span class="o">),</span>
+    <span class="cm">/** 第三方功能降级 */</span>
+    <span class="n">DEGRADATION_OF_THIRD_PARTY_FUNCTIONS</span><span class="o">(</span><span class="s">&#34;C0402&#34;</span><span class="o">,</span><span class="s">&#34;第三方功能降级&#34;</span><span class="o">),</span>
+    <span class="cm">/** 通知服务出错 */</span>
+    <span class="n">NOTIFICATION_SERVICE_ERROR</span><span class="o">(</span><span class="s">&#34;C0500&#34;</span><span class="o">,</span><span class="s">&#34;通知服务出错&#34;</span><span class="o">),</span>
+    <span class="cm">/** 短信提醒服务失败 */</span>
+    <span class="n">SMS_REMINDER_SERVICE_FAILED</span><span class="o">(</span><span class="s">&#34;C0501&#34;</span><span class="o">,</span><span class="s">&#34;短信提醒服务失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 语音提醒服务失败 */</span>
+    <span class="n">VOICE_REMINDER_SERVICE_FAILED</span><span class="o">(</span><span class="s">&#34;C0502&#34;</span><span class="o">,</span><span class="s">&#34;语音提醒服务失败&#34;</span><span class="o">),</span>
+    <span class="cm">/** 邮件提醒服务失败 */</span>
+    <span class="n">EMAIL_REMINDER_SERVICE_FAILED</span><span class="o">(</span><span class="s">&#34;C0503&#34;</span><span class="o">,</span><span class="s">&#34;邮件提醒服务失败&#34;</span><span class="o">);</span>
+
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">code</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">msg</span><span class="o">;</span>
+
+    <span class="n">CommonResultEnum</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">,</span> <span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">code</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCode</span><span class="o">(</span><span class="n">String</span> <span class="n">code</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">code</span> <span class="o">=</span> <span class="n">code</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getMsg</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMsg</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">msg</span> <span class="o">=</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="baseresult-基本结果类">BaseResult 基本结果类</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">
+<span class="cm">/**
+</span><span class="cm"> * 基本结果类
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jonny.Chang  ( https://jonnyhub.com )  @jonny6015
+</span><span class="cm"> */</span>
+<span class="nd">@Getter</span>
+<span class="nd">@Setter</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="n">501206838199376258L</span><span class="o">;</span>
+
+    <span class="cm">/** 操作结果 默认false */</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">success</span><span class="o">;</span>
+    <span class="cm">/** 操作结果码 */</span>
+    <span class="kd">private</span> <span class="n">String</span>  <span class="n">resultCode</span><span class="o">;</span>
+    <span class="cm">/** 提示信息 */</span>
+    <span class="kd">private</span> <span class="n">String</span>  <span class="n">resultMsg</span><span class="o">;</span>
+    <span class="cm">/** 对象 */</span>
+    <span class="kd">private</span> <span class="n">T</span>       <span class="n">data</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BaseResult</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">success</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param success    成功
+</span><span class="cm">     * @param resultCode 结果代码
+</span><span class="cm">     * @param data       数据
+</span><span class="cm">     * @param resultMsg  结果味精
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BaseResult</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">success</span><span class="o">,</span> <span class="n">String</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">T</span> <span class="n">data</span><span class="o">,</span> <span class="n">String</span> <span class="n">resultMsg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">success</span> <span class="o">=</span> <span class="n">success</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">resultCode</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultMsg</span> <span class="o">=</span> <span class="n">resultMsg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param codeEnum the code enum
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BaseResult</span><span class="o">(</span><span class="n">CommonResultEnum</span> <span class="n">codeEnum</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">success</span> <span class="o">=</span> <span class="n">codeEnum</span> <span class="o">==</span> <span class="n">CommonResultEnum</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">codeEnum</span><span class="o">.</span><span class="na">getCode</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultMsg</span> <span class="o">=</span> <span class="n">codeEnum</span><span class="o">.</span><span class="na">getMsg</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param codeEnum the code enum
+</span><span class="cm">     * @param data     the data
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BaseResult</span><span class="o">(</span><span class="n">CommonResultEnum</span> <span class="n">codeEnum</span><span class="o">,</span> <span class="n">T</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">success</span> <span class="o">=</span> <span class="n">codeEnum</span> <span class="o">==</span> <span class="n">CommonResultEnum</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">codeEnum</span><span class="o">.</span><span class="na">getCode</span><span class="o">();</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultMsg</span> <span class="o">=</span> <span class="n">codeEnum</span><span class="o">.</span><span class="na">getMsg</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="basepageresult-分页结果统一处理类">BasePageResult 分页结果统一处理类</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">
+<span class="cm">/**
+</span><span class="cm"> * 分页结果统一处理类
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jonny.Chang  ( https://jonnyhub.com )  @jonny6015
+</span><span class="cm"> */</span>
+<span class="nd">@Getter</span>
+<span class="nd">@Setter</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BasePageResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">BaseResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 当前页码
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageStart</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 每页条数
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 总条目数
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">totalCount</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BasePageResult</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param success    the success
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     * @param data       the data
+</span><span class="cm">     * @param resultMsg  the msg
+</span><span class="cm">     * @param pageStart  the current page
+</span><span class="cm">     * @param pageSize   the page size
+</span><span class="cm">     * @param totalCount the total
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BasePageResult</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">success</span><span class="o">,</span> <span class="n">String</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">T</span> <span class="n">data</span><span class="o">,</span> <span class="n">String</span> <span class="n">resultMsg</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageStart</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">,</span> <span class="kt">int</span> <span class="n">totalCount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">success</span><span class="o">,</span> <span class="n">resultCode</span><span class="o">,</span> <span class="n">data</span><span class="o">,</span> <span class="n">resultMsg</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageStart</span> <span class="o">=</span> <span class="n">pageStart</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageSize</span> <span class="o">=</span> <span class="n">pageSize</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">totalCount</span> <span class="o">=</span> <span class="n">totalCount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">BasePageResult</span><span class="o">(</span><span class="n">CommonResultEnum</span> <span class="n">resultCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">resultCode</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="serviceresult-service结果">ServiceResult Service结果</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm"> * 服务结果
+</span><span class="cm"> *
+</span><span class="cm"> * @author Jonny.Chang  ( https://jonnyhub.com )  @jonny6015
+</span><span class="cm"> */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ServiceResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 处理结果
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="n">T</span> <span class="n">data</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 结果码
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="n">ResultCodeEnum</span> <span class="n">resultCode</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 结果码扩展描述
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">resultMsg</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 默认构造函数
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServiceResult</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 构造函数. 默认构建成功数据
+</span><span class="cm">     *
+</span><span class="cm">     * @param data the data
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServiceResult</span><span class="o">(</span><span class="n">T</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">ResultCodeEnum</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 构造函数. 多用于构建失败结果
+</span><span class="cm">     *
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServiceResult</span><span class="o">(</span><span class="n">ResultCodeEnum</span> <span class="n">resultCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">resultCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 构造函数.
+</span><span class="cm">     *
+</span><span class="cm">     * @param data       the data
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServiceResult</span><span class="o">(</span><span class="n">T</span> <span class="n">data</span><span class="o">,</span> <span class="n">ResultCodeEnum</span> <span class="n">resultCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">resultCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isSuccess</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">ResultCodeEnum</span><span class="o">.</span><span class="na">SUCCESS</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">resultCode</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Gets get data.
+</span><span class="cm">     *
+</span><span class="cm">     * @return the get data
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="n">T</span> <span class="nf">getData</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Sets set data.
+</span><span class="cm">     *
+</span><span class="cm">     * @param data the data
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setData</span><span class="o">(</span><span class="n">T</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Gets get result code.
+</span><span class="cm">     *
+</span><span class="cm">     * @return the get result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="n">ResultCodeEnum</span> <span class="nf">getResultCode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">resultCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Sets set result code.
+</span><span class="cm">     *
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setResultCode</span><span class="o">(</span><span class="n">ResultCodeEnum</span> <span class="n">resultCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">=</span> <span class="n">resultCode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getResultMsg</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="kc">null</span> <span class="o">!=</span> <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span> <span class="o">&amp;&amp;</span> <span class="n">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">resultMsg</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">resultCode</span><span class="o">.</span><span class="na">getMsg</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;:&#34;</span> <span class="o">+</span> <span class="n">resultMsg</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">resultMsg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setResultMsg</span><span class="o">(</span><span class="n">String</span> <span class="n">resultMsg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">resultMsg</span> <span class="o">=</span> <span class="n">resultMsg</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="servicepageresult-service-分页结果统一处理类">ServicePageResult Service 分页结果统一处理类</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ServicePageResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="kd">extends</span> <span class="n">ServiceResult</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 当前页码
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageNo</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 每页条数
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 总条目数
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">totalCount</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServicePageResult</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param data       the data
+</span><span class="cm">     * @param pageNo     the current page
+</span><span class="cm">     * @param pageSize   the page size
+</span><span class="cm">     * @param totalCount the total
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServicePageResult</span><span class="o">(</span><span class="n">T</span> <span class="n">data</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageNo</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pageSize</span><span class="o">,</span> <span class="kt">int</span> <span class="n">totalCount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageNo</span> <span class="o">=</span> <span class="n">pageNo</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageSize</span> <span class="o">=</span> <span class="n">pageSize</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">totalCount</span> <span class="o">=</span> <span class="n">totalCount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Constructor.
+</span><span class="cm">     *
+</span><span class="cm">     * @param resultCode the result code
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">ServicePageResult</span><span class="o">(</span><span class="n">ResultCodeEnum</span> <span class="n">resultCode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">resultCode</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Gets get page no.
+</span><span class="cm">     *
+</span><span class="cm">     * @return the get page no
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPageNo</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">pageNo</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Sets set page no.
+</span><span class="cm">     *
+</span><span class="cm">     * @param pageNo the page no
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPageNo</span><span class="o">(</span><span class="kt">int</span> <span class="n">pageNo</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageNo</span> <span class="o">=</span> <span class="n">pageNo</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Gets get page size.
+</span><span class="cm">     *
+</span><span class="cm">     * @return the get page size
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPageSize</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">pageSize</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Sets set page size.
+</span><span class="cm">     *
+</span><span class="cm">     * @param pageSize the page size
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPageSize</span><span class="o">(</span><span class="kt">int</span> <span class="n">pageSize</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageSize</span> <span class="o">=</span> <span class="n">pageSize</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Gets get total count.
+</span><span class="cm">     *
+</span><span class="cm">     * @return the get total count
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getTotalCount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">totalCount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * Sets set total count.
+</span><span class="cm">     *
+</span><span class="cm">     * @param totalCount the total count
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTotalCount</span><span class="o">(</span><span class="kt">int</span> <span class="n">totalCount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">totalCount</span> <span class="o">=</span> <span class="n">totalCount</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item><item>
+    <title>关于 Unix 中的配置文件</title>
+    <link>https://jonnyhub.gitee.io/2020/08/2020-06-08-%E5%85%B3%E4%BA%8Eunix%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+    <pubDate>Sat, 08 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/08/2020-06-08-%E5%85%B3%E4%BA%8Eunix%E4%B8%AD%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+    <description><![CDATA[<blockquote>
+<p>关于 Unix ，配置文件十分重要，对于用户来说，总是会搞不清，到底要设置哪里。下面就针对不同系统的文件做详细介绍。</p>
+</blockquote>
+<hr>
+<h1 id="关于-unix-中的配置文件">关于 Unix 中的配置文件</h1>
+<h2 id="linux-shell-种类简单介绍">Linux Shell 种类简单介绍</h2>
+<p>Unix shell，一种壳层与命令行界面，是Unix操作系统下传统的用户和计算机的交互界面。</p>
+<ul>
+<li>查看本机 shell 有哪些，可以使用命令： <code>cat /etc/shells</code></li>
+<li>查看当前用户正在使用的 shell 可以使用命令： <code>echo $SHELL # 切换 shell 为 zsh</code></li>
+<li>切换当前用户的 shell 可以使用命令： <code>chsh -s /bin/zsh # 切换 shell 为 zsh</code></li>
+</ul>
+<h2 id="linux-的变量种类">Linux 的变量种类</h2>
+<h3 id="按变量的生存周期划分">按变量的生存周期划分</h3>
+<ul>
+<li><strong>永久的：</strong> 需要修改配置文件，变量永久生效。</li>
+<li><strong>临时的：</strong> 使用 <code>export</code> 命令声明即可，变量在关闭 shell 时失效。</li>
+<li>在配置永久的环境变量时，又可以按照作用范围分为: <strong>用户环境变量</strong> &amp; <strong>系统环境变量</strong>。</li>
+</ul>
+<h2 id="设置环境变量">设置环境变量</h2>
+<ol>
+<li>
+<p>在 shell 的命令行下直接使用 <code>[export 变量名=变量值]</code> 定义变量。该变量只在当前的 shell(bash) 或其子 shell(bash) 下是有效的，shell 关闭了，变量也就失效了，再打开新 shell 时就没有这个变量，需要使用的话还需要重新定义。</p>
+</li>
+<li>
+<p>修改系统环境变量。系统环境变量一般保存在以下几个位置：</p>
+<ul>
+<li><code>/etc/profile</code> : 全局（公有）配置，不管是哪个用户，登录时都会读取该文件。</li>
+<li><code>/etc/bash.bashrc</code> : 它也是全局（公有）的 bash执行时，不管是何种方式，都会读取此文件。</li>
+<li><code>/etc/environment</code> : 不要轻易修改此文件。</li>
+</ul>
+</li>
+<li>
+<p>修改用户环境变量。用户环境变量一般保存在以下几个位置：</p>
+<ul>
+<li><code>~/.profile</code></li>
+<li><code>~/.bash_profile</code> 或者 <code>~./bash_login</code></li>
+<li><code>~/.bashrc</code> : 推荐放置个人设置。</li>
+<li><code>~/.bash_profile</code></li>
+</ul>
+</li>
+<li>
+<p>Linux 配置环境变量的几个文件的加载顺序：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"> /etc/profile -&gt; <span class="o">(</span>~/.bash_profile <span class="p">|</span> ~/.bash_login <span class="p">|</span> ~/.profile<span class="o">)</span> -&gt; ~/.bashrc -&gt; /etc/bashrc -&gt; ~/.bash_logout
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>说明：</strong></p>
+<ul>
+<li>若bash是以login方式执行时，读取~/.bash_profile，若它不存在，则读取~/.bash_login，若前两者不存在，读取~/.profile。</li>
+<li>若bash是以login方式执行时，读取~/.bash_profile，若它不存,则读取~/.bash_login，若前两者不存在，读取 ~/.profile。只有bash是以login形式执行时，才会读取.bash_profile，Unbutu默认没有此文件，可新建。 通常该配置文件还会配置成去读取~/.bashrc。</li>
+<li>当bash是以non-login形式执行时，读取此文件。若是以login形式执行，则不会读取此文件。</li>
+<li>~/.bashrc 是交互式 non-login 方式进入 bash 运行的通常二者设置大致相同，所以通常前者会调用后者。</li>
+</ul>
+</li>
+</ol>
+<p><a href="https://img-blog.csdn.net/20180614131117463?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lpZmVuNDIzNA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" target="_blank" rel="noopener noreffer">读取流程图</a></p>
+<h2 id="bashrc-和-bash_profile-的区别"><code>.bashrc</code> 和 <code>.bash_profile</code> 的区别</h2>
+<p><code>.bash_profile</code>会用在登陆 shell， <code>.bashrc</code> 使用在交互式非登陆 shell 。
+简单说来，它们的区别主要是: <code>.bash_profile</code>是在你每次登录的时候执行的；<code>.bashrc</code>是在你新开了一个命令行窗口时执行的。
+当通过控制台进行登录（输入用户名和密码）：在初始化命令行提示符的时候会执行<code>.bash_profile</code> 来配置你的 shell 环境。但是如果已经登录到机器，在Gnome或者是KDE也开了一个新的终端窗口（xterm），这时，<code>.bashrc</code>会在窗口命令行提示符出现前被执行。当你在终端敲入<code>/bin/bash</code>时<code>.bashrc</code>也会在这个新的 bash 实例启动的时候执行。</p>
+<h2 id="zshrc-文件是什么"><code>.zshrc</code> 文件是什么</h2>
+<p>对于使用 zsh shell 的用户来说，<code>.zshrc</code> 文件就相当于以上所讲的  <code>~/.bashrc</code> 和 <code>.bash_profile</code>。</p>]]></description>
+</item><item>
+    <title>LmSite 项目架构</title>
+    <link>https://jonnyhub.gitee.io/2020/06/2020-06-08-lmsite-%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/</link>
+    <pubDate>Mon, 08 Jun 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/06/2020-06-08-lmsite-%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/</guid>
+    <description><![CDATA[<h2 id="lmsite">LmSite</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">lmsite
+├── lmsite-sso-auth -- 分布式单点登录 与 授权服务提供
+├── lmsite-common -- 常用工具封装包
+├── lmsite-ops -- 运维中心
+├    ├── lmsite-admin -- spring-cloud 后台管理
+├    ├── lmsite-codegen -- 代码生成
+├    ├── lmsite-resource -- 资源管理
+├── lmsite-service -- 业务模块
+├    ├── lmsite-console -- 控制台模块
+├    ├── lmsite-log -- 日志模块
+├    ├── lmsite-system -- 系统模块
+├    ├── lmsite-subsystem-service -- 子系统相关服务
+├    └── lmsite-user -- 用户模块
+├── lmsite-service-api -- 业务模块 api 封装
+├    ├── lmsite-console-api -- 控制台 api
+├    ├── lmsite-system-api -- 系统 api
+├──  └── lmsite-user-api -- 用户 api
+├──  <span class="o">============================</span>
+└── lmsite-subsystems -- 扩展子系统
+└─├── lmsite-system1 -- 文件管理系统（简单的上传下载搜索等功能）
+└─├── lmsite-system2 -- 文件管理系统（简单的上传下载搜索等功能）
+└─└── lmsite-system3 -- 文件管理系统（简单的上传下载搜索等功能）
+
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item><item>
+    <title>Webhookd 安装与配置</title>
+    <link>https://jonnyhub.gitee.io/2019/06/2019-06-02-webhookd-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</link>
+    <pubDate>Sun, 02 Jun 2019 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2019/06/2019-06-02-webhookd-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/</guid>
+    <description><![CDATA[<p>Webhookd 是一个非常简单的 webhook 服务器启动 shell 脚本。目前使用十分方便，使用 go 开发，速度也很快。本文介绍了 Webhookd 安装与配置，采用了脚本自动化的方式来搭建整个自动化流程。</p>
+<h2 id="webhookd-介绍">webhookd 介绍</h2>
+<blockquote>
+<p>webhookd 是一个非常简单的webhook服务器启动shell脚本。目前使用十分方便，使用 go 开发，速度也很快。
+由于 GitHub 请求时间有一个 10 秒的限制，因此在编写脚本的时候，采用了脚本内调用外部脚本的方式，来控制请求时长。
+项目地址: <a href="https://github.com/ncarlier/webhookd" target="_blank" rel="noopener noreffer">https://github.com/ncarlier/webhookd</a>
+配置文件参考: <a href="https://raw.githubusercontent.com/ncarlier/webhookd/master/etc/default/webhookd.env" target="_blank" rel="noopener noreffer">webhookd.env</a>
+部署脚本参考: <a href="https://github.com/ncarlier/webhookd/blob/master/scripts/examples/github.sh" target="_blank" rel="noopener noreffer">github.sh</a></p>
+</blockquote>
+<h2 id="一些约定-">一些约定 :</h2>
+<ol>
+<li>所有的项目源码都放在 <code>/data/src/</code> 目录下;</li>
+<li>所有的脚本都放在 <code>/data/scripts/</code> 目录下，该目录下含有各个项目的脚步，每个项目会包含两个脚本:
+<ul>
+<li>一个是 hook 请求脚步，脚本名称命名方式为 <code>{项目名}.sh</code> ，位于 <code>/data/scripts/</code> 下面;</li>
+<li>一个是 deploy 脚本，里面主要是部署项目的一些逻辑，平时添加 hooks 也只是主要编写这个脚步文件，命名方式为 <code>deploy_{项目名}.sh</code> ，位于 <code>/data/scripts/deploy/</code> 下面;</li>
+</ul>
+</li>
+<li><code>/data/scripts/</code> 下面会创建一个 <code>addhook.sh</code> 脚本，是用来生成另外两个脚步(模板)的，以便减少编写脚本的工作量;</li>
+<li>配置文件设置为 <code>/etc/webhookd.env</code> ;</li>
+<li>请求地址使用 <code>http://hook.xxxx.xxx/{项目名}</code></li>
+</ol>
+<h2 id="安装">安装</h2>
+<h3 id="准备">准备</h3>
+<p>生产 ssh-key :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;jonny6015@qq.com&#34;</span>
+openssl rsa -in ~/.ssh/id_rsa -outform pem &gt; ~/.ssh/id_rsa.pem
+</code></pre></td></tr></table>
+</div>
+</div><p>将 ssh-key 公钥添加到 GitHub: <code>id_rsa.pub</code> 的内容。
+创建一些文件夹:</p>
+<p><code>mkdir -p /data/scripts/deploy/ &amp;&amp; mkdir -p /etc/webhookd/</code></p>
+<h3 id="ubuntu">Ubuntu</h3>
+<ol>
+<li>配置仓库
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">echo</span> <span class="s2">&#34;deb http://packages.azlux.fr/debian/ buster main&#34;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/azlux.list
+wget -qO - https://azlux.fr/repo.gpg.key <span class="p">|</span> sudo apt-key add -
+apt-get -y update
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>下载安装
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">apt-get -y install webhookd
+systemctl start webhookd.service
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>修改 <code>/etc/systemd/system/webhookd.service</code> 配置文件
+<ul>
+<li>删除 <code>EnvironmentFile=-/etc/default/webhookd.env</code> 仅保留 <code>EnvironmentFile=-/etc/webhookd.env</code></li>
+<li>保存即可</li>
+</ul>
+</li>
+<li>修改 <code>/etc/webhookd.env</code>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># Webhookd配置</span>
+<span class="c1">#是否开启 debug (写入日志)</span>
+<span class="nv">WHD_DEBUG</span><span class="o">=</span><span class="nb">false</span>
+<span class="c1"># 日志目录</span>
+<span class="nv">WHD_LOG_DIR</span><span class="o">=</span><span class="s2">&#34;/tmp&#34;</span>
+<span class="c1"># 最大 hook 执行时间（以秒为单位），默认为10</span>
+<span class="nv">WHD_HOOK_TIMEOUT</span><span class="o">=</span><span class="m">600</span>
+<span class="c1"># HTTP 监听端口和地址, 默认 &#34;:8080&#34; 例如: `localhost:8080` or `:8080`</span>
+<span class="nv">WHD_LISTEN_ADDR</span><span class="o">=</span><span class="s2">&#34;:7008&#34;</span>
+<span class="c1"># Number of workers to start, default is 2</span>
+<span class="c1">#WHD_NB_WORKERS=2</span>
+<span class="c1"># 通知URI，默认情况下处于禁用状态</span>
+<span class="c1"># 例如: `http://requestb.in/v9b229v9` or `mailto://foo@bar.com?smtp=smtp-relay-localnet:25`</span>
+<span class="c1">#WHD_NOTIFICATION_URI=</span>
+<span class="c1"># 脚本位置，默认为 &#34;scripts&#34;</span>
+<span class="nv">WHD_SCRIPTS</span><span class="o">=</span><span class="s2">&#34;/data/scripts&#34;</span>
+<span class="c1"># GitHub 用于克隆存储库的私钥</span>
+<span class="nv">GITHUB_SECRET</span><span class="o">=</span>~/.ssh/id_rsa
+<span class="c1"># 例如: `/etc/webhookd/github_deploy_key.pem`</span>
+<span class="nv">WHD_SCRIPTS_GIT_KEY</span><span class="o">=</span>~/.ssh/id_rsa.pem
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+<h3 id="centos-的安装">CentOS 的安装</h3>
+<ul>
+<li>待补充</li>
+</ul>
+<h2 id="脚本">脚本</h2>
+<h3 id="生成新-hook-脚步的工具--addhooksh-脚本">生成新 hook 脚步的工具:  <em>addhook.sh</em> 脚本</h3>
+<ul>
+<li>addhook.sh</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">clear
+<span class="nb">echo</span> <span class="s2">&#34;################################################################&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;########    欢迎使用自动生成 WebHookd 脚本工具      ############&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;########    输入名字即可,建议对应 GitHub 仓库名      ###########&#34;</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;################################################################\n&#34;</span>
+<span class="nb">echo</span> -n <span class="s2">&#34;Please enter the Repository name: &#34;</span>
+<span class="nb">read</span> REPO_NAME
+<span class="nb">echo</span> -n <span class="s2">&#34;Please enter the Branch name: &#34;</span>
+<span class="nb">read</span> BRANCH_NAME
+
+<span class="nb">echo</span> <span class="s2">&#34;你输入的应用是： </span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">&#34;</span>
+<span class="nv">ROOT_PATH</span><span class="o">=</span><span class="s2">&#34;/data/scripts/webhookd&#34;</span>
+<span class="nv">SRC_PATH</span><span class="o">=</span><span class="s2">&#34;/src/&#34;</span>
+<span class="c1"># echo -n &#34;是否启用日志？ ( ture / false | y/n )&#34;:</span>
+<span class="c1"># read  ENABLE_LOG</span>
+cat&gt;<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh<span class="s">&lt;&lt;EOF
+</span><span class="s">#!/bin/env zsh
+</span><span class="s">REPO_NAME=&#34;${REPO_NAME}&#34;
+</span><span class="s">DEGUG=&#34;true&#34;
+</span><span class="s"># log 文件位置
+</span><span class="s">LOG_FILE=&#34;${ROOT_PATH}/logs/${REPO_NAME}_\$(date &#39;+%Y%m%d_%H%M%S&#39;).log&#34;
+</span><span class="s"># 函数
+</span><span class="s">payloadExit() { echo &#34;错误: \$@&#34; 1&gt;&amp;2 ; exit 1; }
+</span><span class="s">isDebug() {
+</span><span class="s">  [ &#34;\$debug&#34; = &#34;true&#34; ] &amp;&amp; echo -e &#34;Debug:\n \$@&#34;
+</span><span class="s">}
+</span><span class="s"># 验证
+</span><span class="s">payload=\$1
+</span><span class="s">[ -z &#34;\$payload&#34; ] &amp;&amp; payloadExit &#34;payload 请求体不存在， 请检查配置。&#34;
+</span><span class="s"># Debug
+</span><span class="s">isDebug &#34;已收到 payload:\n \$payload&#34;
+</span><span class="s">
+</span><span class="s">#####################################################
+</span><span class="s">############# 这里是真正要执行的脚本 ################
+</span><span class="s">
+</span><span class="s"># 删除原有日志文件
+</span><span class="s">cd /data/scripts/webhookd/logs || return
+</span><span class="s">COUNT_LOGS=$(ls -l |grep &#34;${REPO_NAME}*&#34;|wc -l) &amp;&amp; echo $COUNT_LOGS
+</span><span class="s">if [ $COUNT_LOGS &gt; 0 ] ; then
+</span><span class="s">  echo &#34;存在日志，先删除：&#34;
+</span><span class="s">  rm -rf $REPO_NAME* || return
+</span><span class="s">fi
+</span><span class="s"># 调用部署脚本
+</span><span class="s">cd ${ROOT_PATH}/deploy || return
+</span><span class="s">nohup ${ROOT_PATH}/deploy/deploy_${REPO_NAME}.sh &gt; &#34;\${LOG_FILE}&#34; 2&gt;&amp;1 &amp;
+</span><span class="s">
+</span><span class="s">####################################################
+</span><span class="s">
+</span><span class="s">echo &#34;已成功调用部署脚本，并后台运行部署；请稍后查看结果。&#34;
+</span><span class="s">echo &#34;#########    ${REPO_NAME} hook 已发送完毕!   ########&#34;
+</span><span class="s">exit 0;
+</span><span class="s">EOF</span>
+<span class="nb">echo</span> <span class="s2">&#34;===============================================&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;===============================================&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;========== 已生成 </span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">.sh 文件。=========&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;===============================================&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;===============================================&#34;</span>
+
+cat&gt;./deploy/deploy_<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh<span class="s">&lt;&lt;EOF
+</span><span class="s">#!/bin/env zsh
+</span><span class="s">REPO_NAME=&#34;${REPO_NAME}&#34;
+</span><span class="s">dateTime=&#34;\$(date &#39;+%Y%m%d_%H%M%S&#39;)&#34;
+</span><span class="s">echo &#34;进入项目目录：&#34;
+</span><span class="s">cd &#34;/src/${REPO_NAME}&#34; || return
+</span><span class="s">git pull origin ${BRANCH_NAME}:${BRANCH_NAME}
+</span><span class="s">git reset --hard origin/${BRANCH_NAME}
+</span><span class="s">git stash clear
+</span><span class="s">git clean  -d  -fx .
+</span><span class="s">git submodule update
+</span><span class="s">git submodule foreach git checkout ${BRANCH_NAME}
+</span><span class="s">git submodule foreach git pull origin ${BRANCH_NAME}
+</span><span class="s">echo &#34;已成功拉取最新代码！&#34;
+</span><span class="s">
+</span><span class="s">#***********  这里编写其余逻辑,如编译/部署等操作  **************
+</span><span class="s">echo &#34;***********     开始执行编译/部署操作：    ***************&#34;
+</span><span class="s">
+</span><span class="s">
+</span><span class="s">
+</span><span class="s">
+</span><span class="s">
+</span><span class="s">#********************  部署逻辑结束  ***************************
+</span><span class="s">echo &#34;ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ&#34;
+</span><span class="s">echo &#34;ΩΩΩΩ      已成功部署 ${REPO_NAME}!      ΩΩΩΩ&#34;
+</span><span class="s">echo &#34;ΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩΩ&#34;
+</span><span class="s">exit 0;
+</span><span class="s">EOF</span>
+<span class="nb">echo</span> <span class="s2">&#34;已生成 deploy_</span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">.sh&#34;</span>
+chmod +x <span class="si">${</span><span class="nv">ROOT_PATH</span><span class="si">}</span>/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh
+chmod +x <span class="si">${</span><span class="nv">ROOT_PATH</span><span class="si">}</span>/deploy/deploy_<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh
+<span class="nb">echo</span> <span class="s2">&#34;已添加执行权限！&#34;</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;\n###################################################################&#34;</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;###########################    完成！    ##########################\n&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;已生成</span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">的 hook 脚本:&#34;</span>
+<span class="nb">echo</span> <span class="k">$(</span>ls -g <span class="si">${</span><span class="nv">ROOT_PATH</span><span class="si">}</span>/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh<span class="k">)</span>
+<span class="nb">echo</span> <span class="s2">&#34;已生成</span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">的 部署 脚本:&#34;</span>
+<span class="nb">echo</span> <span class="k">$(</span>ls -g <span class="si">${</span><span class="nv">ROOT_PATH</span><span class="si">}</span>/deploy/deploy_<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>.sh<span class="k">)</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;\n请编辑 \&#34;/data/scripts/webhookd/deploy/deploy_</span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="s2">.sh\&#34; 来启用自动化部署。&#34;</span>
+<span class="nb">echo</span> -e <span class="s2">&#34;###################################################################\n&#34;</span>
+<span class="nb">exit</span> 0<span class="p">;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item><item>
+    <title>Oneinstack 环境安装</title>
+    <link>https://jonnyhub.gitee.io/2019/05/2019-05-11-oneinstack-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</link>
+    <pubDate>Sat, 11 May 2019 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2019/05/2019-05-11-oneinstack-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</guid>
+    <description><![CDATA[<p><strong>OneinStack</strong> 是另一个非常优秀的 LNMP 一键安装脚本，这与 LNMP 功能类似，只不过 LNMP.org 的 LNMP 一键脚本一年才更新一次，PHP 7和Let’s Encrypt证书只有等到 LNMP 1.4 出来后才能使用，而 OneinStack 早就可以使用了。</p>
+<h2 id="oneinstack-下载安装与升级">OneinStack 下载安装与升级</h2>
+<ul>
+<li>准备:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># CentOS</span>
+yum -y install wget screen
+<span class="c1"># Ubuntu</span>
+apt-get -y install wget screen
+</code></pre></td></tr></table>
+</div>
+</div><p>screen 是为了防止链接断开而导致安装失败的问题
+常用命令:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>下载安装:
+解压即可使用，推荐在 <code>~</code> 目录下。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> wget http://mirrors.linuxeye.com/oneinstack-full.tar.gz
+tar xzf oneinstack-full.tar.gz
+<span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> rm -rf oneinstack-full.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>升级:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> rm -rf oneinstack
+重复安装步骤即可
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>其他配置</li>
+</ul>
+<h2 id="如何使用-oneinstack">如何使用 OneinStack</h2>
+<h3 id="参考链接">参考链接</h3>
+<ul>
+<li>自动安装: <a href="https://oneinstack.com/auto/">https://oneinstack.com/auto/</a></li>
+<li>交互安装: <a href="https://oneinstack.com/install/">https://oneinstack.com/install/</a></li>
+<li>常见问题: <a href="https://oneinstack.com/faq/">https://oneinstack.com/faq/</a></li>
+</ul>
+<h3 id="自用安装命令">自用安装命令</h3>
+<p>先简单安装一个 Nginx ， 初始化环境，也当作测试使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 如果网路出现中断，可以执行命令`screen -R ones`重新连接安装窗口</span>
+screen -S ones
+<span class="c1"># 这里选择的是安装 openresty</span>
+<span class="nb">cd</span> ~/oneinstack <span class="o">&amp;&amp;</span> ./install.sh --nginx_option <span class="m">3</span> 
+<span class="c1"># 如果 Nginx 安装成功，执行下面安装所有环境</span>
+<span class="c1"># 需要注意修改 --dbrootpwd 参数 默认是 oneinstack </span>
+<span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> ./oneinstack/install.sh --apache_option <span class="m">1</span> --apache_mpm_option <span class="m">1</span> --apache_mode_option <span class="m">1</span> --php_option <span class="m">8</span> --phpcache_option <span class="m">1</span> --php_extensions imagick,fileinfo,redis,memcached,mongodb  --pureftpd  --redis  --memcached --tomcat_option <span class="m">1</span> --jdk_option <span class="m">1</span> --phpmyadmin  --db_option <span class="m">1</span> --dbinstallmethod <span class="m">2</span> --dbrootpwd oneinstack --reboot
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="环境变量">环境变量</h3>
+<p>将下方环境变量放入 <code>.zshrc</code> 中，执行 <code>source ~/.zshrc</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/java/jdk-11.0.7
+<span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/lib/tools.jar:<span class="nv">$JAVA_HOME</span>/lib/dt.jar:<span class="nv">$JAVA_HOME</span>/lib
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:/usr/local/php/bin:/usr/local/apache/bin:/usr/local/mysql/bin:/usr/local/openresty/nginx/sbin:<span class="nv">$PATH</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item><item>
+    <title>Ubuntu 初始化记录</title>
+    <link>https://jonnyhub.gitee.io/2019/02/2019-02-20-ubuntu-%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%B0%E5%BD%95/</link>
+    <pubDate>Wed, 20 Feb 2019 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2019/02/2019-02-20-ubuntu-%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%B0%E5%BD%95/</guid>
+    <description><![CDATA[<p>使用腾讯云 CVM 安装了系统之后，需要做的一些基本设置与配置。</p>
+<h2 id="系统更新与优化">系统更新与优化</h2>
+<blockquote>
+<p>本文默认: 在开启 root 登录后，一切使用 root 用户操作。</p>
+</blockquote>
+<h3 id="开启--root-登录">开启  root 登录</h3>
+<p>默认可登录帐户名是: ubuntu(密码可以使用 key，或者安装时设定)， 为了使用 root 需要开启。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 我使用 key 登录，先修改 ubuntu 密码</span>
+sudo passwd ubuntu
+<span class="c1"># 修改 root ，可以与 ubuntu 一样</span>
+sudo passwd root
+
+<span class="c1"># 修改 ssh 配置  末尾添加: PermitRootLogin yes</span>
+sudo vim /etc/ssh/sshd_config
+PermitRootLogin yes
+<span class="c1"># PasswordAuthentication yes 修改这个参数 no 改为 yes 是为了使用密码可以登录，默认只能使用 ssh-key</span>
+sudo service ssh restart
+<span class="c1"># 然后使用 root 用户登录即可，如果无法使用 ssh-key 登录，可以使用以下命令(确保本地已生成 ssh-key):</span>
+<span class="c1"># 本地使用，非服务器</span>
+ssh-copy-id -i ~/.ssh/id_rsa user@host
+<span class="c1"># 附上生成 ssh-key 的命令，建议一路回车即可</span>
+ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&#34;user@163.com&#34;</span>
+ssh-copy-id -i ~/.ssh/id_rsa root@150.109.108.7
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="更新系统安装常用软件">更新系统，安装常用软件。</h3>
+<blockquote>
+<p>使用 root 登录之后操作</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 更新系统</span>
+apt-get -y update <span class="o">&amp;&amp;</span> apt-get -y upgrade
+<span class="c1"># 安装常用软件</span>
+apt-get -y install git vim zsh aptitude exuberant-ctags wget <span class="se">\
+</span><span class="se"></span>    screen apt-transport-https ca-certificates curl <span class="se">\
+</span><span class="se"></span>    software-properties-common openssh-server snap landscape-common fish <span class="se">\
+</span><span class="se"></span>    build-essential debian-keyring gcc-4.1-doc <span class="se">\
+</span><span class="se"></span>    lib64stdc++6 glibc-doc manpages-dev libstdc++6-4.1-doc <span class="se">\
+</span><span class="se"></span>    bison ed gawk gcc libc6-dev make cmake
+<span class="c1"># 安装 webhookd</span>
+<span class="nb">echo</span> <span class="s2">&#34;deb http://packages.azlux.fr/debian/ buster main&#34;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/azlux.list
+wget -qO - https://azlux.fr/repo.gpg.key <span class="p">|</span> sudo apt-key add -
+sudo apt-get -y install webhookd
+
+<span class="c1"># 下载 OneinStack 并解压</span>
+<span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> wget http://mirrors.linuxeye.com/oneinstack-full.tar.gz <span class="o">&amp;&amp;</span> tar xzf oneinstack-full.tar.gz
+
+<span class="c1"># 安装 GoLang</span>
+sudo add-apt-repository ppa:longsleep/golang-backports
+sudo apt-get -y update
+sudo apt-get -y install golang-go
+
+<span class="c1"># 安装 OhMyZsh</span>
+sh -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="k">)</span><span class="s2">&#34;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="配置--ohmyzsh">配置  OhMyZsh</h3>
+<ul>
+<li>zshrc 文件:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/bin:/usr/local/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span> <span class="nv">ZSH</span><span class="o">=</span><span class="s2">&#34;/root/.oh-my-zsh&#34;</span>
+<span class="nv">ZSH_THEME</span><span class="o">=</span><span class="s2">&#34;robbyrussell&#34;</span>
+<span class="nv">plugins</span><span class="o">=(</span>
+    z git mvn npm nvm ubuntu github docker docker-compose git-auto-fetch alias-tips
+    zsh-autosuggestions zsh-syntax-highlighting zsh-completions
+<span class="o">)</span>
+<span class="nb">source</span> <span class="nv">$ZSH</span>/oh-my-zsh.sh
+<span class="c1"># User configuration</span>
+<span class="nb">export</span> <span class="nv">MANPATH</span><span class="o">=</span><span class="s2">&#34;/usr/local/man:</span><span class="nv">$MANPATH</span><span class="s2">&#34;</span>
+<span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>zh_CN.UTF-8
+<span class="o">[[</span> -e ~/.profile <span class="o">]]</span> <span class="o">&amp;&amp;</span> emulate sh -c <span class="s1">&#39;source ~/.profile&#39;</span>
+<span class="c1"># Compilation flags</span>
+<span class="nb">export</span> <span class="nv">ARCHFLAGS</span><span class="o">=</span><span class="s2">&#34;-arch x86_64&#34;</span>
+<span class="c1"># Set personal aliases</span>
+<span class="nb">alias</span> <span class="nv">zshconfig</span><span class="o">=</span><span class="s2">&#34;vim ~/.zshrc&#34;</span>
+<span class="nb">alias</span> <span class="nv">zshsource</span><span class="o">=</span><span class="s2">&#34;source ~/.oh-my-zsh&#34;</span>
+<span class="nb">alias</span> <span class="nv">rm</span><span class="o">=</span><span class="s2">&#34;rm -r&#34;</span>
+<span class="nb">alias</span> <span class="nv">cp</span><span class="o">=</span><span class="s2">&#34;cp -f&#34;</span>
+<span class="nb">alias</span> <span class="nv">mv</span><span class="o">=</span><span class="s2">&#34;mv -f&#34;</span>
+<span class="c1"># nvm</span>
+<span class="nb">export</span> <span class="nv">NVM_DIR</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$HOME</span><span class="s2">/.nvm&#34;</span>
+<span class="o">[</span> -s <span class="s2">&#34;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&#34;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="se">\.</span> <span class="s2">&#34;</span><span class="nv">$NVM_DIR</span><span class="s2">/nvm.sh&#34;</span>  <span class="c1"># This loads nvm</span>
+<span class="o">[</span> -s <span class="s2">&#34;</span><span class="nv">$NVM_DIR</span><span class="s2">/bash_completion&#34;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> <span class="se">\.</span> <span class="s2">&#34;</span><span class="nv">$NVM_DIR</span><span class="s2">/bash_completion&#34;</span>  <span class="c1"># This loads nvm bash_completion</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>安装插件</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">git clone https://github.com/zsh-users/zsh-autosuggestions <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="k">:-</span><span class="p">~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-completions <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="p">:=~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-completions
+git clone https://github.com/djui/alias-tips <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="p">:=~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/alias-tips
+git clone https://github.com/zsh-users/zsh-syntax-highlighting <span class="si">${</span><span class="nv">ZSH_CUSTOM</span><span class="p">:=~/.oh-my-zsh/custom</span><span class="si">}</span>/plugins/zsh-syntax-highlighting
+<span class="nb">source</span> ~/.zshrc
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="安装-npm--nvm">安装 npm &amp; nvm</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 安装nvm</span>
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh <span class="p">|</span> bash
+sudo tee ~/.profile <span class="s">&lt;&lt;-&#39;EOF&#39;
+</span><span class="s">export NVM_DIR=&#34;$HOME/.nvm&#34;
+</span><span class="s">[ -s &#34;$NVM_DIR/nvm.sh&#34; ] &amp;&amp; . &#34;$NVM_DIR/nvm.sh&#34; # This loads nvm
+</span><span class="s">EOF</span>
+sudo tee ~/.zshrc <span class="s">&lt;&lt;-&#39;EOF&#39;
+</span><span class="s">export NVM_DIR=&#34;$HOME/.nvm&#34;
+</span><span class="s">[ -s &#34;$NVM_DIR/nvm.sh&#34; ] &amp;&amp; \. &#34;$NVM_DIR/nvm.sh&#34;  # This loads nvm
+</span><span class="s">[ -s &#34;$NVM_DIR/bash_completion&#34; ] &amp;&amp; \. &#34;$NVM_DIR/bash_completion&#34;  # This loads nvm bash_completion
+</span><span class="s">EOF</span>
+<span class="nb">source</span> ~/.zhsrc
+<span class="c1"># 安装 Node 和 最新版 npm</span>
+nvm install --lts
+nvm use --lts
+nvm install-latest-npm
+<span class="c1"># 配置 cnpm [[ 仅国内机房使用 ]]</span>
+npm install -g cnpm --registry<span class="o">=</span>https://registry.npm.taobao.org
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="配置-中文环境">配置 中文环境</h3>
+<p>设置命令(root):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">dpkg-reconfigure locales
+<span class="c1"># 第一步:选择所有 zh_CN 开头的</span>
+<span class="c1"># 第二步: 选择 zh_CN.UTF-8</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>配置:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 注释原有的内容</span>
+sed <span class="s1">&#39;s/^/#&amp;/g&#39;</span> /etc/default/locale
+<span class="c1"># 修改 /etc/default/locale [配置中文]</span>
+cat &gt;&gt;/etc/default/locale<span class="s">&lt;&lt;EOF
+</span><span class="s">LANG=&#34;zh_CN.UTF-8&#34;
+</span><span class="s">LANGUAGE=&#34;zh_CN:zh&#34;
+</span><span class="s">LC_NUMERIC=&#34;zh_CN&#34;
+</span><span class="s">LC_TIME=&#34;zh_CN&#34;
+</span><span class="s">LC_MONETARY=&#34;zh_CN&#34;
+</span><span class="s">LC_PAPER=&#34;zh_CN&#34;
+</span><span class="s">LC_NAME=&#34;zh_CN&#34;
+</span><span class="s">LC_ADDRESS=&#34;zh_CN&#34;
+</span><span class="s">LC_TELEPHONE=&#34;zh_CN&#34;
+</span><span class="s">LC_MEASUREMENT=&#34;zh_CN&#34;
+</span><span class="s">LC_IDENTIFICATION=&#34;zh_CN&#34;
+</span><span class="s">LC_ALL=&#34;zh_CN.UTF-8&#34;
+</span><span class="s">EOF</span>
+<span class="c1"># 不修改原有内容！ [配置中文]</span>
+cat &gt;&gt;/etc/environment<span class="s">&lt;&lt;EOF
+</span><span class="s">LANG=&#34;zh_CN.UTF-8&#34;
+</span><span class="s">LANGUAGE=&#34;zh_CN:zh&#34;
+</span><span class="s">LC_NUMERIC=&#34;zh_CN&#34;
+</span><span class="s">LC_TIME=&#34;zh_CN&#34;
+</span><span class="s">LC_MONETARY=&#34;zh_CN&#34;
+</span><span class="s">LC_PAPER=&#34;zh_CN&#34;
+</span><span class="s">LC_NAME=&#34;zh_CN&#34;
+</span><span class="s">LC_ADDRESS=&#34;zh_CN&#34;
+</span><span class="s">LC_TELEPHONE=&#34;zh_CN&#34;
+</span><span class="s">LC_MEASUREMENT=&#34;zh_CN&#34;
+</span><span class="s">LC_IDENTIFICATION=&#34;zh_CN&#34;
+</span><span class="s">LC_ALL=&#34;zh_CN.UTF-8&#34;
+</span><span class="s">EOF</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="修改登录界面">修改登录界面:</h3>
+<p>去除一些臃肿的信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">mv /etc/update-motd.d/50-motd-news /etc/update-motd.d/50-motd-news.bak
+mv /etc/update-motd.d/80-livepatch /etc/update-motd.d/80-livepatch.bak
+mv /etc/update-motd.d/10-help-text /etc/update-motd.d/10-help-text.bak
+
+</code></pre></td></tr></table>
+</div>
+</div><p>添加登录图画，可自定义</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">sudo tee /etc/motd <span class="s">&lt;&lt;-&#39;EOF&#39;
+</span><span class="s">       dP
+</span><span class="s">       88
+</span><span class="s">       88 .d8888b. 88d888b. 88d888b. dP    dP
+</span><span class="s">       88 88&#39;  `88 88&#39;  `88 88&#39;  `88 88    88
+</span><span class="s">88.  .d8P 88.  .88 88    88 88    88 88.  .88
+</span><span class="s"> `Y8888&#39;  `88888P&#39; dP    dP dP    dP `8888P88
+</span><span class="s">oooooooooooooooooooooooooooooooooooooo~~~~.88~
+</span><span class="s">                                      d8888P
+</span><span class="s">EOF</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="webhookd-配置">webhookd 配置</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-service" data-lang="service"><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">WEBHOOKD</span>
+
+<span class="k">[Service]</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">webhookd</span>
+<span class="na">User</span><span class="o">=</span><span class="s">webhookd</span>
+<span class="na">Group</span><span class="o">=</span><span class="s">webhookd</span>
+<span class="na">EnvironmentFile</span><span class="o">=</span><span class="s">-/etc/default/webhookd.env</span>
+<span class="na">EnvironmentFile</span><span class="o">=</span><span class="s">-/etc/webhookd.env</span>
+<span class="na">Restart</span><span class="o">=</span><span class="s">always</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+<span class="na">RestartSec</span><span class="o">=</span><span class="s">30s</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">
+<span class="c1"># 安装 nodejs &amp; nvm</span>
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh <span class="p">|</span> bash
+sudo tee ~/.profile <span class="s">&lt;&lt;-&#39;EOF&#39;
+</span><span class="s">export NVM_DIR=&#34;$HOME/.nvm&#34;
+</span><span class="s">[ -s &#34;$NVM_DIR/nvm.sh&#34; ] &amp;&amp; . &#34;$NVM_DIR/nvm.sh&#34; # This loads nvm
+</span><span class="s">EOF</span>
+<span class="nb">source</span> ~/.profile
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item></channel>
+</rss>

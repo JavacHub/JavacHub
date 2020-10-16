@@ -1,0 +1,121 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>OneinStack - 标签 - JonnyHub Blog - A Java Programmer.</title>
+        <link>https://jonnyhub.gitee.io/tags/oneinstack/</link>
+        <description>OneinStack - 标签 - JonnyHub Blog - A Java Programmer.</description>
+        <generator>Hugo -- gohugo.io</generator><managingEditor>jonny0624@gmail.com (Jonny.Chang)</managingEditor>
+            <webMaster>jonny0624@gmail.com (Jonny.Chang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Sat, 11 May 2019 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://jonnyhub.gitee.io/tags/oneinstack/" rel="self" type="application/rss+xml" /><item>
+    <title>Oneinstack 环境安装</title>
+    <link>https://jonnyhub.gitee.io/2019/05/2019-05-11-oneinstack-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</link>
+    <pubDate>Sat, 11 May 2019 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2019/05/2019-05-11-oneinstack-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</guid>
+    <description><![CDATA[<p><strong>OneinStack</strong> 是另一个非常优秀的 LNMP 一键安装脚本，这与 LNMP 功能类似，只不过 LNMP.org 的 LNMP 一键脚本一年才更新一次，PHP 7和Let’s Encrypt证书只有等到 LNMP 1.4 出来后才能使用，而 OneinStack 早就可以使用了。</p>
+<h2 id="oneinstack-下载安装与升级">OneinStack 下载安装与升级</h2>
+<ul>
+<li>准备:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># CentOS</span>
+yum -y install wget screen
+<span class="c1"># Ubuntu</span>
+apt-get -y install wget screen
+</code></pre></td></tr></table>
+</div>
+</div><p>screen 是为了防止链接断开而导致安装失败的问题
+常用命令:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>下载安装:
+解压即可使用，推荐在 <code>~</code> 目录下。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> wget http://mirrors.linuxeye.com/oneinstack-full.tar.gz
+tar xzf oneinstack-full.tar.gz
+<span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> rm -rf oneinstack-full.tar.gz
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>升级:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> rm -rf oneinstack
+重复安装步骤即可
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>其他配置</li>
+</ul>
+<h2 id="如何使用-oneinstack">如何使用 OneinStack</h2>
+<h3 id="参考链接">参考链接</h3>
+<ul>
+<li>自动安装: <a href="https://oneinstack.com/auto/">https://oneinstack.com/auto/</a></li>
+<li>交互安装: <a href="https://oneinstack.com/install/">https://oneinstack.com/install/</a></li>
+<li>常见问题: <a href="https://oneinstack.com/faq/">https://oneinstack.com/faq/</a></li>
+</ul>
+<h3 id="自用安装命令">自用安装命令</h3>
+<p>先简单安装一个 Nginx ， 初始化环境，也当作测试使用。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># 如果网路出现中断，可以执行命令`screen -R ones`重新连接安装窗口</span>
+screen -S ones
+<span class="c1"># 这里选择的是安装 openresty</span>
+<span class="nb">cd</span> ~/oneinstack <span class="o">&amp;&amp;</span> ./install.sh --nginx_option <span class="m">3</span> 
+<span class="c1"># 如果 Nginx 安装成功，执行下面安装所有环境</span>
+<span class="c1"># 需要注意修改 --dbrootpwd 参数 默认是 oneinstack </span>
+<span class="nb">cd</span> ~ <span class="o">&amp;&amp;</span> ./oneinstack/install.sh --apache_option <span class="m">1</span> --apache_mpm_option <span class="m">1</span> --apache_mode_option <span class="m">1</span> --php_option <span class="m">8</span> --phpcache_option <span class="m">1</span> --php_extensions imagick,fileinfo,redis,memcached,mongodb  --pureftpd  --redis  --memcached --tomcat_option <span class="m">1</span> --jdk_option <span class="m">1</span> --phpmyadmin  --db_option <span class="m">1</span> --dbinstallmethod <span class="m">2</span> --dbrootpwd oneinstack --reboot
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="环境变量">环境变量</h3>
+<p>将下方环境变量放入 <code>.zshrc</code> 中，执行 <code>source ~/.zshrc</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nb">export</span> <span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/java/jdk-11.0.7
+<span class="nb">export</span> <span class="nv">CLASSPATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/lib/tools.jar:<span class="nv">$JAVA_HOME</span>/lib/dt.jar:<span class="nv">$JAVA_HOME</span>/lib
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$JAVA_HOME</span>/bin:/usr/local/php/bin:/usr/local/apache/bin:/usr/local/mysql/bin:/usr/local/openresty/nginx/sbin:<span class="nv">$PATH</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item></channel>
+</rss>

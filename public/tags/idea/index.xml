@@ -1,0 +1,285 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>IDEA - 标签 - JonnyHub Blog - A Java Programmer.</title>
+        <link>https://jonnyhub.gitee.io/tags/idea/</link>
+        <description>IDEA - 标签 - JonnyHub Blog - A Java Programmer.</description>
+        <generator>Hugo -- gohugo.io</generator><managingEditor>jonny0624@gmail.com (Jonny.Chang)</managingEditor>
+            <webMaster>jonny0624@gmail.com (Jonny.Chang)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 10 Aug 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://jonnyhub.gitee.io/tags/idea/" rel="self" type="application/rss+xml" /><item>
+    <title>IDEA 代码模板</title>
+    <link>https://jonnyhub.gitee.io/2020/08/2020-08-10-idea-%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/</link>
+    <pubDate>Mon, 10 Aug 2020 00:00:00 &#43;0000</pubDate>
+    <author>作者</author>
+    <guid>https://jonnyhub.gitee.io/2020/08/2020-08-10-idea-%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%9D%BF/</guid>
+    <description><![CDATA[<h1 id="idea-代码模板">IDEA 代码模板</h1>
+<hr>
+<h2 id="getter-and-setter">Getter And Setter</h2>
+<hr>
+<h3 id="getter">Getter</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm">* Getter method for property &lt;tt&gt;$field.name&lt;/tt&gt;.
+</span><span class="cm">*
+</span><span class="cm">* @return property value of $field.name
+</span><span class="cm">*/</span>
+<span class="err">#</span><span class="k">if</span><span class="o">(</span><span class="n">$field</span><span class="o">.</span><span class="na">modifierStatic</span><span class="o">)</span>
+<span class="kd">static</span> <span class="err">##</span>
+<span class="err">#</span><span class="n">end</span>
+<span class="n">$field</span><span class="o">.</span><span class="na">type</span> <span class="err">##</span>
+<span class="err">#</span><span class="n">set</span><span class="o">(</span><span class="n">$name</span> <span class="o">=</span> <span class="n">$StringUtil</span><span class="o">.</span><span class="na">capitalizeWithJavaBeanConvention</span><span class="o">(</span><span class="n">$StringUtil</span><span class="o">.</span><span class="na">sanitizeJavaIdentifier</span><span class="o">(</span><span class="n">$helper</span><span class="o">.</span><span class="na">getPropertyName</span><span class="o">(</span><span class="n">$field</span><span class="o">,</span> <span class="n">$project</span><span class="o">))))</span>
+<span class="err">#</span><span class="k">if</span> <span class="o">(</span><span class="n">$field</span><span class="o">.</span><span class="na">boolean</span> <span class="o">&amp;&amp;</span> <span class="n">$field</span><span class="o">.</span><span class="na">primitive</span><span class="o">)</span>
+<span class="n">is</span><span class="err">##</span>
+<span class="err">#</span><span class="k">else</span>
+<span class="n">get</span><span class="err">##</span>
+<span class="err">#</span><span class="n">end</span>
+<span class="n">$</span><span class="o">{</span><span class="n">name</span><span class="o">}()</span> <span class="o">{</span>
+<span class="k">return</span> <span class="n">$field</span><span class="o">.</span><span class="na">name</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="setter">Setter</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="cm">/**
+</span><span class="cm">* Setter method for property &lt;tt&gt;$field.name&lt;/tt&gt;.
+</span><span class="cm">*
+</span><span class="cm">* @param $field.name  value to be assigned to property $field.name
+</span><span class="cm">*/</span>
+<span class="err">#</span><span class="n">set</span><span class="o">(</span><span class="n">$paramName</span> <span class="o">=</span> <span class="n">$helper</span><span class="o">.</span><span class="na">getParamName</span><span class="o">(</span><span class="n">$field</span><span class="o">,</span> <span class="n">$project</span><span class="o">))</span>
+<span class="err">#</span><span class="k">if</span><span class="o">(</span><span class="n">$field</span><span class="o">.</span><span class="na">modifierStatic</span><span class="o">)</span>
+<span class="kd">static</span> <span class="err">##</span>
+<span class="err">#</span><span class="n">end</span>
+<span class="kt">void</span> <span class="n">set$StringUtil</span><span class="o">.</span><span class="na">capitalizeWithJavaBeanConvention</span><span class="o">(</span><span class="n">$StringUtil</span><span class="o">.</span><span class="na">sanitizeJavaIdentifier</span><span class="o">(</span><span class="n">$helper</span><span class="o">.</span><span class="na">getPropertyName</span><span class="o">(</span><span class="n">$field</span><span class="o">,</span> <span class="n">$project</span><span class="o">)))(</span><span class="n">$field</span><span class="o">.</span><span class="na">type</span> <span class="n">$paramName</span><span class="o">)</span> <span class="o">{</span>
+<span class="err">#</span><span class="k">if</span> <span class="o">(</span><span class="n">$field</span><span class="o">.</span><span class="na">name</span> <span class="o">==</span> <span class="n">$paramName</span><span class="o">)</span>
+    <span class="err">#</span><span class="k">if</span> <span class="o">(!</span><span class="n">$field</span><span class="o">.</span><span class="na">modifierStatic</span><span class="o">)</span>
+    <span class="k">this</span><span class="o">.</span><span class="err">##</span>
+    <span class="err">#</span><span class="k">else</span>
+        <span class="n">$classname</span><span class="o">.</span><span class="err">##</span>
+    <span class="err">#</span><span class="n">end</span>
+<span class="err">#</span><span class="n">end</span>
+<span class="n">$field</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">$paramName</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="code-style">Code Style</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;code_scheme</span> <span class="na">name=</span><span class="s">&#34;JonnyChang-CodeStyle&#34;</span> <span class="na">version=</span><span class="s">&#34;1&#34;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;INSERT_INNER_CLASS_IMPORTS&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND&#34;</span> <span class="na">value=</span><span class="s">&#34;999&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND&#34;</span> <span class="na">value=</span><span class="s">&#34;999&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;IMPORT_LAYOUT_TABLE&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;value&gt;</span>
+      <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;java&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;javax&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;com.jonnyhub&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/value&gt;</span>
+  <span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;RIGHT_MARGIN&#34;</span> <span class="na">value=</span><span class="s">&#34;140&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ENABLE_JAVADOC_FORMATTING&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;JavaCodeStyleSettings&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ANNOTATION_PARAMETER_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;INSERT_INNER_CLASS_IMPORTS&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;CLASS_COUNT_TO_USE_IMPORT_ON_DEMAND&#34;</span> <span class="na">value=</span><span class="s">&#34;999&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;NAMES_COUNT_TO_USE_IMPORT_ON_DEMAND&#34;</span> <span class="na">value=</span><span class="s">&#34;999&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;IMPORT_LAYOUT_TABLE&#34;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;value&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;java&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;javax&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;com.jonnyhub&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;emptyLine</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">&#34;&#34;</span> <span class="na">withSubpackages=</span><span class="s">&#34;true&#34;</span> <span class="na">static=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;JD_KEEP_INVALID_TAGS&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;JD_DO_NOT_WRAP_ONE_LINE_COMMENTS&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/JavaCodeStyleSettings&gt;</span>
+  <span class="nt">&lt;codeStyleSettings</span> <span class="na">language=</span><span class="s">&#34;JAVA&#34;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;LINE_COMMENT_AT_FIRST_COLUMN&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;BLOCK_COMMENT_AT_FIRST_COLUMN&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_FIRST_COLUMN_COMMENT&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_CONTROL_STATEMENT_IN_ONE_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_BLANK_LINES_IN_DECLARATIONS&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_BLANK_LINES_IN_CODE&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_BLANK_LINES_BEFORE_RBRACE&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ALIGN_MULTILINE_PARAMETERS&#34;</span> <span class="na">value=</span><span class="s">&#34;false&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ALIGN_GROUP_FIELD_DECLARATIONS&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;SPACE_BEFORE_ARRAY_INITIALIZER_LBRACE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;CALL_PARAMETERS_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;PREFER_PARAMETERS_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;METHOD_PARAMETERS_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;RESOURCE_LIST_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;EXTENDS_LIST_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;THROWS_LIST_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;EXTENDS_KEYWORD_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;THROWS_KEYWORD_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;METHOD_CALL_CHAIN_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;BINARY_OPERATION_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;BINARY_OPERATION_SIGN_ON_NEXT_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;TERNARY_OPERATION_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;TERNARY_OPERATION_SIGNS_ON_NEXT_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_SIMPLE_BLOCKS_IN_ONE_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_SIMPLE_METHODS_IN_ONE_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;KEEP_SIMPLE_CLASSES_IN_ONE_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;FOR_STATEMENT_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ARRAY_INITIALIZER_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ASSIGNMENT_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;PLACE_ASSIGNMENT_SIGN_ON_NEXT_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;WRAP_COMMENTS&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ASSERT_STATEMENT_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ASSERT_STATEMENT_COLON_ON_NEXT_LINE&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;IF_BRACE_FORCE&#34;</span> <span class="na">value=</span><span class="s">&#34;3&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;DOWHILE_BRACE_FORCE&#34;</span> <span class="na">value=</span><span class="s">&#34;3&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;WHILE_BRACE_FORCE&#34;</span> <span class="na">value=</span><span class="s">&#34;3&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;FOR_BRACE_FORCE&#34;</span> <span class="na">value=</span><span class="s">&#34;3&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;WRAP_LONG_LINES&#34;</span> <span class="na">value=</span><span class="s">&#34;true&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;PARAMETER_ANNOTATION_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;1&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;VARIABLE_ANNOTATION_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">name=</span><span class="s">&#34;ENUM_CONSTANTS_WRAP&#34;</span> <span class="na">value=</span><span class="s">&#34;2&#34;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/codeStyleSettings&gt;</span>
+<span class="nt">&lt;/code_scheme&gt;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+</item></channel>
+</rss>
