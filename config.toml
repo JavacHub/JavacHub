@@ -12,6 +12,8 @@ enableRobotsTXT = true
 enableGitInfo = true
 # 是否使用 emoji 代码
 enableEmoji = true
+# 忽略文件
+ignoreFiles = [ "\\.gitignore$", "\\.git" ]
 [params]
   # LoveIt 主题版本
   version = "0.2.X"
