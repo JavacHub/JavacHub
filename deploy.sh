@@ -23,6 +23,8 @@ log_info "删除成功！"
 log_info "开始编译项目："
 hugo --buildFuture
 log_info "编译完成！"
+log_info "删除自动成功的非子项目："
+git rm --cached 'public/resume'
 log_info "开始推送项目："
 git add -A
 git commit -m "${CUR_USER}更新于${date}."
