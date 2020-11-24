@@ -15,7 +15,7 @@ jobs:
      steps:
        # 使用当前的 repo
        - name: Checkout private repo
-         uses: actions/checkout@master
+         uses: actions/checkout@v2
          with:
           submodules: true
        # 因为目前的 repo 有使用到 submodule，所以 submodule 也要一併同步
@@ -30,13 +30,12 @@ jobs:
        # 我的公開網站是放置在另一個 repo 所以這裡也要 clone 一份下來處理
        # 因為我 Hugo 預設是產生檔案到 public 資料夾，所以這邊我也是 clone 到那裡
        - name: checkout public repo
-         uses: actions/checkout@master
+         uses: actions/checkout@v2
          with:
           # 這裡是那個網站在 github 上的 repo 名称
           repository: hellenhub/hellenhub.github.io
           path: public
           ssh-key: ${{ secrets.HELLENHUB_SSH_KEY }}
-          #token: ${{ secrets.HELLENHUB_WORKFLOW_TOKEN }}
 
        # 使用別人做好的 Hugo Actions
        - name: Setup hugo
@@ -56,18 +55,11 @@ jobs:
          working-directory: ./
          run: hugo --minify --gc
 
-       # 將檔案 commit 到 網站 repo
-       - name: Deploy and publish updates
-         working-directory: ./public
-         run: |
-           git config --local user.name "GitHub Action"
-           git config --local user.email "action@github.com"
-           git init
-           git add . -A
-           git commit -m "[GitHub]] Auto publish"
-           git remote add origin git@github.com:hellenhub/hellenhub.github.io.git
-           git branch --set-upstream-to=origin/master master
-           git stash
-           git push -u origin master --force
-
-
+       # 部署到新的仓库
+       - name: Deploy
+         uses: peaceiris/actions-gh-pages@v3
+         with:
+           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+           publish_dir: ./public
+           external_repository: hellenhub/hellenhub.github.io
+           publish_branch: master
