@@ -1,27 +1,68 @@
-name: Deploy GitPage
+# link: https://jonnyhub.com
+# author: Jonny.Chang <jonny0624@gmail.com>
+name: Auto publish to public site
+
+# 只有推送到 master 才自動化
 on:
   push:
-    branches: [ master ]
+    branches: 
+    - master
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@master
-        with:
+  hugo-publish:
+     name: Publish content to public site
+     runs-on: ubuntu-latest
+     steps:
+       # 使用当前的 repo
+       - name: Checkout private repo
+         uses: actions/checkout@master
+         with:
           submodules: true
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: 'latest'
-          extended: true
-      - name: Build
-        run: hugo --minify
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITPAGES_DEPLOY_TOKEN }}
-          external_repository: hellenhub/hellenhub.github.io
-          publish_branch: master
-          publish_dir: ./public
+       # 因为目前的 repo 有使用到 submodule，所以 submodule 也要一併同步
+       # 不然原本的 repo 是沒有 submodule 的內容
+       - name: Update submodules
+         shell: bash
+         run: |
+          auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+          git submodule sync --recursive
+          git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
+
+       # 我的公開網站是放置在另一個 repo 所以這裡也要 clone 一份下來處理
+       # 因為我 Hugo 預設是產生檔案到 public 資料夾，所以這邊我也是 clone 到那裡
+       - name: checkout public repo
+         uses: actions/checkout@master
+         with:
+          # 這裡是那個網站在 github 上的 repo 名称
+          repository: hellenhub/hellenhub.github.io
+          path: public
+          token: ${{ secrets.GITHUB_PAT }}
+
+       # 使用別人做好的 Hugo Actions
+       - name: Setup hugo
+         uses: peaceiris/actions-hugo@v2
+         with:
+           hugo-version: latest
+           extended: true
+
+       # 我發現 Hugo 會產生一堆 min.[hash].* 檔案，所以這裡我先把舊檔案清除
+       - name: Cleanup files of public site
+         working-directory: ./public
+         shell: bash
+         run: find . -type f -name '*.min.*' -exec rm -f {} \;
+
+       # 開始用 Hugo 產生檔案囉
+       - name: Build content to public site
+         working-directory: ./
+         run: hugo --minify --gc
+
+       # 將檔案 commit 到 網站 repo
+       - name: Deploy and publish updates
+         working-directory: ./public
+         # user.email 還有 user.name 可以取自己喜歡的，一定要設定不然會出錯
+         run: |
+           git config --local user.email "action@github.com"
+           git config --local user.name "GitHub Action"
+           git add . -A
+           git commit -m "[GitHub]] Auto publish"
+           git push origin
 
