@@ -59,11 +59,14 @@ jobs:
        # 將檔案 commit 到 網站 repo
        - name: Deploy and publish updates
          working-directory: ./public
-         # user.email 還有 user.name 可以取自己喜歡的，一定要設定不然會出錯
          run: |
-           git config --local user.email "action@github.com"
            git config --local user.name "GitHub Action"
+           git config --local user.email "action@github.com"
+           git init
            git add . -A
            git commit -m "[GitHub]] Auto publish"
-           git push origin
+           git remote add origin https://github.com/hellenhub/hellenhub.github.io.git
+           git branch --set-upstream-to=origin/master master
+           git push origin master --force
+
 
