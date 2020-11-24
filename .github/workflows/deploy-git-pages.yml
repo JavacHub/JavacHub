@@ -35,7 +35,7 @@ jobs:
           # 這裡是那個網站在 github 上的 repo 名称
           repository: hellenhub/hellenhub.github.io
           path: public
-          token: ${{ secrets.GITHUB_PAT }}
+          token: ${{ secrets.HELLENHUB_WORKFLOW_TOKEN }}
 
        # 使用別人做好的 Hugo Actions
        - name: Setup hugo
