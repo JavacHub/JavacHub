@@ -20,7 +20,7 @@ ignoreFiles = [ "\\.gitignore$", "\\.git" ]
   # 网站默认主题 ("light", "dark", "auto")
   defaultTheme = "dark"
   # 公共 git 仓库路径，仅在 enableGitInfo 设为 true 时有效
-  gitRepo = "https://github.com/JavacHub/jonnyhub"
+  gitRepo = "https://github.com/hellenhub/hellenhub"
   # 哪种哈希函数用来 SRI, 为空时表示不使用 SRI ("sha256", "sha384", "sha512", "md5")
   fingerprint = ""
   # 日期格式
@@ -178,7 +178,7 @@ ignoreFiles = [ "\\.gitignore$", "\\.git" ]
       # Gitalk 评论系统设置 (https://github.com/gitalk/gitalk)
       [params.page.comment.gitalk]
         enable = false
-        owner = "JavacHub"
+        owner = "hellenhub"
         repo = "comment-repo"
         clientId = "6f984a0eb0834583c1c3"
         clientSecret = "85600facf1191a819ed0b70e9f9bebfc93a984c1"
@@ -325,7 +325,7 @@ ignoreFiles = [ "\\.gitignore$", "\\.git" ]
     guessSyntax = true
     lineNos = true
     lineNumbersInTable = true
-    # false 是必要的设置 (https://github.com/JavacHub/jonnyhub/issues/158)
+    # false 是必要的设置
     noClasses = false
   # Goldmark 是 Hugo 0.60 以来的默认 Markdown 解析库
   [markup.goldmark]
@@ -349,7 +349,7 @@ ignoreFiles = [ "\\.gitignore$", "\\.git" ]
 [author]
   name = "Jonny.Chang"
   email = "jonny0624@gmail.com"
-  link = "https://github.com/JavacHub"
+  link = "https://github.com/hellenhub"
 
 # 网站地图配置
 [sitemap]
@@ -459,7 +459,7 @@ ignoreFiles = [ "\\.gitignore$", "\\.git" ]
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw'></i>"
         name = ""
-        url = "https://github.com/JavacHub"
+        url = "https://github.com/hellenhub"
         title = "GitHub"
         weight = 7
     [languages.zh-cn.params]
@@ -525,7 +525,7 @@ ignoreFiles = [ "\\.gitignore$", "\\.git" ]
           paginate = 10
       # 主页的社交信息设置
       [languages.zh-cn.params.social]
-        GitHub = "JavacHub"
+        GitHub = "hellenhub"
         Zhihu = "jonny6015"
         Weibo = "jonnychang"
         Douban = "jonny6015"
