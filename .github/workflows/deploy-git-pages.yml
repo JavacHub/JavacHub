@@ -67,6 +67,6 @@ jobs:
            git commit -m "[GitHub]] Auto publish"
            git remote add origin git@github.com:hellenhub/hellenhub.github.io.git
            git branch --set-upstream-to=origin/master master
-           git push origin master --force
+           git push -u origin master --force
 
 
