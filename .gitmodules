@@ -3,4 +3,4 @@
 	url = https://gitee.com/jonnyhub/resume.git
 [submodule "themes/LoveIt"]
 	path = themes/LoveIt
-	url = https://gitee.com/mirror-repo/LoveIt.git
+	url = https://github.com/dillonzq/LoveIt.git
