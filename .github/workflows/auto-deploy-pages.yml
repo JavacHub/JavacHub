@@ -78,7 +78,6 @@ jobs:
 
        - name: Deploy Gitee Pages
          uses: yanglbme/gitee-pages-action@master
-         working-directory: ./public
          with:
            # 注意替换为你的 Gitee 用户名
            gitee-username: jonnyhub
