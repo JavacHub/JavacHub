@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "deploy": "bash ./scripts/update-vscode.sh",
+    "update": "bash ./update.sh",
     "md-deploy": "bash ./scripts/update-markedit.sh",
     "clean": "bash ./scripts/clean-git-history.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
