@@ -39,7 +39,7 @@ jobs:
 
   use-hugo:
     name: Publish Blog
-    need: checkout-repos
+    needs: checkout-repos
     steps:
       # 使用 Hugo Actions
       - name: Setup hugo
@@ -50,7 +50,7 @@ jobs:
 
   clean-hugo:
     name: Publish Blog
-    need: use-hugo
+    needs: use-hugo
     steps:
       # Hugo 会产生一堆 min.[hash].* 文件
       - name: Cleanup Old files of public
@@ -60,7 +60,7 @@ jobs:
 
   build-hugo:
     name: Publish Blog
-    need: clean-hugo
+    needs: clean-hugo
     steps:
       # 始用 Hugo 生成新的网站
       - name: Build new content to public
@@ -69,7 +69,7 @@ jobs:
 
   deploy-github-pages:
     name: Publish Blog
-    need: build-hugo
+    needs: build-hugo
     steps:
       # 部署到新的 GitHub Pages 仓库
       - name: Deploy to GitHub Pages
@@ -82,7 +82,7 @@ jobs:
 
   sync-gitee-pages-repo:
     name: Publish Blog
-    need: deploy-github-pages
+    needs: deploy-github-pages
     steps:
       # 部署到新的 Gitee Pages 仓库
       - name: Deploy to Gitee Pages
@@ -98,7 +98,7 @@ jobs:
 
   deploy-gitee-pages:
     name: Publish Blog
-    need: sync-gitee-pages-repo
+    needs: sync-gitee-pages-repo
     steps:
       - name: Deploy Gitee Pages
         uses: yanglbme/gitee-pages-action@master
