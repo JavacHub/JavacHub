@@ -9,8 +9,8 @@ on:
       - master
 
 jobs:
-  checkout-repos:
-    name: Publish Blog
+  publish-github-pages:
+    name: Publish GitHub Pages
     runs-on: ubuntu-latest
     steps:
       # 克隆源文件仓库，即存放博客 markdown 文件的仓库
@@ -37,11 +37,6 @@ jobs:
           path: public
           ssh-key: ${{ secrets.HELLENHUB_SSH_KEY }}
 
-  use-hugo:
-    name: Publish Blog
-    needs: checkout-repos
-    runs-on: ubuntu-latest
-    steps:
       # 使用 Hugo Actions
       - name: Setup hugo
         uses: peaceiris/actions-hugo@v2
@@ -49,32 +44,17 @@ jobs:
           hugo-version: latest
           extended: true
 
-  clean-hugo:
-    name: Publish Blog
-    needs: use-hugo
-    runs-on: ubuntu-latest
-    steps:
       # Hugo 会产生一堆 min.[hash].* 文件
       - name: Cleanup Old files of public
         working-directory: ./public
         shell: bash
         run: find . -type f -name '*.min.*' -exec rm -f {} \;
 
-  build-hugo:
-    name: Publish Blog
-    needs: clean-hugo
-    runs-on: ubuntu-latest
-    steps:
       # 始用 Hugo 生成新的网站
       - name: Build new content to public
         working-directory: ./
         run: hugo --minify --gc
 
-  deploy-github-pages:
-    name: Publish Blog
-    needs: build-hugo
-    runs-on: ubuntu-latest
-    steps:
       # 部署到新的 GitHub Pages 仓库
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -84,9 +64,9 @@ jobs:
           external_repository: hellenhub/hellenhub.github.io
           publish_branch: master
 
-  sync-gitee-pages-repo:
-    name: Publish Blog
-    needs: deploy-github-pages
+  publish-gitee-pages:
+    name: Publish Gitee Pages
+    needs: publish-github-pages
     runs-on: ubuntu-latest
     steps:
       # 部署到新的 Gitee Pages 仓库
@@ -101,11 +81,6 @@ jobs:
           # 注意替换为你的 Gitee 目标仓库地址
           destination-repo: git@gitee.com:jonnyhub/jonnyhub.git
 
-  deploy-gitee-pages:
-    name: Publish Blog
-    needs: sync-gitee-pages-repo
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy Gitee Pages
         uses: yanglbme/gitee-pages-action@master
         with:
