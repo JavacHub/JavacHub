@@ -39,10 +39,10 @@ jobs:
 
   use-hugo:
     name: Publish Blog
+    need: checkout-repos
     steps:
       # 使用 Hugo Actions
       - name: Setup hugo
-        need: checkout-repos
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: latest
@@ -50,29 +50,29 @@ jobs:
 
   clean-hugo:
     name: Publish Blog
+    need: use-hugo
     steps:
       # Hugo 会产生一堆 min.[hash].* 文件
       - name: Cleanup Old files of public
-        need: use-hugo
         working-directory: ./public
         shell: bash
         run: find . -type f -name '*.min.*' -exec rm -f {} \;
 
   build-hugo:
     name: Publish Blog
+    need: clean-hugo
     steps:
       # 始用 Hugo 生成新的网站
       - name: Build new content to public
-        need: clean-hugo
         working-directory: ./
         run: hugo --minify --gc
 
   deploy-github-pages:
     name: Publish Blog
+    need: build-hugo
     steps:
       # 部署到新的 GitHub Pages 仓库
       - name: Deploy to GitHub Pages
-        need: build-hugo
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
@@ -82,10 +82,10 @@ jobs:
 
   sync-gitee-pages-repo:
     name: Publish Blog
+    need: deploy-github-pages
     steps:
       # 部署到新的 Gitee Pages 仓库
       - name: Deploy to Gitee Pages
-        need: deploy-github-pages
         uses: wearerequired/git-mirror-action@v1
         env:
           # 注意在 Settings->Secrets 配置 GITEE_RSA_PRIVATE_KEY
@@ -98,9 +98,9 @@ jobs:
 
   deploy-gitee-pages:
     name: Publish Blog
+    need: sync-gitee-pages-repo
     steps:
       - name: Deploy Gitee Pages
-        need: sync-gitee-pages-repo
         uses: yanglbme/gitee-pages-action@master
         with:
           # 注意替换为你的 Gitee 用户名
