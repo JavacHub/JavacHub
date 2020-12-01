@@ -9,10 +9,10 @@ fi
 git pull --rebase --autostash
 git add . -A
 git commit -m "${message}${USER} 更新于 ${date}."
-echo "提交成功，推送至远程...\n"
+echo -e "\n提交成功，推送至远程...\n"
 git push --force origin master
 
-echo "*~*~*~*~*~*~*~*~*~*~*~*"
+echo -e "\n*~*~*~*~*~*~*~*~*~*~*~*"
 echo "    更新并推送成功！"
-echo "*~*~*~*~*~*~*~*~*~*~*~*"
+echo -e "*~*~*~*~*~*~*~*~*~*~*~*\n\n"
 exit 0;
