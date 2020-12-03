@@ -284,6 +284,8 @@ _这部分是最常用的应用，不区分类别。_
 
 ## 实用工具
 
+![tools](https://imgsbed.jonnyhub.com/uPic/mac/tools.png)
+
 </br>
 
 ### uTool
@@ -291,6 +293,44 @@ _这部分是最常用的应用，不区分类别。_
 - **说明**： uTools 是一个极简、插件化、跨平台的现代桌面软件。通过自由选配丰富的插件，打造你得心应手的工具集合。
 
 - **[官网下载](https://u.tools/)**
+
+</br>
+
+### Rocket Typist
+
+- **说明**： Rocket Typist 的用法和 TE 比基本没啥差别，可以创建 Snippet Group，通过设置缩写字符（abbreviation），来快速拓展出格式复杂的内容（Snippet），所有的 Snippet 数据可以存在本地，也可以通过 iCloud 在不同的 Mac 上同步（Pro），但是 Rocket Typist 并没有自己的数据同步服务或者引入第三方同步服务的设计。
+
+- **[官网下载](https://witt-software.com/downloads/rockettypist/Rocket%20Typist.dmg)**
+
+</br>
+
+### ColorSnapper2
+
+- **说明**：ColorSnapper2 是一款优秀的屏幕取色工具
+
+- **[官网下载](https://s3.amazonaws.com/cs2-binaries/ColorSnapper2.dmg)**
+
+</br>
+
+### 1Click-Screen Recorder
+
+- **说明**：1Click-Screen Recorder 是一款简易视频录制工具，这款软件能够为大家提供桌面全屏或自定义范围录制。这款软件使用简单，只需一键就可以开启录制。
+
+- **[直接下载](https://www.imacbits.com/index.php?route=product/product/download&download_id=18)**
+
+</br>
+
+### KeyManager
+
+- **说明**：KeyManager 是集证书申请、证书管理、私钥管理、证书到期提醒、一键部署等为一体的证书管理工具。
+
+- **[直接下载](https://www.imacbits.com/index.php?route=product/product/download&download_id=18)**
+
+</br>
+
+### FireWall
+
+- **说明**：KeyManager 是集证书申请、证书管理、私钥管理、证书到期提醒、一键部署等为一体的证书管理工具。
 
 </br>
 
@@ -310,24 +350,8 @@ _这部分是最常用的应用，不区分类别。_
 
 </br>
 
-### ColorSnapper2
-
-- **说明**：ColorSnapper2 是一款优秀的屏幕取色工具
-
-- **[官网下载](https://s3.amazonaws.com/cs2-binaries/ColorSnapper2.dmg)**
-
-</br>
-
 ### Bartender 4
 
 - **说明**：Bartender 4 是一款实用的菜单栏管理工具。仅支持 macOS 11。
 
 - **[官网下载](https://www.macbartender.com/Bartender4/)**
-
-</br>
-
-### 1Click-Screen Recorder
-
-- **说明**：1Click-Screen Recorder 是一款简易视频录制工具，这款软件能够为大家提供桌面全屏或自定义范围录制。这款软件使用简单，只需一键就可以开启录制。
-
-- **[直接下载](https://www.imacbits.com/index.php?route=product/product/download&download_id=18)**
