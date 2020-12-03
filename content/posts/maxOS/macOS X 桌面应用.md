@@ -16,210 +16,310 @@ draft: false
 lightgallery: true
 ---
 
-macOS X 桌面应用，最全面的桌面应用介绍。
+
+</br>
+
+macOS X 桌面级应用，我是一个资深 Mac 用户，我需要它们帮助我快乐、高效的工作，同时也分享给你。
+
+</br>
 
 <!--more-->
 
-> 说明：
-> - 一般每个应用分两行，其一为介绍，其二为下载地址，特别第有相关链接。
-> - 立即下载: 直接下载最新版；
-> - 官网下载：前往官网下载页面；
-> - AppStore 下载：跳转到 AppStore 下载；
-> - MacWk 下载：跳转到 MacWk 下载。
+> ***说明：***
+> 
+> - 
+> 
+> - :one:【 **直接下载** 】: 直接通过 **官网** 下载最新版；
+> 
+> - :two:【 **官网下载** 】：前往 **官网** 的下载页面，需要自己 **选择** 最新版本；
+> 
+> - :three:【 **AppStore** 】：跳转到 **AppStore** 下载；
+> 
+> - :four:【 **MacWk** 】：跳转到 **MacWk** 下载。</br>
 > 
 
-![桌面1⃣️](https://imgsbed.jonnyhub.com/uPic/mac/n3ogGc.png)
 
-![桌面2⃣️](https://imgsbed.jonnyhub.com/uPic/mac/3J2MbX.png)
+</br>
 
-## 常用应用
+---
 
-### 浏览器
+![桌面1](https://imgsbed.jonnyhub.com/uPic/mac/n3ogGc.png)
 
-- Safari 浏览器：系统自带浏览器，无法卸载，偶尔使用一下，特别时候还是很好用的。
+## 常用应用（主屏应用）
 
-- Google Chrome
+---
 
-    - 我的第二主力浏览器，世界最强浏览器，兼容性非常棒，但是也十分吃内存，电脑有点撑不住了。
+*这部分是最常用的应用，不区分类别。*
 
-    - [立即下载](https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg) 
+</br>
 
-- Microsoft Edge：
+### Safari 浏览器
 
-    - 目前主力浏览器，有着和Chrome一样的体验，相比Chrome，Edge 流畅了不少。
+- **说明**：系统自带浏览器，无法卸载，偶尔使用一下，特别时候还是很好用的。
 
-    - [官网下载](https://www.microsoft.com/zh-cn/edge)
+</br>
+
+### Microsoft Edge
+
+- **说明**：Microsoft Edge是由Microsoft开发的新型浏览器；这是我目前主力浏览器，有着和 Chrome 一样的体验，相比 Google Chrome，Microsoft Edge 确实流畅了不少。相关插件和配置与 Chrome 几乎一模一样。
+
+- **[官网下载](https://www.microsoft.com/zh-cn/edge)**
+
+</br>
+
+### Google Chrome
+
+- **说明**：我的第二主力浏览器，世界最强浏览器，兼容性非常棒，但是也十分吃内存，电脑有点撑不住了。Google Chrome是一款由Google公司开发的网页浏览器，该浏览器基于其他开源软件撰写，包括WebKit，目标是提升稳定性、速度和安全性，并创造出简单且有效率的使用者界面。 软件的名称是来自于称作Chrome的网络浏览器GUI（图形使用者界面）。
+
+- **[直接下载](https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg)**
+
+</br>
+
+### 微信
+
+- **说明**：微信(WeChat) 是腾讯公司于2011年1月21日推出的一个为智能终端提供即时通讯服务的免费应用程序。
+
+- **[AppStore](https://apps.apple.com/cn/app/%E5%BE%AE%E4%BF%A1/id836500024?mt=12)**：
+
+</br>
+
+### 电报 (Telegram)
+
+- **说明**：Telegram 是一款开源且跨平台的IM 工具（类似Whatsapp、Messenger、微信），是我用过所有同类软件中用户体验最好的一个，同时我也是Telegram 重度用户和开发者。 ... Telegram 完全由私人拥有，没有其他股东和投资人，并号称永远不会出售。
+
+- **[AppStore](https://apps.apple.com/cn/app/telegram/id747648890?mt=12)**：AppStore 版本功能有阉割。
+
+- **[官网下载](https://apps.apple.com/cn/app/telegram/id747648890?mt=12)**：建议进入官网进行下载。
+
+</br>
+
+### QQ
+
+- **说明**：QQ是腾讯公司推出的一款基于互联网的即时通信平台。 支持在线聊天、即时传送语音、视频、在线（离线）传送文件等全方位基础通信功能，并且整合移动通信手段，可通过客户端发送信息给手机用户，进一步为用户构建完整、成熟、多元化的在线生活平台。 用户可在电脑、手机以及无线终端之间随意、无缝切换。
+
+- **[AppStore](https://apps.apple.com/cn/app/qq/id451108668?mt=12)**
+
+</br>
+
+### Foxmail
+
+- **说明**：Mac上现在有了更酷的Foxmail。Foxmail是由华中科技大学（原华中理工大学）张小龙开发的一款优秀的国产电子邮件客户端软件，于2005年3月16日被腾讯收购。 新的Foxmail具备强大的反垃圾邮件功能。 它使用多种技术对邮件进行判别，能够准确识别垃圾邮件与非垃圾邮件。
+
+- **[AppStore](https://apps.apple.com/cn/app/foxmail/id617950461?mt=12)**
+
+- **[官网下载](https://www.foxmail.com/mac/)**
+
+</br>
 
 ### iTerm
 
-- iTerm2是一款完全免费的，专为 Mac OS 用户打造的命令行应用，iTerm2本身支持很多自定义化的设置。
+- **说明**：iTerm2是一款完全免费的，专为 Mac OS 用户打造的命令行应用，iTerm2本身支持很多自定义化的设置。
 
-- [官网下载](https://iterm2.com/)
+- **[官网下载](https://iterm2.com/)**
+
+</br>
 
 ### Dash
 
-- Dash 是一款开发者必备API文档聚合应用，适用于 macOS 平台的软件编程文档管理工具，可以浏览API文档，以及管理代码片段工具。Dash自带了丰富的API文档，涉及各种主流的编程语言和框架。[官网介绍](https://kapeli.com/dash)。
+- **说明**：Dash 是一款开发者必备API文档聚合应用，适用于 macOS 平台的软件编程文档管理工具，可以浏览API文档，以及管理代码片段工具。Dash自带了丰富的API文档，涉及各种主流的编程语言和框架。[官网介绍](https://kapeli.com/dash)。
 
-- [立即下载](https://kapeli.com/downloads/v5/Dash.zip)
+- **[直接下载](https://kapeli.com/downloads/v5/Dash.zip)**
 
 
-### SnippetsLab 
+</br>
 
-- SnippetsLab - 构建私人代码片段库；可以登录GitHub，使用 Gits 记录代码。
+### SnippetsLab
 
-- [AppStore 下载](https://apps.apple.com/cn/app/snippetslab/id1006087419?mt=12)
+- **说明**：SnippetsLab 是一款运行在Mac平台代码管理工具。 SnippetsLab不是一款传统意义上的代码编辑器，它拥有简洁漂亮的用户界面，帮助你收集和整理有价值的代码片段，所以它所面向的不是连续的编辑一个完整程序的情景，而是将一个程序组件一个个拆分出来编写的情景。
+
+- **[AppStore](https://apps.apple.com/cn/app/snippetslab/id1006087419?mt=12)**
+
+</br>
 
 ### Reader
 
-- 最美的RSS订阅器新闻阅读器
+- **说明**：最美的RSS订阅器新闻阅读器。Reeder 5 for Mac / iOS 力求在每个平台上都能带给读者最佳的阅读体验。它支持本地 RSS 订阅以及 Inoreader、Feedly、Bazqux 等在线 RSS 阅读服务的帐号同步，也能同步自建的 TT-RSS。尽管微信公众号已成为主流，但通过 RSS 订阅网站新闻依然是非常高效的获取聚合资讯的方式。
 
-- [MacWk 下载](https://www.macwk.com/soft/reeder)
+- **[MacWk](https://www.macwk.com/soft/reeder)**
+
+</br>
 
 ### 语雀
 
-- 优雅高效的在线文档编辑与协同工具。
+- **说明**：「语雀」是一个「专业的云端知识库」，孵化自蚂蚁金服 ，是体验科技 理念下的一款创新产品，已是10 万阿里员工进行文档编写、知识沉淀的标配。「语」字来源于「言语」，泛指人类沟通交流的方式，代表「语雀」的核心是在于通过承载交流过程中需要用到的以文本、图画、表格等典型载体的知识，让人与人之间的交流更高效。
 
-- [官网下载](https://www.yuque.com/install/desktop)
+- **[官网下载](https://www.yuque.com/install/desktop)**
+
+</br>
 
 ### QuartzCode
 
-- QuartzCode 是一个 ObjC / Swift 动画 **代码生成工具** ，可将动画转为原生代码，支持多种自定义动画效果及 SVG 文件导入。
+- **说明**：QuartzCode 可以让程序员通过画图的方式自动生成动画Animation代码，帮助用户实时地获取各种相关的动画代码以及信息，让你可以更方便地观察整个动画的动态，并且及时进行改进，节省大量的时间。支持导出为 Objective-C 和 Swift 语言
 
-- [官网下载](https://quartzcodeapp.com/) (需要代理)
+- **[官网下载](https://quartzcodeapp.com/)：** 需要代理
+
+</br>
 
 ### Sublime Text
 
-- [MacWk 下载](https://www.macwk.com/soft/sublime-text)
+- **说明**：Sublime Text 是一个文本编辑器（收费软件，可以无限期试用，但是会有激活提示弹窗），同时也是一个先进的代码编辑器。 Sublime Text是由程序员Jon Skinner于2008年1月份所开发出来，它最初被设计为一个具有丰富扩展功能的Vim。
+
+- **[MacWk](https://www.macwk.com/soft/sublime-text)**
+
+</br>
 
 ### HBuilderX
 
-- HBuilderX : 
+- **说明**：HBuilder是DCloud（数字天堂）推出的一款支持HTML5的Web开发IDE。 HBuilder的编写用到了Java、C、Web和Ruby。 HBuilder本身主体是由Java编写。 它基于Eclipse，所以顺其自然地兼容了Eclipse的插件。
 
-- [官网下载](https://www.dcloud.io/hbuilderx.html)
+- **[官网下载](https://www.dcloud.io/hbuilderx.html)**
+
+</br>
 
 ### Visual Studio Code
 
-- Visual Studio Code : 
+- **说明**：Visual Studio Code（简称VS Code）是一个由微软开发，同时支持Windows 、 Linux和macOS等操作系統的免费程式碼编辑器，它支持測試，并内置了Git 版本控制功能，同时也具有开发环境功能，例如代码补全（类似于IntelliSense）、代码片段和代码重构等。
 
-- [立即下载](https://code.visualstudio.com/docs/?dv=osx)
+- **[直接下载](https://code.visualstudio.com/docs/?dv=osx)**
+
+</br>
 
 ### DataGrip
 
-- DataGrip : 许多数据库，一个工具
+- **说明**：DataGrip 出自JetBrains公司，是一款跨平台的数据库管理客户端工具；同时支持多种数据库：SQL Server，Oracle，PostgreSQL，MySQL，DB2，Sybase，SQLite，Derby，HyperSQL和H2；方便连接到数据库服务器，执行sql、创建表、创建索引以及导出数据等。类似的IDE很多，比如Navicat、dbeaver，但是 DataGrip 功能上更为强大一些。
 
-- [立即下载](https://www.jetbrains.com/datagrip/download/download-thanks.html)
+- **[直接下载](https://www.jetbrains.com/datagrip/download/download-thanks.html)**
+
+</br>
 
 ### PyCharm
 
-- PyCharm : 专业开发人员的 Python IDE
+- **说明**：PyCharm是一种Python IDE，其带有一整套可以帮助用户在使用Python语言开发时提高其效率的工具，比如， 调试、语法高亮、Project管理、代码跳转、智能提示、自动完成、单元测试、版本控制等等。 此外，该IDE提供了一些高级功能，以用于支持Django框架下的专业Web开发。
 
-- [立即下载](https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=mac)
+- [直接下载](https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=mac)
+
+</br>
 
 ### IntelliJ IDEA
 
-- IntelliJ IDEA : 
+- **说明**：IDEA 全称IntelliJ IDEA，是用于 java语言开发的集成环境 （也可用于其他语言），IntelliJ在业界被公认为最好的java开发工具之一，尤其在智能代码助手、代码 自动提示、重构、J2EE支持、Ant、JUnit、CVS整合、代码审查、 创新的GUI设计 等方面的功能可以说是超常的。
 
-- [立即下载](https://www.jetbrains.com/idea/download/download-thanks.html?platform=mac)
+- [直接下载](https://www.jetbrains.com/idea/download/download-thanks.html?platform=mac)
+
+</br>
 
 ### Surge3 for mac
 
-- Surge : Surge 用于 Mac 和 iOS 的高级网络工具箱
+- **说明**：Surge 用于 Mac 和 iOS 的高级网络工具箱
 
-- [立即下载-V3](https://nssurge.com/mac/v3/Surge-latest.zip)
+- **[直接下载](https://nssurge.com/mac/v3/Surge-latest.zip)**：V3 版本
 
-- [立即下载-V4](https://nssurge.com/mac/v4/Surge-latest.zip)
+- **[直接下载](https://nssurge.com/mac/v4/Surge-latest.zip)**：V4 版本
+
+</br>
 
 ### SafeInCloud
 
-- SafeInCloud : SafeInCloud 密码管理器允许您保存您的登录名、 密码和其他私人信息在安全和牢固的加密数据库中。您可以通过您的云帐户与另一台电话，平板电脑，Mac 或 PC 同步您的数据。
+- **说明**： SafeInCloud 密码管理器允许您保存您的登录名、 密码和其他私人信息在安全和牢固的加密数据库中。您可以通过您的云帐户与另一台电话，平板电脑，Mac 或 PC 同步您的数据。
 
-- [AppStore 下载](https://apps.apple.com/cn/app/safeincloud-%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8/id883070818?mt=12)
+- **[AppStore](https://apps.apple.com/cn/app/safeincloud-%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E5%99%A8/id883070818?mt=12)**
+
+</br>
 
 ### CleanMyMac X
 
-- CleanMyMac X : 一款真正的 Mac 清理应用; 最友好的 Mac 问题修复工具。删除系统垃圾、不想要的应用和恶意软件，让您的 Mac 恢复最快运行速度。
+- **说明**： 一款真正的 Mac 清理应用; 最友好的 Mac 问题修复工具。删除系统垃圾、不想要的应用和恶意软件，让您的 Mac 恢复最快运行速度。
 
-- [MacWk 下载](https://www.macwk.com/soft/cleanmymac-x)
+- **[MacWk](https://www.macwk.com/soft/cleanmymac-x)**
+
+
+</br>
 
 ### MacWk 应用更新器
 
-- MacWk 应用更新器 : MacWk Updater 是一款可以检测应用更新的工具，前提是应用是通过 MacWk.com 下载安装的。
+- **说明**：MacWk Updater 是一款可以检测应用更新的工具，前提是应用是通过 MacWk.com 下载安装的。
 
-- [MacWk 下载](https://www.macwk.com/soft/macwk-updater)
+- **[MacWk](https://www.macwk.com/soft/macwk-updater)**
+
+</br>
 
 ### Mate Translate
 
-- Mate Translate : 
+- **说明**：Mate Translate是即时文本到文本翻译的最好的翻译应用。 Mate Translate 允许您翻译超过100种语言的单词和短语，使用文本到语音转换，并浏览历史上已完成的翻译。 您可以使用Control + S在弹出窗口中快速交换语言。
 
-- [立即下载](https://gikken.co/mate/MateTranslate.zip)
-
+- **[直接下载](https://gikken.co/mate/MateTranslate.zip)**
 
 ---
+</br></br>
+
+
+
+
+
+
+
+
+
+
+
 
 ## 实用工具
 
+</br>
 
 ### uTool
 
-- uTool : uTools 是一个极简、插件化、跨平台的现代桌面软件。通过自由选配丰富的插件，打造你得心应手的工具集合。
+- **说明**： uTools 是一个极简、插件化、跨平台的现代桌面软件。通过自由选配丰富的插件，打造你得心应手的工具集合。
 
-- [官网下载](https://u.tools/)
+- **[官网下载](https://u.tools/)**
+
+</br>
 
 ### macOS小助手
 
-- macOS小助手 : macOS小助手 是 MacWk.com 编写的一个应用程序，可以帮您快速的进行一些操作，比如禁用macOS的 Gatekeeper（守门员）、修复macOS 10.15 应用已损坏问题、修改mac截图保存位置、修改截图名称前缀、修改截图默认保存格式、禁用窗口截图的阴影、开启单应用模式、查看SIP状态、禁用 macOS 更新提示（关闭macOS设置图标的小红点）
+- **说明**：macOS小助手 是 MacWk.com 编写的一个应用程序，可以帮您快速的进行一些操作，比如禁用macOS的 Gatekeeper（守门员）、修复macOS 10.15 应用已损坏问题、修改mac截图保存位置、修改截图名称前缀、修改截图默认保存格式、禁用窗口截图的阴影、开启单应用模式、查看SIP状态、禁用 macOS 更新提示（关闭macOS设置图标的小红点）
 
-- [MacWk 下载](https://www.macwk.com/soft/macos-assistant-macwk?source=macwk-macos-asistant)
+- **[MacWk](https://www.macwk.com/soft/macos-assistant-macwk?source=macwk-macos-asistant)**
+
+</br>
 
 ### Screens 4 for Mac
 
-- Screens 4 for Mac : 是一款优秀的Mac远程桌面控制工具，能够自由访问远程计算机设备
+- **说明**：Screens 4 for Mac 是一款优秀的Mac远程桌面控制工具，能够自由访问远程计算机设备
 
-- [官网下载](https://edovia.com/en/screens-mac/)
+- **[官网下载](https://edovia.com/en/screens-mac/)**
+
+</br>
 
 ### Better Zip
 
-- Better Zip : BetterZip是由罗伯特Rezabek开发的试用软件文件存档，并在5月2006.It首次发布仅针对MacOS的平台开发的。不同的是内置的苹果，它包括许多归档格式的能力，提取和压缩，以及查看归档和选择性地提取文件而不自动提取的全部内容的能力归档工具
+- **说明**：BetterZip是由罗伯特Rezabek开发的试用软件文件存档，并在5月2006.It首次发布仅针对MacOS的平台开发的。不同的是内置的苹果，它包括许多归档格式的能力，提取和压缩，以及查看归档和选择性地提取文件而不自动提取的全部内容的能力归档工具。
 
-- [立即下载](https://macitbetter.com/BetterZip.zip)
+- **[直接下载](https://macitbetter.com/BetterZip.zip)**
+
+</br>
 
 ### ColorSnapper2
 
-- ColorSnapper2 : 优秀的屏幕取色工具
+- **说明**：ColorSnapper2 是一款优秀的屏幕取色工具
 
-- [官网下载](https://s3.amazonaws.com/cs2-binaries/ColorSnapper2.dmg)
+- **[官网下载](https://s3.amazonaws.com/cs2-binaries/ColorSnapper2.dmg)**
+
+</br>
 
 ### Bartender 4
 
-- Bartender 4 : 一款实用的菜单栏管理工具。
+- **说明**：Bartender 4 是一款实用的菜单栏管理工具。仅支持 macOS 11。
 
-- [官网下载](https://www.macbartender.com/Bartender4/)
+- **[官网下载](https://www.macbartender.com/Bartender4/)**
+
+</br>
 
 ### 1Click-Screen Recorder
 
-- 1Click-Screen Recorder : 简易视频录制工具，这款软件能够为大家提供桌面全屏或自定义范围录制。这款软件使用简单，只需一键就可以开启录制。
+- **说明**：1Click-Screen Recorder 是一款简易视频录制工具，这款软件能够为大家提供桌面全屏或自定义范围录制。这款软件使用简单，只需一键就可以开启录制。
 
-- [立即下载](https://www.imacbits.com/index.php?route=product/product/download&download_id=18)
+- **[直接下载](https://www.imacbits.com/index.php?route=product/product/download&download_id=18)**
 
 
----
 
-## 社交网络
-
-### App
-
-- app : 
-
-- [官网下载]()
-
-### App
-
-- app : 
-
-- [官网下载]()
-
-### App
-
-- app : 
-
-- [官网下载]()
