@@ -41,8 +41,103 @@ macOS X 桌面级应用，我是一个资深 Mac 用户，我需要它们帮助�
 ![桌面1](https://imgsbed.jonnyhub.com/uPic/mac/desktop.png)
 
 ![桌面2](https://imgsbed.jonnyhub.com/uPic/mac/desktop2.png)
-
 </br></br>
+
+---
+
+## 开发者工具
+
+### 编辑器
+
+#### CotEditor
+
+- **说明**：macOS 的轻量级纯文本编辑器。
+
+- \*_[AppStore](https://apps.apple.com/cn/app/coteditor/id1024640650?mt=12)_
+  </br>
+
+#### Sublime Text
+
+- **说明**：Sublime Text 是一个文本编辑器（收费软件，可以无限期试用，但是会有激活提示弹窗），同时也是一个先进的代码编辑器。 Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。
+
+- **[MacWk](https://www.macwk.com/soft/sublime-text)**
+  </br>
+
+#### Visual Studio Code
+
+- **说明**：Visual Studio Code（简称 VS Code）是一个由微软开发，同时支持 Windows 、 Linux 和 macOS 等操作系統的免费程式碼编辑器，它支持測試，并内置了 Git 版本控制功能，同时也具有开发环境功能，例如代码补全（类似于 IntelliSense）、代码片段和代码重构等。
+
+- **[直接下载](https://code.visualstudio.com/docs/?dv=osx)**
+  </br>
+
+#### HBuilderX
+
+- **说明**：HBuilder 是 DCloud（数字天堂）推出的一款支持 HTML5 的 Web 开发 IDE。 HBuilder 的编写用到了 Java、C、Web 和 Ruby。 HBuilder 本身主体是由 Java 编写。 它基于 Eclipse，所以顺其自然地兼容了 Eclipse 的插件。
+
+- **[官网下载](https://www.dcloud.io/hbuilderx.html)**
+  </br>
+
+#### IntelliJ IDEA
+
+- **说明**：IDEA 全称 IntelliJ IDEA，是用于 java 语言开发的集成环境 （也可用于其他语言），IntelliJ 在业界被公认为最好的 java 开发工具之一，尤其在智能代码助手、代码 自动提示、重构、J2EE 支持、Ant、JUnit、CVS 整合、代码审查、 创新的 GUI 设计 等方面的功能可以说是超常的。
+
+- [直接下载](https://www.jetbrains.com/idea/download/download-thanks.html?platform=mac)
+  </br>
+
+- [Material Theme UI](https://plugins.jetbrains.com/plugin/8006-material-theme-ui) - Google 开发的主题，适用于 IntelliJ IDEA、DataGrip、PyCharm 等。
+
+#### DataGrip
+
+- **说明**：DataGrip 出自 JetBrains 公司，是一款跨平台的数据库管理客户端工具；同时支持多种数据库：SQL Server，Oracle，PostgreSQL，MySQL，DB2，Sybase，SQLite，Derby，HyperSQL 和 H2；方便连接到数据库服务器，执行 sql、创建表、创建索引以及导出数据等。类似的 IDE 很多，比如 Navicat、dbeaver，但是 DataGrip 功能上更为强大一些。
+
+- **[直接下载](https://www.jetbrains.com/datagrip/download/download-thanks.html)**
+  </br>
+
+#### PyCharm
+
+- **说明**：PyCharm 是一种 Python IDE，其带有一整套可以帮助用户在使用 Python 语言开发时提高其效率的工具，比如， 调试、语法高亮、Project 管理、代码跳转、智能提示、自动完成、单元测试、版本控制等等。 此外，该 IDE 提供了一些高级功能，以用于支持 Django 框架下的专业 Web 开发。
+
+- [直接下载](https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=mac)
+  </br>
+
+---
+
+### 开发者实用工具
+
+#### Beyond Compare
+
+- **说明**：Beyond Compare 是一套由 Scooter Software 推出的非常实用的文件及文件夹对比工具，丌仅可以快速比较出两个文件夹的丌同之处，还可以详细的比较文件之间的内容差异，并将差异以颜色标示。 程序内建了文件浏览器，方便您对文件、文件夹、压缩包、FTP 网站之间的差异对比以及资料同步。
+
+- **[MacWk](https://www.macwk.com/soft/beyond-compare)**
+  </br>
+
+### Dash
+
+- **说明**：Dash 是一款开发者必备 API 文档聚合应用，适用于 macOS 平台的软件编程文档管理工具，可以浏览 API 文档，以及管理代码片段工具。Dash 自带了丰富的 API 文档，涉及各种主流的编程语言和框架。[官网介绍](https://kapeli.com/dash)。
+
+- **[直接下载](https://kapeli.com/downloads/v5/Dash.zip)**
+  </br>
+
+### iHosts
+
+- **说明**：/etc/hosts 编辑神器，使用分组管理 Hosts，灵活组合、一键切换。不同 Hosts 间任意组合，支持快捷键切换；快速预览、实时查看 Hosts，支持语法着色；以沙盒模式运行，无需 Root 权限，安全放心
+
+- **[AppStore](https://apps.apple.com/cn/app/ihosts-etc-hosts-%E7%BC%96%E8%BE%91%E5%99%A8/id1102004240?mt=12)**
+  </br>
+
+### SnippetsLab
+
+- **说明**：SnippetsLab 是一款运行在 Mac 平台代码管理工具。 SnippetsLab 不是一款传统意义上的代码编辑器，它拥有简洁漂亮的用户界面，帮助你收集和整理有价值的代码片段，所以它所面向的不是连续的编辑一个完整程序的情景，而是将一个程序组件一个个拆分出来编写的情景。
+
+- **[AppStore](https://apps.apple.com/cn/app/snippetslab/id1006087419?mt=12)**
+  </br>
+
+### uTool
+
+- **说明**： uTools 是一个极简、插件化、跨平台的现代桌面软件。通过自由选配丰富的插件，打造你得心应手的工具集合。
+
+- **[官网下载](https://u.tools/)**
+  </br>
 
 ## 常用应用（主屏应用）
 
@@ -74,32 +169,6 @@ _这部分是最常用的应用，不区分类别。_
 
 </br>
 
-### 微信
-
-- **说明**：微信(WeChat) 是腾讯公司于 2011 年 1 月 21 日推出的一个为智能终端提供即时通讯服务的免费应用程序。
-
-- **[AppStore](https://apps.apple.com/cn/app/%E5%BE%AE%E4%BF%A1/id836500024?mt=12)**：
-
-</br>
-
-### 电报 (Telegram)
-
-- **说明**：Telegram 是一款开源且跨平台的 IM 工具（类似 Whatsapp、Messenger、微信），是我用过所有同类软件中用户体验最好的一个，同时我也是 Telegram 重度用户和开发者。 ... Telegram 完全由私人拥有，没有其他股东和投资人，并号称永远不会出售。
-
-- **[AppStore](https://apps.apple.com/cn/app/telegram/id747648890?mt=12)**：AppStore 版本功能有阉割。
-
-- **[官网下载](https://apps.apple.com/cn/app/telegram/id747648890?mt=12)**：建议进入官网进行下载。
-
-</br>
-
-### QQ
-
-- **说明**：QQ 是腾讯公司推出的一款基于互联网的即时通信平台。 支持在线聊天、即时传送语音、视频、在线（离线）传送文件等全方位基础通信功能，并且整合移动通信手段，可通过客户端发送信息给手机用户，进一步为用户构建完整、成熟、多元化的在线生活平台。 用户可在电脑、手机以及无线终端之间随意、无缝切换。
-
-- **[AppStore](https://apps.apple.com/cn/app/qq/id451108668?mt=12)**
-
-</br>
-
 ### Foxmail
 
 - **说明**：Mac 上现在有了更酷的 Foxmail。Foxmail 是由华中科技大学（原华中理工大学）张小龙开发的一款优秀的国产电子邮件客户端软件，于 2005 年 3 月 16 日被腾讯收购。 新的 Foxmail 具备强大的反垃圾邮件功能。 它使用多种技术对邮件进行判别，能够准确识别垃圾邮件与非垃圾邮件。
@@ -115,24 +184,7 @@ _这部分是最常用的应用，不区分类别。_
 - **说明**：iTerm2 是一款完全免费的，专为 Mac OS 用户打造的命令行应用，iTerm2 本身支持很多自定义化的设置。
 
 - **[官网下载](https://iterm2.com/)**
-
-</br>
-
-### Dash
-
-- **说明**：Dash 是一款开发者必备 API 文档聚合应用，适用于 macOS 平台的软件编程文档管理工具，可以浏览 API 文档，以及管理代码片段工具。Dash 自带了丰富的 API 文档，涉及各种主流的编程语言和框架。[官网介绍](https://kapeli.com/dash)。
-
-- **[直接下载](https://kapeli.com/downloads/v5/Dash.zip)**
-
-</br>
-
-### SnippetsLab
-
-- **说明**：SnippetsLab 是一款运行在 Mac 平台代码管理工具。 SnippetsLab 不是一款传统意义上的代码编辑器，它拥有简洁漂亮的用户界面，帮助你收集和整理有价值的代码片段，所以它所面向的不是连续的编辑一个完整程序的情景，而是将一个程序组件一个个拆分出来编写的情景。
-
-- **[AppStore](https://apps.apple.com/cn/app/snippetslab/id1006087419?mt=12)**
-
-</br>
+  </br>
 
 ### Reader
 
@@ -155,54 +207,6 @@ _这部分是最常用的应用，不区分类别。_
 - **说明**：QuartzCode 可以让程序员通过画图的方式自动生成动画 Animation 代码，帮助用户实时地获取各种相关的动画代码以及信息，让你可以更方便地观察整个动画的动态，并且及时进行改进，节省大量的时间。支持导出为 Objective-C 和 Swift 语言
 
 - **[官网下载](https://quartzcodeapp.com/)：** 需要代理
-
-</br>
-
-### Sublime Text
-
-- **说明**：Sublime Text 是一个文本编辑器（收费软件，可以无限期试用，但是会有激活提示弹窗），同时也是一个先进的代码编辑器。 Sublime Text 是由程序员 Jon Skinner 于 2008 年 1 月份所开发出来，它最初被设计为一个具有丰富扩展功能的 Vim。
-
-- **[MacWk](https://www.macwk.com/soft/sublime-text)**
-
-</br>
-
-### HBuilderX
-
-- **说明**：HBuilder 是 DCloud（数字天堂）推出的一款支持 HTML5 的 Web 开发 IDE。 HBuilder 的编写用到了 Java、C、Web 和 Ruby。 HBuilder 本身主体是由 Java 编写。 它基于 Eclipse，所以顺其自然地兼容了 Eclipse 的插件。
-
-- **[官网下载](https://www.dcloud.io/hbuilderx.html)**
-
-</br>
-
-### Visual Studio Code
-
-- **说明**：Visual Studio Code（简称 VS Code）是一个由微软开发，同时支持 Windows 、 Linux 和 macOS 等操作系統的免费程式碼编辑器，它支持測試，并内置了 Git 版本控制功能，同时也具有开发环境功能，例如代码补全（类似于 IntelliSense）、代码片段和代码重构等。
-
-- **[直接下载](https://code.visualstudio.com/docs/?dv=osx)**
-
-</br>
-
-### DataGrip
-
-- **说明**：DataGrip 出自 JetBrains 公司，是一款跨平台的数据库管理客户端工具；同时支持多种数据库：SQL Server，Oracle，PostgreSQL，MySQL，DB2，Sybase，SQLite，Derby，HyperSQL 和 H2；方便连接到数据库服务器，执行 sql、创建表、创建索引以及导出数据等。类似的 IDE 很多，比如 Navicat、dbeaver，但是 DataGrip 功能上更为强大一些。
-
-- **[直接下载](https://www.jetbrains.com/datagrip/download/download-thanks.html)**
-
-</br>
-
-### PyCharm
-
-- **说明**：PyCharm 是一种 Python IDE，其带有一整套可以帮助用户在使用 Python 语言开发时提高其效率的工具，比如， 调试、语法高亮、Project 管理、代码跳转、智能提示、自动完成、单元测试、版本控制等等。 此外，该 IDE 提供了一些高级功能，以用于支持 Django 框架下的专业 Web 开发。
-
-- [直接下载](https://www.jetbrains.com/pycharm/download/download-thanks.html?platform=mac)
-
-</br>
-
-### IntelliJ IDEA
-
-- **说明**：IDEA 全称 IntelliJ IDEA，是用于 java 语言开发的集成环境 （也可用于其他语言），IntelliJ 在业界被公认为最好的 java 开发工具之一，尤其在智能代码助手、代码 自动提示、重构、J2EE 支持、Ant、JUnit、CVS 整合、代码审查、 创新的 GUI 设计 等方面的功能可以说是超常的。
-
-- [直接下载](https://www.jetbrains.com/idea/download/download-thanks.html?platform=mac)
 
 </br>
 
@@ -282,17 +286,39 @@ _这部分是最常用的应用，不区分类别。_
 
 ---
 
-## 实用工具
-
-![tools](https://imgsbed.jonnyhub.com/uPic/mac/tools.png)
+## 社交联络
 
 </br>
 
-### uTool
+### 微信
 
-- **说明**： uTools 是一个极简、插件化、跨平台的现代桌面软件。通过自由选配丰富的插件，打造你得心应手的工具集合。
+- **说明**：微信(WeChat) 是腾讯公司于 2011 年 1 月 21 日推出的一个为智能终端提供即时通讯服务的免费应用程序。
 
-- **[官网下载](https://u.tools/)**
+- **[AppStore](https://apps.apple.com/cn/app/%E5%BE%AE%E4%BF%A1/id836500024?mt=12)**：
+
+</br>
+
+### 电报 (Telegram)
+
+- **说明**：Telegram 是一款开源且跨平台的 IM 工具（类似 Whatsapp、Messenger、微信），是我用过所有同类软件中用户体验最好的一个，同时我也是 Telegram 重度用户和开发者。 ... Telegram 完全由私人拥有，没有其他股东和投资人，并号称永远不会出售。
+
+- **[AppStore](https://apps.apple.com/cn/app/telegram/id747648890?mt=12)**：AppStore 版本功能有阉割。
+
+- **[官网下载](https://apps.apple.com/cn/app/telegram/id747648890?mt=12)**：建议进入官网进行下载。
+
+</br>
+
+### QQ
+
+- **说明**：QQ 是腾讯公司推出的一款基于互联网的即时通信平台。 支持在线聊天、即时传送语音、视频、在线（离线）传送文件等全方位基础通信功能，并且整合移动通信手段，可通过客户端发送信息给手机用户，进一步为用户构建完整、成熟、多元化的在线生活平台。 用户可在电脑、手机以及无线终端之间随意、无缝切换。
+
+- **[AppStore](https://apps.apple.com/cn/app/qq/id451108668?mt=12)**
+
+</br></br>
+
+---
+
+## 实用工具
 
 </br>
 
@@ -325,12 +351,6 @@ _这部分是最常用的应用，不区分类别。_
 - **说明**：KeyManager 是集证书申请、证书管理、私钥管理、证书到期提醒、一键部署等为一体的证书管理工具。
 
 - **[直接下载](https://www.imacbits.com/index.php?route=product/product/download&download_id=18)**
-
-</br>
-
-### FireWall
-
-- **说明**：KeyManager 是集证书申请、证书管理、私钥管理、证书到期提醒、一键部署等为一体的证书管理工具。
 
 </br>
 
