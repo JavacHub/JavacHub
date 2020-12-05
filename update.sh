@@ -1,4 +1,5 @@
 #!/bin/bash
+cd ~/projects/hellenhub
 date=$(date)
 echo "当前时间是： ${date}"
 echo -n "请填写推送消息并回车(默认为时间)： "

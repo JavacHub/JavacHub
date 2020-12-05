@@ -16,7 +16,6 @@ yarn.lock
 public/
 
 # MarkEditor
-*/.markeditor/*
 */.markeditor/
 .markeditor/
 content/configs/
@@ -24,6 +23,7 @@ content/.auto_links.json
 content/.icon.png
 temp/
 .Archive
+.sync
 
 ## OS Files
 # Windows
