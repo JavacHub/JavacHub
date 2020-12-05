@@ -433,12 +433,12 @@ ignoreFiles = [ "\\.gitignore$", "\\.git" ]
         url = "/categories/"
         title = "文章分类"
         weight = 3
-      [[languages.zh-cn.menu.main]]
-        identifier = "manual"
-        name = "手册"
-        url = "/categories/写作手册/"
-        title = "写作手册"
-        weight = 4
+      # [[languages.zh-cn.menu.main]]
+      #   identifier = "manual"
+      #   name = "手册"
+      #   url = "/categories/写作手册/"
+      #   title = "写作手册"
+      #   weight = 4
       [[languages.zh-cn.menu.main]]
         identifier = "resume"
         pre = ""
