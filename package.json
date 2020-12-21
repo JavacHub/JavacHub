@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JavacHub/jonnyhub.git"
+    "url": "git+https://github.com/hellenhub/jonnyhub.git"
   },
   "keywords": [
     "Jonny",
@@ -21,9 +21,9 @@
   "author": "Jonny.Chang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JavacHub/jonnyhub/issues"
+    "url": "https://github.com/hellenhub/jonnyhub/issues"
   },
-  "homepage": "https://github.com/JavacHub/jonnyhub#readme",
+  "homepage": "https://github.com/hellenhub/jonnyhub#readme",
   "dependencies": {
   }
 }
